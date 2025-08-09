@@ -1,0 +1,253 @@
+.planta-1-container{
+    position: absolute;
+    width: auto;
+    height: auto;
+    transform-origin: left top;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    animation-duration: 8s;
+}
+
+.planta-1-animation1{
+    animation-name: animacion-planta-1-animacion-1;
+}
+.planta-1-animation2{
+    animation-name: animacion-planta-1-animacion-2;
+}
+.planta-1-animation3{
+    animation-name: animacion-planta-1-animacion-3;
+}
+
+.planta-1{
+    position: relative;
+    width: auto;
+    height: auto;
+    transform-origin: center top;
+}
+.planta-1 img:nth-child(1){
+    position: relative;
+    width: 54px;
+    height: 292px;
+    margin: 0px;
+}
+.planta-1 img:nth-child(2){
+    position: absolute;
+    width: 144px;
+    height: 258px;
+    margin: 0px;
+    top: 97%;
+    left: 50%;
+    left: calc(50% - (144px / 2));
+    left: -moz-calc(50% - (144px / 2));
+    transform-origin: center top;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    animation-duration: 8s;
+    filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.3));
+}
+.planta-1-animation1 .planta-1 img:nth-child(2){
+    animation-name: animacion-planta-1-hoja-animacion-1;
+}
+.planta-1-animation2 .planta-1 img:nth-child(2){
+    animation-name: animacion-planta-1-hoja-animacion-2;
+}
+.planta-1-animation3 .planta-1 img:nth-child(2){
+    animation-name: animacion-planta-1-hoja-animacion-3;
+}
+
+/************************************/
+
+@keyframes animacion-planta-1-animacion-1{
+    0%{
+        transform: rotate(-45deg) translateX(-50%);
+        animation-timing-function: ease-in;
+    }
+    20%{
+        transform: rotate(-60deg) translateX(-50%);
+        animation-timing-function: linear;
+    }
+    25%{
+        transform: rotate(-58deg) translateX(-50%);
+        animation-timing-function: linear;
+    }
+    30%{
+        transform: rotate(-60deg) translateX(-50%);
+        animation-timing-function: linear;
+    }
+    35%{
+        transform: rotate(-58deg) translateX(-50%);
+        animation-timing-function: linear;
+    }
+    40%{
+        transform: rotate(-60deg) translateX(-50%);
+        animation-timing-function: ease-out;
+    }
+    60%{
+        transform: rotate(-45deg) translateX(-50%);
+    }
+    100%{
+        transform: rotate(-45deg) translateX(-50%);
+    }
+}
+@keyframes animacion-planta-1-hoja-animacion-1{
+    0%{
+        transform: rotate(0deg);
+        animation-timing-function: ease-in;
+    }
+    20%{
+        transform: rotate(20deg);
+        animation-timing-function: linear;
+    }
+    25%{
+        transform: rotate(10deg);
+        animation-timing-function: linear;
+    }
+    30%{
+        transform: rotate(20deg);
+        animation-timing-function: linear;
+    }
+    35%{
+        transform: rotate(10deg);
+        animation-timing-function: linear;
+    }
+    40%{
+        transform: rotate(20deg);
+        animation-timing-function: ease-out;
+    }
+    60%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes animacion-planta-1-animacion-2{
+    0%{
+        transform: rotate(-55deg) translateX(-50%);
+        animation-timing-function: ease-in;
+    }
+    30%{
+        transform: rotate(-70deg) translateX(-50%);
+        animation-timing-function: linear;
+    }
+    35%{
+        transform: rotate(-68deg) translateX(-50%);
+        animation-timing-function: linear;
+    }
+    40%{
+        transform: rotate(-70deg) translateX(-50%);
+        animation-timing-function: linear;
+    }
+    45%{
+        transform: rotate(-68deg) translateX(-50%);
+        animation-timing-function: linear;
+    }
+    50%{
+        transform: rotate(-68deg) translateX(-50%);
+        animation-timing-function: ease-out;
+    }
+    70%{
+        transform: rotate(-55deg) translateX(-50%);
+    }
+    100%{
+        transform: rotate(-55deg) translateX(-50%);
+    }
+}
+@keyframes animacion-planta-1-hoja-animacion-2{
+    0%{
+        transform: rotate(10deg);
+        animation-timing-function: ease-in;
+    }
+    30%{
+        transform: rotate(30deg);
+        animation-timing-function: linear;
+    }
+    35%{
+        transform: rotate(20deg);
+        animation-timing-function: linear;
+    }
+    40%{
+        transform: rotate(30deg);
+        animation-timing-function: linear;
+    }
+    45%{
+        transform: rotate(20deg);
+        animation-timing-function: linear;
+    }
+    50%{
+        transform: rotate(30deg);
+        animation-timing-function: ease-out;
+    }
+    70%{
+        transform: rotate(10deg);
+    }
+    100%{
+        transform: rotate(10deg);
+    }
+}
+
+@keyframes animacion-planta-1-animacion-3{
+    0%{
+        transform: rotate(-50deg) translateX(-50%);
+        animation-timing-function: ease-in;
+    }
+    25%{
+        transform: rotate(-65deg) translateX(-50%);
+        animation-timing-function: linear;
+    }
+    30%{
+        transform: rotate(-63deg) translateX(-50%);
+        animation-timing-function: linear;
+    }
+    35%{
+        transform: rotate(-65deg) translateX(-50%);
+        animation-timing-function: linear;
+    }
+    40%{
+        transform: rotate(-63deg) translateX(-50%);
+        animation-timing-function: linear;
+    }
+    45%{
+        transform: rotate(-65deg) translateX(-50%);
+        animation-timing-function: ease-out;
+    }
+    65%{
+        transform: rotate(-50deg) translateX(-50%);
+    }
+    100%{
+        transform: rotate(-50deg) translateX(-50%);
+    }
+}
+@keyframes animacion-planta-1-hoja-animacion-3{
+    0%{
+        transform: rotate(5deg);
+        animation-timing-function: ease-in;
+    }
+    25%{
+        transform: rotate(25deg);
+        animation-timing-function: linear;
+    }
+    30%{
+        transform: rotate(15deg);
+        animation-timing-function: linear;
+    }
+    35%{
+        transform: rotate(25deg);
+        animation-timing-function: linear;
+    }
+    40%{
+        transform: rotate(15deg);
+        animation-timing-function: linear;
+    }
+    45%{
+        transform: rotate(25deg);
+        animation-timing-function: ease-out;
+    }
+    65%{
+        transform: rotate(5deg);
+    }
+    100%{
+        transform: rotate(5deg);
+    }
+}

@@ -1,0 +1,99 @@
+.planta-4-container{
+    position: absolute;
+    width: auto;
+    height: auto;
+    transform-origin: left top;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    animation-duration: 6s;
+}
+
+.planta-4-animation1{
+    animation-name: animacion-planta-4-animacion-1;
+}
+.planta-4-animation2{
+    animation-name: animacion-planta-4-animacion-2;
+}
+
+
+.planta-4{
+    position: relative;
+    width: auto;
+    height: auto;
+    transform-origin: center bottom;
+}
+.planta-4 img{
+    position: relative;
+    width: 254px;
+    height: 525px;
+    margin: 0px;
+    
+    filter: drop-shadow(0px 0px 2px rgba(0,0,0,0.5));
+}
+
+/************************************/
+
+@keyframes animacion-planta-4-animacion-1{
+    0%{
+        transform: rotate(0deg) translate(-50%,-100%);
+        animation-timing-function: ease-in;
+    }
+    20%{
+        transform: rotate(0deg) translate(-50%,-100%);
+        animation-timing-function: linear;
+    }
+    32%{
+        transform: rotate(3deg) translate(-50%,-100%);
+        animation-timing-function: linear;
+    }
+    44%{
+        transform: rotate(-3deg) translate(-50%,-100%);
+        animation-timing-function: linear;
+    }
+    56%{
+        transform: rotate(3deg) translate(-50%,-100%);
+        animation-timing-function: linear;
+    }
+    68%{
+        transform: rotate(-3deg) translate(-50%,-100%);
+        animation-timing-function: ease-out;
+    }
+    80%{
+        transform: rotate(0deg) translate(-50%,-100%);
+    }
+    100%{
+        transform: rotate(0deg) translate(-50%,-100%);
+    }
+}
+@keyframes animacion-planta-4-animacion-2{
+    0%{
+        transform: rotate(0deg) translate(-50%,-100%);
+        animation-timing-function: ease-in;
+    }
+    25%{
+        transform: rotate(0deg) translate(-50%,-100%);
+        animation-timing-function: linear;
+    }
+    35%{
+        transform: rotate(-2deg) translate(-50%,-100%);
+        animation-timing-function: linear;
+    }
+    45%{
+        transform: rotate(2deg) translate(-50%,-100%);
+        animation-timing-function: linear;
+    }
+    55%{
+        transform: rotate(-2deg) translate(-50%,-100%);
+        animation-timing-function: linear;
+    }
+    65%{
+        transform: rotate(2deg) translate(-50%,-100%);
+        animation-timing-function: linear;
+    }
+    75%{
+        transform: rotate(0deg) translate(-50%,-100%);
+    }
+    100%{
+        transform: rotate(0deg) translate(-50%,-100%);
+    }
+}
