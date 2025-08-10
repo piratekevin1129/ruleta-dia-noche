@@ -1,0 +1,201 @@
+.planta-7-container{
+    position: absolute;
+    width: auto;
+    height: auto;
+    transform-origin: top left;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    animation-duration: 6s;
+}
+
+.planta-7-animation1{
+    animation-name: animacion-planta-7-animacion-1;
+}
+.planta-7-animation2{
+    animation-name: animacion-planta-7-animacion-2;
+}
+
+.planta-7{
+    position: relative;
+    width: auto;
+    height: auto;
+    transform-origin: bottom left;
+}
+
+.planta-7 img{
+    position: absolute;
+    width: 40px;
+    height: 78px;
+    margin: 0px;
+    transform-origin: top left;
+
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+.planta-7-animation-hoja-0{animation-duration: 5s; animation-name: animacion-planta-7-hoja-animacion-0;}
+.planta-7-animation-hoja-1{animation-duration: 5s; animation-name: animacion-planta-7-hoja-animacion-1;}
+.planta-7-animation-hoja-2{animation-duration: 5.5s; animation-name: animacion-planta-7-hoja-animacion-2;}
+.planta-7-animation-hoja-3{animation-duration: 4.5s; animation-name: animacion-planta-7-hoja-animacion-3;}
+.planta-7-animation-hoja-4{animation-duration: 4s; animation-name: animacion-planta-7-hoja-animacion-4;}
+
+.planta-7 img:nth-child(1){
+    position: relative !important;
+    width: 32px !important;
+    height: 310px !important;
+
+    animation: none !important;
+    animation: unset !important;
+    filter: none !important;
+}
+
+.planta-7 img:nth-child(2){left: 50%; top: 0%;}
+.planta-7 img:nth-child(3){left: 33%; top: 8%;}
+.planta-7 img:nth-child(4){left: 25%; top: 9%;}
+.planta-7 img:nth-child(5){left: 11%; top: 23%;}
+.planta-7 img:nth-child(6){left: 8%; top: 26%;}
+.planta-7 img:nth-child(7){left: 12%; top: 42%;}
+.planta-7 img:nth-child(8){left: 14%; top: 45%;}
+.planta-7 img:nth-child(9){left: 67%; top: 55%;}
+.planta-7 img:nth-child(10){left: 80%; top: 60%;}
+.planta-7 img:nth-child(11){left: 85%; top: 76%;}
+.planta-7 img:nth-child(12){left: 87%; top: 77%;}
+.planta-7 img:nth-child(13){left: 71%; top: 90%;}
+.planta-7 img:nth-child(14){left: 65%; top: 92%;}
+/************************************/
+
+@keyframes animacion-planta-7-animacion-1{
+    0%{
+        transform: rotate(0deg) translate(-50%,-100%);
+        animation-timing-function: ease-in;
+    }
+    20%{
+        transform: rotate(0deg) translate(-50%,-100%);
+        animation-timing-function: linear;
+    }
+    32%{
+        transform: rotate(2deg) translate(-50%,-100%);
+        animation-timing-function: linear;
+    }
+    44%{
+        transform: rotate(-2deg) translate(-50%,-100%);
+        animation-timing-function: linear;
+    }
+    56%{
+        transform: rotate(2deg) translate(-50%,-100%);
+        animation-timing-function: linear;
+    }
+    68%{
+        transform: rotate(-2deg) translate(-50%,-100%);
+        animation-timing-function: ease-out;
+    }
+    80%{
+        transform: rotate(0deg) translate(-50%,-100%);
+    }
+    100%{
+        transform: rotate(0deg) translate(-50%,-100%);
+    }
+}
+@keyframes animacion-planta-7-animacion-2{
+    0%{
+        transform: rotate(0deg) translate(-50%,-100%);
+        animation-timing-function: ease-in;
+    }
+    10%{
+        transform: rotate(0deg) translate(-50%,-100%);
+        animation-timing-function: linear;
+    }
+    36%{
+        transform: rotate(4deg) translate(-50%,-100%);
+        animation-timing-function: linear;
+    }
+    52%{
+        transform: rotate(-4deg) translate(-50%,-100%);
+        animation-timing-function: linear;
+    }
+    68%{
+        transform: rotate(4deg) translate(-50%,-100%);
+        animation-timing-function: linear;
+    }
+    84%{
+        transform: rotate(-4deg) translate(-50%,-100%);
+        animation-timing-function: linear;
+    }
+    90%{
+        transform: rotate(0deg) translate(-50%,-100%);
+    }
+    100%{
+        transform: rotate(0deg) translate(-50%,-100%);
+    }
+}
+
+@keyframes animacion-planta-7-hoja-animacion-0{
+    0%{
+        transform: rotate(5deg) translate(-50%, -100%);
+    }
+    12%,37%{
+        transform: rotate(8deg) translate(-50%, -100%);
+    }
+    25%,50%{
+        transform: rotate(5deg) translate(-50%, -100%);
+    }
+    100%{
+        transform: rotate(5deg) translate(-50%, -100%);
+    }
+}
+@keyframes animacion-planta-7-hoja-animacion-1{
+    0%{
+        transform: rotate(60deg) translate(-50%, -100%);
+    }
+    12%,37%{
+        transform: rotate(58deg) translate(-50%, -100%);
+    }
+    25%,50%{
+        transform: rotate(60deg) translate(-50%, -100%);
+    }
+    100%{
+        transform: rotate(60deg) translate(-50%, -100%);
+    }
+}
+@keyframes animacion-planta-7-hoja-animacion-2{
+    0%{
+        transform: rotate(-65deg) translate(-50%, -100%);
+    }
+    12%,37%{
+        transform: rotate(-63deg) translate(-50%, -100%);
+    }
+    25%,50%{
+        transform: rotate(-65deg) translate(-50%, -100%);
+    }
+    100%{
+        transform: rotate(-65deg) translate(-50%, -100%);
+    }
+}
+@keyframes animacion-planta-7-hoja-animacion-3{
+    0%{
+        transform: rotate(60deg) translate(-50%, -100%);
+    }
+    12%,37%{
+        transform: rotate(63deg) translate(-50%, -100%);
+    }
+    25%,50%{
+        transform: rotate(60deg) translate(-50%, -100%);
+    }
+    100%{
+        transform: rotate(60deg) translate(-50%, -100%);
+    }
+}
+@keyframes animacion-planta-7-hoja-animacion-4{
+    0%{
+        transform: rotate(-65deg) translate(-50%, -100%);
+    }
+    12%,37%{
+        transform: rotate(-67deg) translate(-50%, -100%);
+    }
+    25%,50%{
+        transform: rotate(-65deg) translate(-50%, -100%);
+    }
+    100%{
+        transform: rotate(-65deg) translate(-50%, -100%);
+    }
+}

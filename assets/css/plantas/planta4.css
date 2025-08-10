@@ -2,7 +2,7 @@
     position: absolute;
     width: auto;
     height: auto;
-    transform-origin: left top;
+    transform-origin: top left;
     animation-iteration-count: infinite;
     animation-fill-mode: forwards;
     animation-duration: 6s;
@@ -15,12 +15,11 @@
     animation-name: animacion-planta-4-animacion-2;
 }
 
-
 .planta-4{
     position: relative;
     width: auto;
     height: auto;
-    transform-origin: center bottom;
+    transform-origin: bottom center;
 }
 .planta-4 img{
     position: relative;

@@ -2,7 +2,7 @@
     position: absolute;
     width: auto;
     height: auto;
-    transform-origin: left top;
+    transform-origin: top left;
     animation-iteration-count: infinite;
     animation-fill-mode: forwards;
     animation-duration: 10s;
@@ -20,7 +20,7 @@
     position: relative;
     width: auto;
     height: auto;
-    transform-origin: center top;
+    transform-origin: top center;
 }
 .planta-2 img:nth-child(1){
     position: relative;
@@ -37,7 +37,7 @@
     left: 50%;
     left: calc(50% - (43px / 2));
     left: -moz-calc(50% - (43px / 2));
-    transform-origin: center top;
+    transform-origin: top center;
     animation-iteration-count: infinite;
     animation-fill-mode: forwards;
     animation-duration: 10s;
