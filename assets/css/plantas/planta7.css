@@ -19,7 +19,7 @@
     position: relative;
     width: auto;
     height: auto;
-    transform-origin: bottom left;
+    transform-origin: bottom center;
 }
 
 .planta-7 img{

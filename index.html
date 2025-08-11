@@ -4,12 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link href="assets/css/fonts.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/cargador.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/plantas/planta1.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/plantas/planta2.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/plantas/planta4.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/plantas/planta6.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/plantas/planta7.css" rel="stylesheet" type="text/css" />
+
+    <link href="assets/css/formulario.css" rel="stylesheet" type="text/css" />
     <title>Ruelta</title>
+
+    <script>
+        function getE(idname){
+            return document.getElementById(idname)
+        }
+    </script>
 </head>
 <body>
     <div id="app">
@@ -42,7 +53,13 @@
                         <img src="assets/images/planta1/hoja.svg" />
                     </div>
                 </div>
-                <div class="planta-1-container planta-1-animation3" id="plant-3">
+                <div class="planta-1-container planta-1-animation1" id="plant-12">
+                    <div class="planta-1">
+                        <img src="assets/images/planta1/tallo.svg" />
+                        <img src="assets/images/planta1/hoja.svg" />
+                    </div>
+                </div>
+                <div class="planta-1-container planta-1-animation2" id="plant-13">
                     <div class="planta-1">
                         <img src="assets/images/planta1/tallo.svg" />
                         <img src="assets/images/planta1/hoja.svg" />
@@ -62,6 +79,12 @@
                         <img src="assets/images/planta2/hoja.svg" />
                     </div>
                 </div>
+                <div class="planta-2-container planta-2-animation1" id="plant-14">
+                    <div class="planta-2">
+                        <img src="assets/images/planta2/tallo.svg" />
+                        <img src="assets/images/planta2/hoja.svg" />
+                    </div>
+                </div>
 
                 <!--hoja 4-->
                 <div class="planta-4-container planta-4-animation1" id="plant-6">
@@ -74,9 +97,30 @@
                         <img src="assets/images/planta4/hoja2.svg" />
                     </div>
                 </div>
+                <div class="planta-4-container planta-4-animation2" id="plant-15">
+                    <div class="planta-4">
+                        <img src="assets/images/planta4/hoja2.svg" />
+                    </div>
+                </div>
+
+                <!--hoja 6-->
+                <div class="planta-6-container planta-6-animation1" id="plant-8">
+                    <div class="planta-6">
+                        <img src="assets/images/planta6/hoja1.svg" />
+                        <img src="assets/images/planta6/hoja2.svg" />
+                        <img src="assets/images/planta6/hoja3.svg" />
+                    </div>
+                </div>
+                <div class="planta-6-container planta-6-animation2" id="plant-9">
+                    <div class="planta-6">
+                        <img src="assets/images/planta6/hoja1.svg" />
+                        <img src="assets/images/planta6/hoja2.svg" />
+                        <img src="assets/images/planta6/hoja3.svg" />
+                    </div>
+                </div>
 
                 <!--hoja 7-->
-                <div class="planta-7-container planta-7-animation1" id="plant-8">
+                <div class="planta-7-container planta-7-animation1" id="plant-10">
                     <div class="planta-7">
                         <img src="assets/images/planta7/tallo.svg" />
                         <img src="assets/images/planta7/hoja.svg" class="planta-7-animation-hoja-0" />
@@ -95,7 +139,7 @@
                     </div>
                 </div>
 
-                <div class="planta-7-container planta-7-animation2" id="plant-9">
+                <div class="planta-7-container planta-7-animation2" id="plant-11">
                     <div class="planta-7">
                         <img src="assets/images/planta7/tallo.svg" />
                         <img src="assets/images/planta7/hoja.svg" class="planta-7-animation-hoja-0" />
@@ -115,6 +159,60 @@
                 </div>
             </div>
         </div>
+
+        <div id="col">
+            <div id="logo">
+                <img src="assets/images/logo.png" />
+            </div>
+            <div id="formulario">
+                <div id="formulario-container">
+                    <p>Antes de comenzar, por favor diligencie la siguiente información:</p>
+                    <br>
+                    <div class="form-group">
+                        <p>Nombre completo:</p>
+                        <div class="form-input">
+                            <div class="form-input-icon">
+                                <img src="assets/images/icon-form-user.svg" />
+                            </div>
+                            <input type="text" autocomplete="off" maxlength="100" placeholder="Armando Esteban Quito" id="nombre_input" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <p>Cédula de ciudadanía:</p>
+                        <div class="form-input">
+                            <div class="form-input-icon">
+                                <img src="assets/images/icon-form-document.svg" />
+                            </div>
+                            <input type="text" autocomplete="off" maxlength="100" placeholder="123456789" id="documento_input" />
+                        </div>
+                    </div>
+
+                    <br>
+                    <button class="form-button" type="button">Entrar</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="cargador" class="cargador-on">
+            <div class="cargador-content">
+                <img src="assets/images/logo.png" />
+                <div class="cargador-col">
+                    <img src="assets/images/preloader.png" />
+                    <p id="cargador-txt">Cargando</p>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script src="assets/scripts/main.js"></script>
+    <script>
+        window.onload = function(){
+            getE('cargador-txt').innerHTML = 'Haz clic para comenzar'
+            getE('cargador').onclick = function(){
+                getE('cargador').onclick = null
+                getE('cargador').className = 'cargador-off'
+            }
+        }
+    </script>
 </body>
 </html>

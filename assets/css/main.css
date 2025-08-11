@@ -50,7 +50,7 @@ body,html{
 }
 #cielo-dia{
     background: #e1f9fb;
-    background: linear-gradient(to bottom, #e1f9fb 0%, #98bada 50%, #98bada 100%);
+    background: linear-gradient(to bottom, #e1f9fb 0%, #d2ecf4 50%, #d2ecf4 100%);
     animation: animacion-cielo 300s infinite forwards linear;
 }
 #cielo-noche{
@@ -59,7 +59,7 @@ body,html{
     animation: animacion-noche 300s infinite forwards linear;
 }
 
-@keyframes animacion-cielo{
+/*@keyframes animacion-cielo{
     0%{
         opacity: 0.5;
     }
@@ -74,23 +74,52 @@ body,html{
     }
     100%{
         opacity: 0.5;
+    }
+}*/
+/*@keyframes animacion-noche{
+    0%{
+        opacity: 0.5;
+    }
+    25%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 1;
+    }
+    75%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0.5;
+    }
+}*/
+
+@keyframes animacion-cielo{
+    0%{
+        opacity: 1;
+    }
+    33.33%{
+        opacity: 0;
+    }
+    66.66%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
     }
 }
 @keyframes animacion-noche{
     0%{
-        opacity: 0.5;
-    }
-    25%{
-        opacity: 1;
-    }
-    50%{
-        opacity: 1;
-    }
-    75%{
         opacity: 0;
     }
+    33.33%{
+        opacity: 1;
+    }
+    66.66%{
+        opacity: 1;
+    }
     100%{
-        opacity: 0.5;
+        opacity: 0;
     }
 }
 
@@ -128,15 +157,15 @@ body,html{
     }
     24.9%{
         top: 0%;
-        top: calc(0% - 400px);
-        top: -moz-calc(0% - 400px);
+        top: calc(0% - 420px);
+        top: -moz-calc(0% - 420px);
         background-color: #fff9e1;
         opacity: 0;
     }
     25%{
         top: 0%;
-        top: calc(0% - 400px);
-        top: -moz-calc(0% - 400px);
+        top: calc(0% - 420px);
+        top: -moz-calc(0% - 420px);
         background-color: #fff9e1;
         box-shadow: 0px 0px 100px 10px rgba(255,249,225,1);
         opacity: 1;
@@ -162,15 +191,15 @@ body,html{
     }
     74.9%{
         top: 0%;
-        top: calc(0% - 400px);
-        top: -moz-calc(0% - 400px);
+        top: calc(0% - 420px);
+        top: -moz-calc(0% - 420px);
         background-color: #ffed9f;
         opacity: 0;
     }
     75%{
         top: 0%;
-        top: calc(0% - 400px);
-        top: -moz-calc(0% - 400px);
+        top: calc(0% - 420px);
+        top: -moz-calc(0% - 420px);
         background-color: #ffed9f;
         box-shadow: 0px 0px 100px 10px rgba(255,249,225,1);
         opacity: 1;
@@ -205,55 +234,79 @@ body,html{
     margin: 0px;
 }
 #nube1 img{margin-top: 5%;}
-#nube2 img{margin-top: 3%;}
+#nube2 img{margin-top: 6%;}
 
 #nube1 img{
-    animation: animacion-nube1 100s infinite linear;
+    animation: animacion-nube1 240s infinite linear;
 }
 @keyframes animacion-nube1{
     0%{
-        left: -100%;
+        left: 50%;
         opacity: 1;
     }
-    95%{
+    24.7%{
         left: 100%;
         opacity: 1;
     }
-    96%{
+    24.8%{
         left: 100%;
         opacity: 0;
     }
-    99%{
+    24.9%{
         left: -100%;
         opacity: 0;
+    }
+    25%{
+        left: -100%;
+        opacity: 1;
+    }
+    50%{
+        left: -50%;
+        opacity: 1;
+    }
+    75%{
+        left: 0%;
+        opacity: 1;
     }
     100%{
-        left: -100%;
+        left: 50%;
         opacity: 1;
     }
 }
 #nube2 img{
-    animation: animacion-nube2 120s infinite linear;
+    animation: animacion-nube2 180s infinite linear;
 }
 @keyframes animacion-nube2{
     0%{
-        left: 100%;
+        left: -50%;
         opacity: 1;
     }
-    95%{
+    24.7%{
         left: -100%;
         opacity: 1;
     }
-    96%{
+    24.8%{
         left: -100%;
         opacity: 0;
     }
-    99%{
+    24.9%{
         left: 100%;
         opacity: 0;
+    }
+    25%{
+        left: 100%;
+        opacity: 1;
+    }
+    50%{
+        left: 50%;
+        opacity: 1;
+    }
+    75%{
+        left: 0%;
+        opacity: 1;
     }
     100%{
-        left: 100%;
+        left: -50%;
         opacity: 1;
     }
 }
@@ -267,6 +320,7 @@ body,html{
     left: 0px;
 }
 
+/*hoja 1*/
 #plant-1{
     left: -2%;
     top: -15%;
@@ -277,24 +331,35 @@ body,html{
     top: -22%;
 }
 #plant-2 > div{transform: scale(0.8) rotate(40deg);}
-#plant-3{
-    left: 5%;
-    top: 0%;
+#plant-12{
+    left: 97%;
+    top: -19%;
 }
-#plant-3 > div{transform: scale(0.5) rotate(-20deg);}
+#plant-12 > div{transform: scale(0.7) rotate(75deg);}
+#plant-13{
+    left: 108%;
+    top: -20%;
+}
+#plant-13 > div{transform: scale(0.8) rotate(110deg);}
 
+/*ho9ja 2*/
 #plant-4{
     left: 0%;
     top: -10%;
 }
 #plant-4 > div{transform: scale(0.8) rotate(45deg);}
-
 #plant-5{
-    left: 2%;
+    left: -1%;
     top: -10%;
 }
-#plant-5 > div{transform: scale(0.8) rotate(40deg);}
+#plant-5 > div{transform: scale(0.85) rotate(30deg);}
+#plant-14{
+    left: 96%;
+    top: -5%;
+}
+#plant-14 > div{transform: scale(0.8) rotate(45deg);}
 
+/*hoja 4*/
 #plant-6{
     left: 0%;
     top: 70%;
@@ -305,9 +370,64 @@ body,html{
     top: 70%;
 }
 #plant-7 > div{transform: scale(0.45) rotate(60deg);}
-
-#plant-8{
-    left: 50%;
-    top: 80%;
+#plant-15{
+    left: 102%;
+    top: 112%;
 }
-#plant-8 > div{transform: scale(0.7) rotate(10deg);}
+#plant-15 > div{transform: scale(0.7) rotate(-30deg);}
+
+/*hoja 6*/
+#plant-8{
+    left: 75%;
+    top: 101%;
+}
+#plant-8 > div{transform: scale(0.8)}
+#plant-9{
+    left: 8%;
+    top: 101%;
+}
+#plant-9 > div{transform: scale(0.8)}
+
+/*hoja 7*/
+#plant-10{
+    left: 70%;
+    top: 110%;
+}
+#plant-10 > div{transform: scale(0.7) rotate(-10deg);}
+
+#plant-11{
+    left: 10%;
+    top: 120%;
+}
+#plant-11 > div{transform: scale(0.7) rotate(20deg);}
+
+/***************************************************/
+
+#col{
+    position: relative;
+    width: 400px;
+    height: 100%;
+    margin: 0px auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+#logo{
+    position: relative;
+    width: 100%;
+    margin: 0px;
+    margin-bottom: 30px;
+}
+#logo img{
+    display: block;
+    width: 300px;
+    height: auto;
+    margin: 0px auto;
+}
+
+#formulario{
+    position: relative;
+    width: 100%;
+    margin: 0px;
+}

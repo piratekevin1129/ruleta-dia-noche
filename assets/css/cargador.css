@@ -1,0 +1,131 @@
+#cargador{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+}
+
+.cargador-content{
+    position: relative;
+    width: 400px;
+    height: auto;
+}
+.cargador-content > img{
+    position: relative;
+    display: block;
+    width: 200px;
+    height: auto;
+    margin: 0px auto;
+}
+.cargador-col{
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+.cargador-col > img{
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+.cargador-col > p{
+    display: block;
+    width: auto;
+    margin: 0px;
+    padding: 0px;
+
+    font-family: 'Montserrat-SemiBold';
+    font-size: 18px;
+    color: #2a255b;
+    text-align: left;
+    font-weight: normal;
+    line-height: normal;
+}
+
+
+/***************************/
+.cargador-on{
+    visibility: visible;
+    opacity: 1;   
+}
+.cargador-on .cargador-content > img{
+    top: 0px;
+}
+.cargador-on .cargador-col{
+    top: 0px;
+}
+.cargador-on .cargador-content > img{
+    animation: animacion-cargador-logo 1s infinite forwards linear;
+}
+@keyframes animacion-cargador-logo{
+    0%{
+        transform: rotate(-1deg) translateY(0px);
+    }
+    25%{
+        transform: rotate(-1deg) translateY(-5px);
+    }
+    50%{
+        transform: rotate(1deg) translateY(-5px);
+    }
+    75%{
+        transform: rotate(1deg) translateY(0px);
+    }
+    100%{
+        transform: rotate(-1deg) translateY(0px);
+    }
+}
+.cargador-on .cargador-col > img{
+    animation: animacion-cargador-img 1s infinite forwards linear;
+}
+.cargador-on .cargador-col > p{
+    animation: animacion-cargador-txt 1s infinite forwards linear;
+}
+@keyframes animacion-cargador-img{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+@keyframes animacion-cargador-txt{
+    0%,100%{
+        opacity: 0.5;
+    }
+    50%{
+        opacity: 1;
+    }
+}
+
+.cargador-off{
+    visibility: hidden;
+    opacity: 0;
+
+    transition: visibility 0.5s 0.5s, opacity 0.5s 0.5s;
+}
+.cargador-off .cargador-content > img{
+    top: -100px;
+    opacity: 0;
+    transition: top 0.5s, opacity 0.5s;
+}
+.cargador-off .cargador-col{
+    top: 100px;
+    opacity: 0;
+    transition: top 0.5s, opacity 0.5s;
+}
+.cargador-off .cargador-col > p,
+.cargador-off .cargador-col > img,
+.cargador-off .cargador-content > img{
+    animation-play-state: paused;
+}
