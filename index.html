@@ -37,7 +37,7 @@
             <div id="nube2">
                 <img src="assets/images/nubes2.svg" />
             </div>
-            <div id="fondo-img">
+            <div id="fondo-img" class="fondo-img-1">
                 <img src="assets/images/fondo.png" />
             </div>
             <div class="plantas">
@@ -161,8 +161,7 @@
             </div>
         </div>
 
-        <!--
-        <div id="col">
+        <div id="col1" class="col1-on">
             <div id="logo">
                 <img src="assets/images/logo.png" />
             </div>
@@ -190,58 +189,62 @@
                     </div>
 
                     <br>
-                    <button class="form-button" type="button">Entrar</button>
+                    <button class="form-button" type="button" id="entrar-btn" onclick="clickEntrar()">Entrar</button>
                 </div>
             </div>
         </div>
-        -->
 
-        <div id="ruleta">
-            <div id="ruleta-container">
-                <div id="ruleta-borde"></div>
-                <div id="ruleta-fondo">
-                    <img src="assets/images/ruleta/fondo.png" />
-                </div>
-                <div id="ruleta-partes">
-                    <div class="ruleta-square">
-                        <div class="ruleta-square-cont">
-                            <img src="assets/images/ruleta/hojas.png" />
-                            <img src="assets/images/ruleta/texto1.png" />
+        <div id="col2" class="col2-off">
+            <div id="ruleta">
+                <div id="ruleta-container" class="ruleta-container-off">
+                    <div id="ruleta-borde"></div>
+                    <div id="ruleta-fondo">
+                        <img src="assets/images/ruleta/fondo.png" />
+                    </div>
+                    <div id="ruleta-partes">
+                        <div class="ruleta-square">
+                            <div class="ruleta-square-cont">
+                                <img src="assets/images/ruleta/hojas.png" />
+                                <img src="assets/images/ruleta/texto1.png" />
+                            </div>
+                        </div>
+                        <div class="ruleta-square">
+                            <div class="ruleta-square-cont">
+                                <img src="assets/images/ruleta/hojas.png" />
+                                <img src="assets/images/ruleta/texto2.png" />
+                            </div>
+                        </div>
+                        <div class="ruleta-square">
+                            <div class="ruleta-square-cont">
+                                <img src="assets/images/ruleta/hojas.png" />
+                                <img src="assets/images/ruleta/texto3.png" />
+                            </div>
+                        </div>
+                        <div class="ruleta-square">
+                            <div class="ruleta-square-cont">
+                                <img src="assets/images/ruleta/hojas.png" />
+                                <img src="assets/images/ruleta/texto4.png" />
+                            </div>
                         </div>
                     </div>
-                    <div class="ruleta-square">
-                        <div class="ruleta-square-cont">
-                            <img src="assets/images/ruleta/hojas.png" />
-                            <img src="assets/images/ruleta/texto2.png" />
+                    <div id="ruleta-flecha">
+                        <div id="ruleta-flecha-borde"></div>
+                        <div id="ruleta-flecha-bola">
+                            <img id="ruleta-flecha-bola-logo" src="assets/images/logo.png" />
+                            <button id="girar-btn">
+                                <div class="girar-btn-borde"></div>
+                                <div class="girar-btn-fondo"></div>
+                                <span>Girar</span>
+                            </button>
                         </div>
+                        <div id="ruleta-flecha-triangulo"></div>
                     </div>
-                    <div class="ruleta-square">
-                        <div class="ruleta-square-cont">
-                            <img src="assets/images/ruleta/hojas.png" />
-                            <img src="assets/images/ruleta/texto3.png" />
-                        </div>
-                    </div>
-                    <div class="ruleta-square">
-                        <div class="ruleta-square-cont">
-                            <img src="assets/images/ruleta/hojas.png" />
-                            <img src="assets/images/ruleta/texto4.png" />
-                        </div>
-                    </div>
-                </div>
-                <div id="ruleta-flecha">
-                    <div id="ruleta-flecha-borde"></div>
-                    <div id="ruleta-flecha-bola">
-                        <img id="ruleta-flecha-bola-logo" src="assets/images/logo.png" />
-                        <button id="girar-btn">
-                            <div class="girar-btn-borde"></div>
-                            <div class="girar-btn-fondo"></div>
-                            <span>Girar</span>
-                        </button>
-                    </div>
-                    <div id="ruleta-flecha-triangulo"></div>
                 </div>
             </div>
+    
+            <div id="cartas"></div>
         </div>
+
 
         <div id="cargador" class="cargador-on">
             <div class="cargador-content">
@@ -262,6 +265,20 @@
                 getE('cargador').onclick = null
                 getE('cargador').className = 'cargador-off'
             }
+        }
+
+        var animacion_col = null
+        function clickEntrar(){
+            getE('entrar-btn').removeAttribute('onclick')
+            getE('col1').className = 'col1-off'
+            getE('fondo-img').className = 'fondo-img-2'
+            animacion_col = setTimeout(function(){
+                clearTimeout(animacion_col)
+                animacion_col = null
+
+                getE('col2').className = 'col2-on'
+                getE('ruleta-container').className = 'ruleta-container-on'
+            },1000)
         }
     </script>
 </body>

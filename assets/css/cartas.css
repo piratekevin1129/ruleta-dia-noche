@@ -1,0 +1,7 @@
+#cartas{
+    position: relative;
+    width: auto;
+    width: calc(100% - 800px);
+    width: -moz-calc(100% - 800px);
+    height: 100%;
+}

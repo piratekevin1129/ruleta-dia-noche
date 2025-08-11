@@ -1,0 +1,95 @@
+#ruleta{
+    width: 1000px;
+}
+
+#ruleta-container{
+    width: 825px;
+    height: 825px;
+    top: 50%;
+    top: calc(50% - (825px / 2));
+    top: -moz-calc(50% - (825px / 2));
+    left: 50%;
+    left: calc(50% - (825px / 2));
+    left: -moz-calc(50% - (825px / 2));
+}
+
+#ruleta-borde{
+    width: 100%;
+    width: calc(100% + 10px);
+    width: -moz-calc(100% + 10px);
+    height: 100%;
+    height: calc(100% + 10px);
+    height: -moz-calc(100% + 10px);
+    background-color: #1b1464;
+    left: -5px;
+    top: -5px;
+}
+
+.ruleta-square{
+    width: 412.5px;
+    height: 412.5px;
+}
+
+.ruleta-square-cont{
+    padding-top: 30%;
+}
+
+.ruleta-square-cont img:last-child{
+    width: 70%;
+}
+
+#ruleta-flecha{
+    width: 250px;
+    height: 250px;
+}
+
+#ruleta-flecha-bola{
+    width: 100%;
+    width: calc(100% - 10px);
+    width: -moz-calc(100% - 10px);
+    height: 100%;
+    height: calc(100% - 10px);
+    height: -moz-calc(100% - 10px);
+    top: 5px;
+    left: 5px;
+}
+
+#ruleta-flecha-triangulo{
+    width: 0px;
+    height: 0px;
+    border-bottom: #fff solid 20px;
+    border-right: rgba(255,255,255,0) solid 10px;
+    border-left: rgba(255,255,255,0) solid 10px;
+    left: 50%;
+    left: calc(50% - 10px);
+    left: -moz-calc(50% - 10px);
+    top: -10px;
+}
+
+#ruleta-flecha-bola-logo{
+    width: 50%;
+    margin-bottom: 30px;
+}
+#girar-btn{
+    height: 70px;
+    padding: 0px 50px;
+    border-radius: 35px;
+}
+.girar-btn-borde{
+    border-radius: 35px;
+}
+.girar-btn-fondo{
+    width: 100%;
+    width: calc(100% - 8px);
+    width: -moz-calc(100% - 8px);
+    height: 100%;
+    height: calc(100% - 8px);
+    height: -moz-calc(100% - 8px);
+    border-radius: 35px;
+    top: 4px;
+    left: 4px;
+}
+
+#girar-btn span{
+    font-size: 22px;
+}
