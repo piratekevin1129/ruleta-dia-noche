@@ -375,6 +375,36 @@ body,html{
 
 /***************************************************/
 
+#video-container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    top: 0px;
+    left: 0px;
+}
+
+#video-inicial{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+}
+
+.video-on{
+    visibility: visible;
+    opacity: 1;
+}
+.video-off{
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 1s, opacity 1s;
+}
+.video-offf{
+    display: none;
+}
+/***************************************************/
+
 #col1{
     position: absolute;
     width: 400px;
@@ -393,12 +423,22 @@ body,html{
 .col1-on{
     opacity: 1;
     visibility: visible;
+    transition: visibility 0s, opacity 1s;
 }
 .col1-off{
     opacity: 0;
     visibility: hidden;
     transition: visibility 1s, opacity 1s;
 }
+.sol-paused,
+.cielo-paused{
+    animation-play-state: paused !important;
+}
+.sol-play,
+.cielo-play{
+    animation-play-state: running !important;
+}
+
 #logo{
     position: relative;
     width: 100%;

@@ -7,6 +7,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
+    padding: 0px 50px;
 }
 
 #cartas-container{
@@ -22,6 +24,19 @@
     width: 354px;
     margin: 0px auto;
     height: 500px;
+    margin-bottom: 30px;
+    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.5);
+    border-radius: 20px;
+}
+.carta-off{
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s, opacity 0.5s;
+}
+.carta-on{
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s, opacity 0.5s;
 }
 #carta-imagenes{
     position: relative;
@@ -41,27 +56,72 @@
 .carta1 #carta-imagenes img:nth-child(1){
     display: block !important;
 }
-.carta1 #carta-imagenes img:nth-child(2){
+.carta2 #carta-imagenes img:nth-child(2){
     display: block !important;
 }
-.carta1 #carta-imagenes img:nth-child(3){
+.carta3 #carta-imagenes img:nth-child(3){
     display: block !important;
 }
-.carta1 #carta-imagenes img:nth-child(4){
+.carta4 #carta-imagenes img:nth-child(4){
     display: block !important;
+}
+
+#frase-logo{
+    position: absolute;
+    width: 30%;
+    height: auto;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background-color: rgba(255,255,255,0.3);
+    padding: 7px;
+    box-sizing: border-box;
+    top: 5%;
+    left: 35%;
+}
+#frase-logo div{
+    position: relative;
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 0px 10px;
+    border-radius: 4px;
+}
+#frase-logo div img{
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0px;
+}
+    
+#frase-footer{
+    position: absolute;
+    width: 50%;
+    height: auto;
+    background-color: #fff;
+    border-radius: 15px 15px 0px 0px;
+    bottom: 0px;
+    left: 25%;
+    box-sizing: border-box;
+    padding: 20px;
+}
+#frase-footer img{
+    display: block;
+    width: 100%;
+    margin: 0px;
 }
 
 #frase-container{
     position: absolute;
-    width: 82%;
-    height: 64%;
-    top: 24%;
-    left: 9%;
+    width: 86%;
+    height: auto;
+    top: 18%;
+    left: 7%;
 
     border-radius: 12px;
-    background-color: rgba(0,127,197,0.6);
+    background-color: rgba(255,255,255,0.3);
     box-sizing: border-box;
-    padding: 15px;
+    padding: 8px;
 }
 #frase{
     position: relative;
@@ -70,13 +130,15 @@
     border-radius: 4px;
     background-color: #ffffff;
     box-sizing: border-box;
-    padding: 20px;
+    padding: 12px;
 }
 #frase-txt{
     position: relative;
     display: block;
     width: 100%;
     height: auto;
+    margin: 0px;
+    padding: 0px;
 
     font-family: 'Montserrat-Regular';
     font-size: 14px;
@@ -89,10 +151,11 @@
 #frase-txt > div{
     display: inline-block;
     width: auto;
-    height: auto;
+    height: 20px;
+    box-sizing: border-box;
     padding: 0px;
     margin: 0px 1px;
-    border-bottom: #2a255b solid dashed;
+    border-bottom: #2a255b dashed 1px;
     box-sizing: border-box;
 
     font-family: 'Montserrat-SemiBold';
@@ -101,5 +164,98 @@
 
 
 #palabras{
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.palabra-normal,
+#palabra-move{
+    outline: none;
+    outline-width: 0;
+    width: 120px;
+    height: 42px;
+    box-sizing: border-box;
+    border: #fff solid 3px;
+    background-color: rgba(0,0,0,0);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
+    box-shadow: 0px 2px 2px -1px rgba(0,0,0,0.5);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.palabra-normal{
+    position: relative;
+    cursor: grab;
+    margin: 10px 5px;
+}
+.palabra-normal-1{
+    background-image: url(../images/cartas/patron1.png);
+}
+.palabra-normal-2{
+    background-image: url(../images/cartas/patron2.png);
+}
+.palabra-normal-3{
+    background-image: url(../images/cartas/patron3.png);
+}
+.palabra-normal-4{
+    background-image: url(../images/cartas/patron4.png);
+}
+
+.palabra-normal span,
+#palabra-move span{
+    display: block;
+    width: auto;
+    height: auto;
+    font-family: 'Montserrat-Bold';
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    font-weight: normal;
+    line-height: normal;
+    text-shadow: 0px 0px 3px rgba(0,0,0,0.5);
+}
+.palabra-normal-locked{
+    filter: grayscale(100%);
+    opacity: 0.7;
+    cursor: not-allowed !important;
+}
+
+.palabra-normal-off{
+    top: 100px;
+    opacity: 0;
+}
+.palabra-normal-on{
+    top: 0px;
+    opacity: 1;
+
+    transition: opacity 0.25s ease-out, top 0.25s ease-out;
+}
+
+#palabra-move{
+    position: absolute;
+    cursor: grabbing;
+    transform: translate(-50%,-50%);
+}
+
+.palabra-move-off{
+    visibility: hidden;
+    transform: scale(0.5) translate(-50%,-50%);
+    opacity: 0;
+
+    transition: transform 0.15s, opacity 0.15s, visibility 0.15s;
+}
+.palabra-move-on{
+    visibility: visible;
+    transform: scale(1) translate(-50%,-50%);
+    opacity: 1;
+
+    transition: transform 0.15s, opacity 0.15s, visibility 0s;
 }

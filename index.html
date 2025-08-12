@@ -28,10 +28,10 @@
     <div id="app">
         <div id="fondo">
             <div id="cielo">
-                <div id="cielo-noche"></div>
-                <div id="cielo-dia"></div>
+                <div id="cielo-noche" class="cielo-paused"></div>
+                <div id="cielo-dia" class="cielo-paused"></div>
             </div>
-            <div id="sol"></div>
+            <div id="sol" class="sol-paused"></div>
             <div id="nube1">
                 <img src="assets/images/nubes1.svg" />
             </div>
@@ -178,7 +178,7 @@
                             <div class="form-input-icon">
                                 <img src="assets/images/icon-form-user.svg" />
                             </div>
-                            <input type="text" autocomplete="off" maxlength="100" placeholder="Armando Esteban Quito" id="nombre_input" />
+                            <input type="text" autocomplete="off" maxlength="100" placeholder="Escribe tu nombre" id="nombre_input" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -187,7 +187,7 @@
                             <div class="form-input-icon">
                                 <img src="assets/images/icon-form-document.svg" />
                             </div>
-                            <input type="text" autocomplete="off" maxlength="100" placeholder="123456789" id="documento_input" />
+                            <input type="text" autocomplete="off" maxlength="100" placeholder="Escribe tu cédula" id="documento_input" />
                         </div>
                     </div>
 
@@ -257,19 +257,32 @@
                             <img src="assets/images/cartas/carta3.png" />
                             <img src="assets/images/cartas/carta4.png" />
                         </div>
+                        <div id="frase-logo">
+                            <div>
+                                <img src="assets/images/logo.png" />
+                            </div>
+                        </div>
                         <div id="frase-container">
                             <div id="frase">
                                 <p id="frase-txt"></p>
                             </div>
                         </div>
+                        <div id="frase-footer">
+                            <img src="assets/images/footer.png" />
+                        </div>
                     </div>
-                    <div id="palabras">
-
-                    </div>
+                    <div id="palabras"></div>
                 </div>
             </div>
         </div>
 
+        <div id="palabra-move" class="palabra-move-off"></div>
+
+        <div id="video-container" class="video-off">
+            <video id="video-inicial" controls>
+                <source src="assets/media/tutorial.mp4" type="video/mp4" />
+            </video>
+        </div>
 
         <div id="cargador" class="cargador-on">
             <div class="cargador-content">
@@ -285,12 +298,39 @@
     <script src="assets/scripts/data.js"></script>
     <script src="assets/scripts/main.js"></script>
     <script>
+
+        var animacion_video = null;
+
         window.onload = function(){
-            getE('cargador-txt').innerHTML = 'Haz clic para comenzar'
-            //getE('cargador').onclick = function(){
-                //getE('cargador').onclick = null
+            /*getE('cargador-txt').innerHTML = 'Haz clic para comenzar'
+            getE('cargador').onclick = function(){
+                getE('cargador').onclick = null
                 getE('cargador').className = 'cargador-off'
-            //}
+
+                getE('video-inicial').load()
+                getE('video-inicial').onloadeddata = function(){
+                    getE('video-inicial').onloadeddata = null
+                    getE('video-inicial').play()
+
+                    getE('video-inicial').onended = function(){
+                        getE('video-inicial').onended = null
+                        getE('video-container').className = 'video-off'
+                        
+                        getE('sol').className = 'sol-play'
+                        getE('cielo-dia').className = 'cielo-play'
+                        getE('cielo-noche').className = 'cielo-play'
+
+                        animacion_video = setTimeout(function(){
+                            clearTimeout(animacion_video)
+                            animacion_video = null;
+                            getE('video-container').className = 'video-offf'
+                            getE('col1').className = 'col1-on'
+                        },1000)
+                    }
+                }
+            }*/
+
+            getE('cargador').className = 'cargador-off'
         }
 
         var animacion_col = null

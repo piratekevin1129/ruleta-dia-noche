@@ -1,3 +1,5 @@
+var cartas_data = null;
+
 /*rosado*/
 var cartas_data_1 = [
     {
