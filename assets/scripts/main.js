@@ -77,15 +77,15 @@ var girando = false;
 var final_rotate = 0;
 
 function girarRuleta(){
-    /*final_seccion = 2
-    final_rotate = 0
-    setCarta()*/
+    //final_seccion = 2
+    //final_rotate = 0
+    //setCarta()
 
     if(!girando){
-        //girando = true;
-        //getE('girar-btn').className = 'girar-btn-locked'
+        girando = true;
+        getE('girar-btn').className = 'girar-btn-locked'
+
         a = 5;
-        eje = false;
         final_seccion = getRand(1,4)
         check_carta = checkCarta(final_seccion)
         while(check_carta){
@@ -94,12 +94,16 @@ function girarRuleta(){
         }
         if(final_seccion==1){
             final_rotate = 90
+            eje = true;
         }else if(final_seccion==2){
             final_rotate = 0
+            eje = false;
         }else if(final_seccion==3){
             final_rotate = 180
+            eje = true;
         }else if(final_seccion==4){
             final_rotate = 270
+            eje = true;
         }
     
         //final_rotate = secciones[final_seccion-1]+getRand(1,90)
@@ -123,8 +127,10 @@ function girarRuleta(){
                     }
                 }else{
                     r+=a
-                    if(a<50){
-                        a++
+                    if(a>50){
+                        a = 50
+                    }else{
+                        a+=2
                     }
                     if(r>360){
                         r = (r-360)
@@ -132,21 +138,20 @@ function girarRuleta(){
                     }
         
                     if(vueltas==3){
+                        //empezar a verificar
                         parando_ruleta = 1;
-                        //empezar a frenar
                     }
                 }
             }else if(parando_ruleta==1){
-                console.log("empieza a parar ",(r-50), final_rotate)
+                console.log(r,final_rotate,eje)
                 if(
-                    (r-50)>=final_rotate&&
+                    r>=final_rotate&&
                     eje==true
                 ){
-                    //comienza a detener
+                    console.log("pasa a 2")
+                    //comenzar a frenar toda una vuelta
                     parando_ruleta = 2
                     getE('ruleta-blur').className = 'ruleta-blur-off'
-
-                    
                 }else{
                     r+=a
                     if(r>360){
@@ -155,41 +160,51 @@ function girarRuleta(){
                     }
                 }
             }else if(parando_ruleta==2){
-                r+=a
-                a-=0.30
-    
-                if(r>360){
-                    r = (r-360)
-                }
-                
-                if(a<1){
+                if(a<=1){
+                    //empezar a devolverse de a 1 hasta llegar al ángulo que es
+                    //normalmente quedan faltando muy poquitos angulos
+                    console.log("lo que falta: ",r,final_rotate)
+                    
                     parando_ruleta = 3;
+                    a = 1;
                     if(final_seccion==2){
                         eje = false;
                     }
-                    a = 1;
-
-                    //clearInterval(animacion_ruleta)
-                    //animacion_ruleta = false
+                }else{
+                    r+=a
+                    a-=4
+        
+                    if(r>360){
+                        r = (r-360)
+                    }
+                    console.log("r: "+r)
                 }
+
             }else if(parando_ruleta==3){
                 r+=a
-                a-=0.012
+
                 if(r>360){
-                    r = Math.round((r-360))
+                    r = (r-360)
                     eje = true;
                 }
     
                 //console.log(r,final_rotate)
                 if(r>=final_rotate&&eje==true){
-                    //r = final_rotate
+                    r = final_rotate
                     
                     console.log("listo")
                     pararRuleta()
                     
                 }else{
-                    if(a<0){
-                        console.log("paro forzado")
+                    //mirar si se pasó por un pelito
+                    var r1 = r-final_rotate;
+                    if(r1<0){
+                        r1 = 360-(r1*-1)
+                    }
+                    if(r1<=10){
+                        r = final_rotate
+
+                        console.log("se pasó por muy poco, acomodemos")
                         pararRuleta()
                     }
                 }
@@ -202,6 +217,9 @@ function girarRuleta(){
 function pararRuleta(){
     clearInterval(animacion_ruleta)
     animacion_ruleta = false
+
+    //girando = false;
+    //getE('girar-btn').className = '';
 
     setCarta()
 }
