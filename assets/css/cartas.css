@@ -293,19 +293,21 @@
 }
 .palabra-normal-locked{
     filter: grayscale(100%);
-    opacity: 0.7;
+    opacity: 0.3;
     cursor: not-allowed !important;
 }
 
 .palabra-normal-off{
     top: 100px;
     opacity: 0;
+
+    transition: opacity 0.15s ease-in, top 0.15s ease-in;
 }
 .palabra-normal-on{
     top: 0px;
     opacity: 1;
 
-    transition: opacity 0.25s ease-out, top 0.25s ease-out;
+    transition: opacity 0.15s ease-out, top 0.15s ease-out;
 }
 
 #palabra-move{

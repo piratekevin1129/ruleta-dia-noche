@@ -2,6 +2,8 @@ var i = 0;
 var j = 0;
 var k = 0;
 
+var frases_completadas = 0;
+
 function getRand(minimum,maximum){
     var randomnumber = Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
     return randomnumber;
@@ -253,6 +255,28 @@ function setCarta(){
     setPalabras()
 }
 
+function unsetCarta(){
+    getE('carta').className = 'carta-off carta'+final_seccion
+        
+    animacion_carta = setTimeout(function(){
+        clearTimeout(animacion_carta)
+        animacion_carta = null;
+        
+        getE('palabras').innerHTML = ""
+        orden_palabras = []
+
+        getE('cortina').className = 'cortina-off'
+
+        //mirar si ya terminó del todo
+        if(frases_completadas==(cartas_data_1.length + cartas_data_2.length + cartas_data_3.length + cartas_data_4.length)){
+            getE('ruleta-container').className = 'ruleta-container-off'
+        }else{
+            girando = false;
+            getE('girar-btn').className = '';
+        }
+    },500)
+}
+
 var orden_palabras = [];
 var animacion_palabras = null;
 var animacion_carta = null;
@@ -275,10 +299,10 @@ function setPalabras(){
     for(i = 0;i<orden_palabras.length;i++){
         var ii = orden_palabras[i]
         getE('frase-txt').getElementsByTagName('div')[ii].removeAttribute('style')
-        getE('frase-txt').getElementsByTagName('div')[ii].innerHTML = cartas_data[f].palabras[ii]
+        getE('frase-txt').getElementsByTagName('div')[ii].innerHTML = cartas_data[f].palabras[ii].palabra
         var ancho = getE('frase-txt').getElementsByTagName('div')[ii].offsetWidth
         getE('frase-txt').getElementsByTagName('div')[ii].style.width = ancho+'px'
-        getE('frase-txt').getElementsByTagName('div')[ii].innerHTML = ''
+        getE('frase-txt').getElementsByTagName('div')[ii].innerHTML = '...'
 
         var palabra_btn = document.createElement('button')
         palabra_btn.id = 'palabra-btn-'+ii
@@ -286,18 +310,18 @@ function setPalabras(){
         palabra_btn.setAttribute('type','button')
         palabra_btn.setAttribute('data-p',ii)
         palabra_btn.className = 'palabra-normal-off palabra-normal palabra-normal-'+final_seccion
-        palabra_btn.innerHTML = '<span>'+cartas_data[f].palabras[ii]+'</span>'
+        palabra_btn.innerHTML = '<span>'+cartas_data[f].palabras[ii].palabra+'</span>'
 
         getE('palabras').appendChild(palabra_btn)
     }
 
     getE('carta').className = 'carta-on carta'+final_seccion
 
-    
     animacion_carta = setTimeout(function(){
         clearTimeout(animacion_carta)
         animacion_carta = null;
-
+        
+        animacion_palabra_i = 0;
         animacion_palabras = setInterval(function(){
             if(animacion_palabra_i==orden_palabras.length){
                 clearInterval(animacion_palabras)
@@ -308,27 +332,31 @@ function setPalabras(){
             
             animacion_palabra_i++
         },200)
-    },1000)
+    },1250)
 }
 
 var posx = 0;
 var posy = 0;
 var global_p = -1;
+var filling_word = false;
+
 function downPalabra(btn,event){
-    posx = event.pageX
-    posy = event.pageY
-
-    global_p = Number(btn.getAttribute('data-p'))
-    //var rect_btn = [btn.getBoundingClientRect().left,btn.getBoundingClientRect().top]
-    btn.style.visibility = 'hidden'
-    getE('palabra-move').innerHTML = btn.innerHTML
-    getE('palabra-move').className = 'palabra-move-on palabra-normal-'+final_seccion
-    getE('palabra-move').style.left = posx+'px'
-    getE('palabra-move').style.top = posy+'px'
-    //getE('palabra-move').setAttribute('data-p',global_p)
-
-    window.addEventListener('mousemove', movePalabra, true)
-    window.addEventListener('mouseup', upPalabra, true)
+    if(!filling_word){
+        posx = event.pageX
+        posy = event.pageY
+    
+        global_p = Number(btn.getAttribute('data-p'))
+        //var rect_btn = [btn.getBoundingClientRect().left,btn.getBoundingClientRect().top]
+        btn.style.visibility = 'hidden'
+        getE('palabra-move').innerHTML = btn.innerHTML
+        getE('palabra-move').className = 'palabra-move-on palabra-normal-'+final_seccion
+        getE('palabra-move').style.left = posx+'px'
+        getE('palabra-move').style.top = posy+'px'
+        //getE('palabra-move').setAttribute('data-p',global_p)
+    
+        window.addEventListener('mousemove', movePalabra, true)
+        window.addEventListener('mouseup', upPalabra, true)
+    }
 }
 
 function movePalabra(event){
@@ -344,7 +372,6 @@ function upPalabra(event){
 
     var rect_destino = getE('frase-txt').getElementsByTagName('div')[global_p].getBoundingClientRect()
 
-    console.log(posx,rect_destino.left,rect_destino.top)
     if(
         posx>=rect_destino.left&&
         posx<=(rect_destino.left+rect_destino.width)&&
@@ -357,17 +384,58 @@ function upPalabra(event){
         var nueva_clase = old_clase.replace('palabra-normal-on','palabra-normal-locked')
         getE('palabra-btn-'+global_p).className = nueva_clase
         
-        getE('frase-txt').getElementsByTagName('div')[global_p].innerHTML = cartas_data[final_seccion-1].palabras[global_p]
+        //.innerHTML = 
+        fillWord(cartas_data[final_seccion-1].palabras[global_p].palabra,getE('frase-txt').getElementsByTagName('div')[global_p])
+        cartas_data[final_seccion-1].palabras[global_p].completed = true
+
     }else{
         //no correcta
-
     }
-
+    
     getE('palabra-move').className = 'palabra-move-off palabra-normal-'+final_seccion
     getE('palabra-btn-'+global_p).style.visibility = 'visible'
-
-    for(i = 0;i<getE('palabras').getElementsByTagName('button').length;i++){
-        var palabra_x = getE('palabras').getElementsByTagName('button')[i]
-    }
+    posx = 0;
+    posy = 0;
+    global_p = -1;
 }
+
+var animacion_word = null;
+var animacion_word_i = 0;
+
+function fillWord(word,obj){
+    var word_complete = ""
+    var word_splited = word.split("")
+
+    animacion_word_i = 0
+    filling_word = true
+    
+    animacion_word = setInterval(function(){
+        if(animacion_word_i==word_splited.length){
+            clearInterval(animacion_word)
+            animacion_word = null
+
+            filling_word = false;
+            //mirar si ya la completó
+
+            var palabras_completadas = 0
+            for(i = 0;i<cartas_data[final_seccion-1].palabras.length;i++){
+                if(cartas_data[final_seccion-1].palabras[i].completed){
+                    palabras_completadas++
+                }
+            }
+
+            if(palabras_completadas==cartas_data[final_seccion-1].palabras.length){
+                cartas_data[final_seccion-1].completed = true;
+                frases_completadas++
+
+                unsetCarta()
+            }
+        }else{
+            word_complete+=word_splited[animacion_word_i]
+            obj.innerHTML = word_complete
+        }
+        animacion_word_i++
+    },150)
+}
+
 //borrar style atribute de todas las palabras
