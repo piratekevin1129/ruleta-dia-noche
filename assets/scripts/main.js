@@ -41,7 +41,7 @@ function checkCarta(c){
         if(completed==cartas_data_1.length){
             seccion_completed = true;
         }
-    }else if(c==0){
+    }else if(c==2){
         for(i = 0;i<cartas_data_2.length;i++){
             if(cartas_data_2[i].completed){
                 completed++
@@ -50,7 +50,7 @@ function checkCarta(c){
         if(completed==cartas_data_2.length){
             seccion_completed = true;
         }
-    }else if(c==0){
+    }else if(c==3){
         for(i = 0;i<cartas_data_3.length;i++){
             if(cartas_data_3[i].completed){
                 completed++
@@ -59,7 +59,7 @@ function checkCarta(c){
         if(completed==cartas_data_3.length){
             seccion_completed = true;
         }
-    }else if(c==0){
+    }else if(c==4){
         for(i = 0;i<cartas_data_4.length;i++){
             if(cartas_data_4[i].completed){
                 completed++
