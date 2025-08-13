@@ -145,6 +145,8 @@ function girarRuleta(){
                     //comienza a detener
                     parando_ruleta = 2
                     getE('ruleta-blur').className = 'ruleta-blur-off'
+
+                    
                 }else{
                     r+=a
                     if(r>360){
