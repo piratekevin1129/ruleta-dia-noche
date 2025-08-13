@@ -197,9 +197,9 @@
             </div>
         </div>
 
-        <div id="col2" class="col2-off">
+        <div id="col2" class="col2-on">
             <div id="ruleta">
-                <div id="ruleta-container" class="ruleta-container-off">
+                <div id="ruleta-container" class="ruleta-container-on">
                     <div id="ruleta-borde"></div>
                     <div id="ruleta-fondo">
                         <img src="assets/images/ruleta/fondo.png" />
@@ -280,7 +280,7 @@
 
         <div id="palabra-move" class="palabra-move-off"></div>
 
-        <div id="video-container" class="video-on">
+        <div id="video-container" class="video-off">
             <video id="video-inicial" controls>
                 <source src="assets/media/tutorial.mp4" type="video/mp4" />
             </video>
@@ -304,7 +304,7 @@
         var animacion_video = null;
 
         window.onload = function(){
-            getE('cargador-txt').innerHTML = 'Haz clic para comenzar'
+            /*getE('cargador-txt').innerHTML = 'Haz clic para comenzar'
             getE('cargador').onclick = function(){
                 getE('cargador').onclick = null
                 getE('cargador').className = 'cargador-off'
@@ -330,9 +330,9 @@
                         },1000)
                     }
                 }
-            }
+            }*/
 
-            //getE('cargador').className = 'cargador-off'
+            getE('cargador').className = 'cargador-off'
         }
 
         var animacion_col = null
