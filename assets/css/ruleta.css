@@ -43,28 +43,20 @@
     left: -5px;
     top: -5px;
 }
-#ruleta-fondo,
-#ruleta-blur{
-    width: 100%;
-    height: 100%;
-    top: 0px;
-    left: 0px;
-}
+
 #ruleta-fondo{
     position: relative;
-}
-#ruleta-blur{
-    position: absolute;
-}
-#ruleta-blur::after{
-    content: "";
-    position: absolute;
     width: 100%;
     height: 100%;
     top: 0px;
     left: 0px;
-    background-color: rgba(255,255,255,0.5);
-    border-radius: 50%;
+}
+#ruleta-blur{
+    position: absolute;
+    width: 107%;
+    height: 107%;
+    top: -3.5%;
+    left: -3.5%;
 }
 
 #ruleta-fondo > img,
@@ -77,13 +69,11 @@
 
 .ruleta-blur-on{
     opacity: 1;
-    filter: blur(5px);
-    transition: opacity 2s ease-in, filter 2s ease-in;
+    transition: opacity 2s ease-in;
 }
 .ruleta-blur-off{
     opacity: 0;
-    filter: blur(0px);
-    transition: opacity 5s ease-out, filter 5s ease-out;
+    transition: opacity 5s ease-out;
 }
 
 #ruleta-partes{

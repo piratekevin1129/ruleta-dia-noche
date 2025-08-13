@@ -19,25 +19,94 @@
     padding: 0px;
 }
 
-#carta{
+#carta-wrap{
     position: relative;
     width: 354px;
     margin: 0px auto;
     height: 500px;
     margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+
+    perspective: 450px;
+    perspective-origin: bottom center;
+}
+
+#carta{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
     box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.5);
     border-radius: 20px;
+
+    transform-origin: bottom center;
 }
 .carta-off{
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0.5s, opacity 0.5s;
+    animation: animacion-carta-off 0.5s 1 forwards;
+}
+@keyframes animacion-carta-off {
+    0%{
+        transform: rotateX(0deg);
+        opacity: 1;
+        animation-timing-function: ease-in;
+    }
+    50%{
+        transform: rotateX(90deg);
+        opacity: 1;
+        animation-timing-function: ease-out;
+    }
+    80%{
+        transform: rotateX(80deg);
+        opacity: 1;
+        animation-timing-function: ease-in;
+    }
+    99%{
+        transform: rotateX(90deg);
+        opacity: 1;
+    }
+    100%{
+        transform: rotateX(90deg);
+        opacity: 0;
+        visibility: hidden;
+    }
 }
 .carta-on{
     visibility: visible;
-    opacity: 1;
-    transition: visibility 0s, opacity 0.5s;
+    animation: animacion-carta-on 1.25s 1 forwards;
 }
+@keyframes animacion-carta-on {
+    0%{
+        transform: rotateX(90deg);
+        opacity: 0;
+        animation-timing-function: ease-in;
+    }
+    30%{
+        transform: rotateX(0deg);
+        opacity: 1;
+        animation-timing-function: ease-out;
+    }
+    55%{
+        transform: rotateX(10deg);
+        opacity: 1;
+        animation-timing-function: ease-in;
+    }
+    75%{
+        transform: rotateX(0deg);
+        opacity: 1;
+        animation-timing-function: ease-out;
+    }
+    90%{
+        transform: rotateX(4deg);
+        opacity: 1;
+        animation-timing-function: ease-in;
+    }
+    100%{
+        transform: rotateX(0deg);
+        opacity: 1;
+    }
+}
+
 #carta-imagenes{
     position: relative;
     width: 100%;

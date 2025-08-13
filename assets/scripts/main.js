@@ -75,16 +75,16 @@ var girando = false;
 var final_rotate = 0;
 
 function girarRuleta(){
-    final_seccion = 2
+    /*final_seccion = 2
     final_rotate = 0
-    setCarta()
+    setCarta()*/
 
-    /*if(!girando){
+    if(!girando){
         girando = true;
         getE('girar-btn').className = 'girar-btn-locked'
         a = 5;
         eje = false;
-        final_seccion = getRand(1,4) //2
+        final_seccion = getRand(1,4)
         check_carta = checkCarta(final_seccion)
         while(check_carta){
             final_seccion = getRand(1,4)
@@ -159,8 +159,13 @@ function girarRuleta(){
                 
                 if(a<1){
                     parando_ruleta = 3;
-                    eje = false;
+                    if(final_seccion==2){
+                        eje = false;
+                    }
                     a = 1;
+
+                    //clearInterval(animacion_ruleta)
+                    //animacion_ruleta = false
                 }
             }else if(parando_ruleta==3){
                 r+=a
@@ -187,7 +192,7 @@ function girarRuleta(){
             }
             getE('ruleta-fondo').style.transform = 'rotate('+r+'deg)'
         },40)
-    }*/
+    }
 }
 
 function pararRuleta(){
@@ -250,6 +255,9 @@ function setCarta(){
 
 var orden_palabras = [];
 var animacion_palabras = null;
+var animacion_carta = null;
+var animacion_palabra_i = 0;
+
 function setPalabras(){
     while(orden_palabras.length<cartas_data[f].palabras.length){
         var n = getRand(0,(cartas_data[f].palabras.length-1))
@@ -264,7 +272,7 @@ function setPalabras(){
         }
     }
         
-    for(i = 0;i<cartas_data[f].palabras.length;i++){
+    for(i = 0;i<orden_palabras.length;i++){
         var ii = orden_palabras[i]
         getE('frase-txt').getElementsByTagName('div')[ii].removeAttribute('style')
         getE('frase-txt').getElementsByTagName('div')[ii].innerHTML = cartas_data[f].palabras[ii]
@@ -285,18 +293,22 @@ function setPalabras(){
 
     getE('carta').className = 'carta-on carta'+final_seccion
 
-    var animacion_palabra_i = -1
-    animacion_palabras = setInterval(function(){
-        if(animacion_palabra_i>=0){
-            if(animacion_palabra_i==getE('palabras').getElementsByTagName('button').length){
+    
+    animacion_carta = setTimeout(function(){
+        clearTimeout(animacion_carta)
+        animacion_carta = null;
+
+        animacion_palabras = setInterval(function(){
+            if(animacion_palabra_i==orden_palabras.length){
                 clearInterval(animacion_palabras)
                 animacion_palabras = null;
             }else{
                 getE('palabras').getElementsByTagName('button')[animacion_palabra_i].className = 'palabra-normal-on palabra-normal palabra-normal-'+final_seccion
             }
-        }
-        animacion_palabra_i++
-    },200)
+            
+            animacion_palabra_i++
+        },200)
+    },1000)
 }
 
 var posx = 0;
