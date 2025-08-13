@@ -82,8 +82,8 @@ function girarRuleta(){
     setCarta()*/
 
     if(!girando){
-        girando = true;
-        getE('girar-btn').className = 'girar-btn-locked'
+        //girando = true;
+        //getE('girar-btn').className = 'girar-btn-locked'
         a = 5;
         eje = false;
         final_seccion = getRand(1,4)
@@ -137,6 +137,7 @@ function girarRuleta(){
                     }
                 }
             }else if(parando_ruleta==1){
+                console.log("empieza a parar ",(r-50), final_rotate)
                 if(
                     (r-50)>=final_rotate&&
                     eje==true
@@ -179,14 +180,13 @@ function girarRuleta(){
     
                 //console.log(r,final_rotate)
                 if(r>=final_rotate&&eje==true){
-                    r = final_rotate
+                    //r = final_rotate
                     
                     console.log("listo")
                     pararRuleta()
                     
                 }else{
                     if(a<0){
-                        
                         console.log("paro forzado")
                         pararRuleta()
                     }
@@ -256,25 +256,36 @@ function setCarta(){
 }
 
 function unsetCarta(){
-    getE('carta').className = 'carta-off carta'+final_seccion
-        
-    animacion_carta = setTimeout(function(){
-        clearTimeout(animacion_carta)
-        animacion_carta = null;
-        
-        getE('palabras').innerHTML = ""
-        orden_palabras = []
+    animacion_palabra_i = 0;
+    animacion_palabras = setInterval(function(){
+        if(animacion_palabra_i==orden_palabras.length){
+            clearInterval(animacion_palabras)
+            animacion_palabras = null;
 
-        getE('cortina').className = 'cortina-off'
+            getE('carta').className = 'carta-off carta'+final_seccion
+            
+            animacion_carta = setTimeout(function(){
+                clearTimeout(animacion_carta)
+                animacion_carta = null;
+                
+                getE('palabras').innerHTML = ""
+                orden_palabras = []
 
-        //mirar si ya terminó del todo
-        if(frases_completadas==(cartas_data_1.length + cartas_data_2.length + cartas_data_3.length + cartas_data_4.length)){
-            getE('ruleta-container').className = 'ruleta-container-off'
+                getE('cortina').className = 'cortina-off'
+
+                //mirar si ya terminó del todo
+                if(frases_completadas==(cartas_data_1.length + cartas_data_2.length + cartas_data_3.length + cartas_data_4.length)){
+                    getE('ruleta-container').className = 'ruleta-container-off'
+                }else{
+                    girando = false;
+                    getE('girar-btn').className = '';
+                }
+            },500)
         }else{
-            girando = false;
-            getE('girar-btn').className = '';
+            getE('palabras').getElementsByTagName('button')[animacion_palabra_i].className = 'palabra-normal-off palabra-normal-locked palabra-normal-'+final_seccion
         }
-    },500)
+        animacion_palabra_i++
+    },100)
 }
 
 var orden_palabras = [];
@@ -382,9 +393,7 @@ function upPalabra(event){
     ){
         //correcta
         getE('palabra-btn-'+global_p).removeAttribute('onmousedown')
-        var old_clase = getE('palabra-btn-'+global_p).className
-        var nueva_clase = old_clase.replace('palabra-normal-on','palabra-normal-locked')
-        getE('palabra-btn-'+global_p).className = nueva_clase
+        getE('palabra-btn-'+global_p).className = 'palabra-normal-on palabra-normal-locked palabra-normal-'+final_seccion
         
         //console.log(global_p)
         fillWord(cartas_data[final_seccion-1].palabras[global_p].palabra,getE('frase-txt').getElementsByTagName('div')[global_p])
