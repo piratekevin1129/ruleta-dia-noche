@@ -467,8 +467,8 @@ function fillWord(word,obj){
                 }
             }
 
-            //if(palabras_completadas==cartas_data[f].palabras.length){
-            if(palabras_completadas==1){
+            if(palabras_completadas==cartas_data[f].palabras.length){
+            //if(palabras_completadas==1){
                 cartas_data[f].completed = true;
                 frases_completadas++
 
