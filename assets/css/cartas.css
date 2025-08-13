@@ -246,10 +246,7 @@
 .palabra-normal-locked{
     outline: none;
     outline-width: 0;
-    width: 120px;
-    height: 42px;
     box-sizing: border-box;
-    border: #fff solid 3px;
     background-color: rgba(0,0,0,0);
     border-radius: 2px;
     display: flex;
@@ -261,42 +258,52 @@
     background-size: cover;
     background-position: center;
 }
-.palabra-normal{
+.palabra-normal,
+.palabra-normal-locked{
     position: relative;
+    width: 120px;
+    height: 42px;
     cursor: grab;
     margin: 10px 5px;
+    border: #fff solid 3px;
 }
-.palabra-normal-1{
-    background-image: url(../images/cartas/patron1.png);
-}
-.palabra-normal-2{
-    background-image: url(../images/cartas/patron2.png);
-}
-.palabra-normal-3{
-    background-image: url(../images/cartas/patron3.png);
-}
-.palabra-normal-4{
-    background-image: url(../images/cartas/patron4.png);
-}
-
-.palabra-normal span,
-#palabra-move span{
-    display: block;
-    width: auto;
-    height: auto;
-    font-family: 'Montserrat-Bold';
-    font-size: 14px;
-    color: #fff;
-    text-align: center;
-    font-weight: normal;
-    line-height: normal;
-    text-shadow: 0px 0px 3px rgba(0,0,0,0.5);
+#palabra-move{
+    position: absolute;
+    width: 100px;
+    height: 10px;
+    border: #fff solid 1px;
+    cursor: grabbing;
+    transform: translate(-50%,-50%);
 }
 .palabra-normal-locked{
     filter: grayscale(100%);
     opacity: 0.3;
     cursor: not-allowed !important;
 }
+
+.palabra-normal span,
+#palabra-move span,
+.palabra-normal-locked span{
+    display: block;
+    width: auto;
+    height: auto;
+    color: #fff;
+    text-align: center;
+    font-weight: normal;
+    line-height: normal;
+    text-shadow: 0px 0px 3px rgba(0,0,0,0.5);
+}
+.palabra-normal span,
+.palabra-normal-locked span{
+    font-family: 'Montserrat-Bold';
+    font-size: 14px;
+}
+#palabra-move span{
+    font-family: 'Montserrat-SemiBold';
+    font-size: 12px;
+}
+
+/************/
 
 .palabra-normal-off{
     top: 100px;
@@ -311,10 +318,17 @@
     transition: opacity 0.15s ease-out, top 0.15s ease-out;
 }
 
-#palabra-move{
-    position: absolute;
-    cursor: grabbing;
-    transform: translate(-50%,-50%);
+.palabra-normal-1{
+    background-image: url(../images/cartas/patron1.png);
+}
+.palabra-normal-2{
+    background-image: url(../images/cartas/patron2.png);
+}
+.palabra-normal-3{
+    background-image: url(../images/cartas/patron3.png);
+}
+.palabra-normal-4{
+    background-image: url(../images/cartas/patron4.png);
 }
 
 .palabra-move-off{

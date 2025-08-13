@@ -20,6 +20,8 @@
 .ruleta-container-off{
     transform: rotate(-180deg);
     left: -100%;
+
+    transition: left 1s ease-in, transform 1s ease-in;
 }
 .ruleta-container-on{
     transform: rotate(0deg);
@@ -27,7 +29,7 @@
     left: calc(50% - (650px / 2));
     left: -moz-calc(50% - (650px / 2));
 
-    transition: left 1s 1s ease-out, transform 1s 1s ease-out;
+    transition: left 1s ease-out, transform 1s ease-out;
 }
 
 #ruleta-borde{
@@ -44,19 +46,18 @@
     top: -5px;
 }
 
-#ruleta-fondo{
-    position: relative;
+#ruleta-fondo,
+#ruleta-blur{
     width: 100%;
     height: 100%;
     top: 0px;
     left: 0px;
 }
+#ruleta-fondo{
+    position: relative;
+}
 #ruleta-blur{
     position: absolute;
-    width: 107%;
-    height: 107%;
-    top: -3.5%;
-    left: -3.5%;
 }
 
 #ruleta-fondo > img,

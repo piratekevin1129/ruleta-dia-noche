@@ -140,7 +140,7 @@ function girarRuleta(){
                     }
                 }
             }else if(parando_ruleta==1){
-                console.log(r,final_rotate,eje)
+                //console.log(r,final_rotate,eje)
                 if(
                     r>=final_rotate&&
                     eje==true
@@ -159,7 +159,7 @@ function girarRuleta(){
                 if(a<=1){
                     //empezar a devolverse de a 1 hasta llegar al ángulo que es
                     //normalmente quedan faltando muy poquitos angulos
-                    console.log("diferencia: ",r,final_rotate)
+                    //console.log("diferencia: ",r,final_rotate)
                     
                     parando_ruleta = 3;
                     a = 1;
@@ -180,7 +180,7 @@ function girarRuleta(){
                     if(r>360){
                         r = (r-360)
                     }
-                    console.log("r: "+r)
+                    //console.log("r: "+r)
                 }
 
             }else if(parando_ruleta==3){
@@ -190,10 +190,8 @@ function girarRuleta(){
                     r = (r-360)
                     eje = true;
                 }
-
-                console.log("r= "+r)
+                //console.log("r= "+r)
     
-                //console.log(r,final_rotate)
                 if(r>=final_rotate){
                     if(eje==true){
                         r = final_rotate
@@ -231,10 +229,10 @@ function pararRuleta(){
     clearInterval(animacion_ruleta)
     animacion_ruleta = false
 
-    girando = false;
-    getE('girar-btn').className = '';
+    //girando = false;
+    //getE('girar-btn').className = '';
 
-    //setCarta()
+    setCarta()
 }
 
 var f = -1;
@@ -306,9 +304,11 @@ function unsetCarta(){
 
                 getE('cortina').className = 'cortina-off'
 
-                //mirar si ya terminó del todo
-                if(frases_completadas==(cartas_data_1.length + cartas_data_2.length + cartas_data_3.length + cartas_data_4.length)){
+                //mirar si ya le salieron las 5
+                //if(frases_completadas==(cartas_data_1.length + cartas_data_2.length + cartas_data_3.length + cartas_data_4.length)){
+                if(frases_completadas==5){    
                     getE('ruleta-container').className = 'ruleta-container-off'
+                    setMensajeFinal()
                 }else{
                     girando = false;
                     getE('girar-btn').className = '';
@@ -428,9 +428,10 @@ function upPalabra(event){
         getE('palabra-btn-'+global_p).removeAttribute('onmousedown')
         getE('palabra-btn-'+global_p).className = 'palabra-normal-on palabra-normal-locked palabra-normal-'+final_seccion
         
-        //console.log(global_p)
-        fillWord(cartas_data[final_seccion-1].palabras[global_p].palabra,getE('frase-txt').getElementsByTagName('div')[global_p])
-        cartas_data[final_seccion-1].palabras[global_p].completed = true
+        console.log(global_p)
+        console.log(cartas_data[f])
+        fillWord(cartas_data[f].palabras[global_p].palabra,getE('frase-txt').getElementsByTagName('div')[global_p])
+        cartas_data[f].palabras[global_p].completed = true
 
     }else{
         //no correcta
@@ -462,14 +463,15 @@ function fillWord(word,obj){
             //mirar si ya la completó
 
             var palabras_completadas = 0
-            for(i = 0;i<cartas_data[final_seccion-1].palabras.length;i++){
-                if(cartas_data[final_seccion-1].palabras[i].completed){
+            for(i = 0;i<cartas_data[f].palabras.length;i++){
+                if(cartas_data[f].palabras[i].completed){
                     palabras_completadas++
                 }
             }
 
-            if(palabras_completadas==cartas_data[final_seccion-1].palabras.length){
-                cartas_data[final_seccion-1].completed = true;
+            //if(palabras_completadas==cartas_data[f].palabras.length){
+            if(palabras_completadas==1){
+                cartas_data[f].completed = true;
                 frases_completadas++
 
                 unsetCarta()
@@ -482,4 +484,15 @@ function fillWord(word,obj){
     },100)
 }
 
-//borrar style atribute de todas las palabras
+var animacion_final = null;
+var animacion_cartas_final = null;
+var animacion_cartas_final_i = 0;
+function setMensajeFinal(){
+    getE('mensaje-final').className = 'mensaje-final-on'
+    animacion_final = setTimeout(function(){
+        clearTimeout(animacion_final)
+        animacion_final = null
+
+        getE('mensaje-final').className = 'mensaje-final-onn'
+    },1000)
+}
