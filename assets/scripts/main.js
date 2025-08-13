@@ -428,8 +428,6 @@ function upPalabra(event){
         getE('palabra-btn-'+global_p).removeAttribute('onmousedown')
         getE('palabra-btn-'+global_p).className = 'palabra-normal-on palabra-normal-locked palabra-normal-'+final_seccion
         
-        console.log(global_p)
-        console.log(cartas_data[f])
         fillWord(cartas_data[f].palabras[global_p].palabra,getE('frase-txt').getElementsByTagName('div')[global_p])
         cartas_data[f].palabras[global_p].completed = true
 

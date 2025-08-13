@@ -269,8 +269,8 @@
 }
 #palabra-move{
     position: absolute;
-    width: 100px;
-    height: 10px;
+    width: auto;
+    height: 25px;
     border: #fff solid 1px;
     cursor: grabbing;
     transform: translate(-50%,-50%);
@@ -301,6 +301,7 @@
 #palabra-move span{
     font-family: 'Montserrat-SemiBold';
     font-size: 12px;
+    padding: 0px 12px;
 }
 
 /************/
