@@ -209,19 +209,19 @@ var check_frase = false;
 function checkFrase(f,c){
     var completed = false;
     if(c==1){
-        if(cartas_data_1[i].completed){
+        if(cartas_data_1[f].completed){
             completed = true;   
         }
     }else if(c==2){
-        if(cartas_data_2[i].completed){
+        if(cartas_data_2[f].completed){
             completed = true;   
         }
     }else if(c==3){
-        if(cartas_data_3[i].completed){
+        if(cartas_data_3[f].completed){
             completed = true;   
         }
     }else if(c==4){
-        if(cartas_data_4[i].completed){
+        if(cartas_data_4[f].completed){
             completed = true;   
         }
     }
@@ -302,7 +302,7 @@ function setPalabras(){
         getE('frase-txt').getElementsByTagName('div')[ii].innerHTML = cartas_data[f].palabras[ii].palabra
         var ancho = getE('frase-txt').getElementsByTagName('div')[ii].offsetWidth
         getE('frase-txt').getElementsByTagName('div')[ii].style.width = ancho+'px'
-        getE('frase-txt').getElementsByTagName('div')[ii].innerHTML = '...'
+        getE('frase-txt').getElementsByTagName('div')[ii].innerHTML = '<span style="visibility:hidden;">.</span>'
 
         var palabra_btn = document.createElement('button')
         palabra_btn.id = 'palabra-btn-'+ii
@@ -367,6 +367,8 @@ function movePalabra(event){
 }
 
 function upPalabra(event){
+    window.removeEventListener('mousemove', movePalabra, true)
+    window.removeEventListener('mouseup', upPalabra, true)
     posx = event.pageX
     posy = event.pageY
 
@@ -384,7 +386,7 @@ function upPalabra(event){
         var nueva_clase = old_clase.replace('palabra-normal-on','palabra-normal-locked')
         getE('palabra-btn-'+global_p).className = nueva_clase
         
-        //.innerHTML = 
+        //console.log(global_p)
         fillWord(cartas_data[final_seccion-1].palabras[global_p].palabra,getE('frase-txt').getElementsByTagName('div')[global_p])
         cartas_data[final_seccion-1].palabras[global_p].completed = true
 
@@ -435,7 +437,7 @@ function fillWord(word,obj){
             obj.innerHTML = word_complete
         }
         animacion_word_i++
-    },150)
+    },100)
 }
 
 //borrar style atribute de todas las palabras
