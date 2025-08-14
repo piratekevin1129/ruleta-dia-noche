@@ -87,7 +87,7 @@ function girarRuleta(){
 
         eje = false;
         a = 5;
-        final_seccion = getRand(1,4)
+        final_seccion = 3//getRand(1,4)
         check_carta = checkCarta(final_seccion)
         while(check_carta){
             final_seccion = getRand(1,4)
@@ -274,14 +274,12 @@ function setCarta(){
         cartas_data = cartas_data_4
     }
 
-    f = getRand(0,(cartas_data.length-1))
+    f = 1//getRand(0,(cartas_data.length-1))
     check_frase = checkFrase(f,final_seccion)
     while(check_frase){
         f = getRand(0,(cartas_data.length-1))
         check_frase = checkFrase(f,final_seccion)
     }
-
-    getE('frase-txt').innerHTML = cartas_data[f].frase
 
     setPalabras()
 }
@@ -327,6 +325,10 @@ var animacion_carta = null;
 var animacion_palabra_i = 0;
 
 function setPalabras(){
+    initFrase()
+
+    getE('frase-txt').innerHTML = cartas_data[f].frase
+
     while(orden_palabras.length<cartas_data[f].palabras.length){
         var n = getRand(0,(cartas_data[f].palabras.length-1))
         var n2 = false;
@@ -418,6 +420,9 @@ function upPalabra(event){
 
     var rect_destino = getE('frase-txt').getElementsByTagName('div')[global_p].getBoundingClientRect()
 
+    console.log(posx,posy)
+    console.log(rect_destino.left,rect_destino.top)
+    console.log(rect_destino.width,rect_destino.height)
     if(
         posx>=rect_destino.left&&
         posx<=(rect_destino.left+rect_destino.width)&&

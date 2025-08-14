@@ -260,9 +260,7 @@
                                 <img src="assets/images/cartas/carta4.png" />
                             </div>
                             <div id="frase-logo">
-                                <div>
-                                    <img src="assets/images/logo.png" />
-                                </div>
+                                <img src="assets/images/logo.png" />
                             </div>
                             <div id="frase-container">
                                 <div id="frase">
@@ -338,6 +336,7 @@
 
     <script src="assets/scripts/data.js"></script>
     <script src="assets/scripts/main.js"></script>
+    <script src="assets/scripts/frase.js"></script>
     <script>
 
         var animacion_video = null;
@@ -372,6 +371,9 @@
             }*/
 
             getE('cargador').className = 'cargador-off'
+            final_seccion = 3
+            f = 1
+            initFrase()
         }
 
         var animacion_col = null

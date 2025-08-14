@@ -21,9 +21,9 @@
 
 #carta-wrap{
     position: relative;
-    width: 354px;
+    width: 368px;
     margin: 0px auto;
-    height: 500px;
+    height: 520px;
     margin-bottom: 30px;
     margin-left: auto;
     margin-right: auto;
@@ -137,26 +137,17 @@
 
 #frase-logo{
     position: absolute;
-    width: 30%;
-    height: auto;
-    box-sizing: border-box;
-    border-radius: 8px;
-    background-color: rgba(255,255,255,0.3);
-    padding: 7px;
-    box-sizing: border-box;
-    top: 5%;
-    left: 35%;
-}
-#frase-logo div{
-    position: relative;
-    width: 100%;
+    width: 26%;
     height: auto;
     background-color: #fff;
+    border-radius: 0px 0px 15px 15px;
+    top: 0px;
+    left: 37%;
     box-sizing: border-box;
-    padding: 0px 10px;
-    border-radius: 4px;
+    padding: 12px;
+    box-shadow: 0px 12px 14px -5px rgba(0,0,0,0.3);
 }
-#frase-logo div img{
+#frase-logo img{
     display: block;
     width: 100%;
     height: auto;
@@ -173,30 +164,27 @@
     left: 25%;
     box-sizing: border-box;
     padding: 20px;
+    box-shadow: 0px -12px 14px -5px rgba(0,0,0,0.3);
 }
 #frase-footer img{
     display: block;
     width: 100%;
+    height: auto;
     margin: 0px;
 }
 
 #frase-container{
     position: absolute;
-    width: 86%;
+    width: 90%;
     height: auto;
-    top: 18%;
-    left: 7%;
-
-    border-radius: 12px;
-    background-color: rgba(255,255,255,0.3);
-    box-sizing: border-box;
-    padding: 8px;
+    top: 15%;
+    left: 5%;
 }
 #frase{
     position: relative;
     width: 100%;
     height: 100%;
-    border-radius: 4px;
+    border-radius: 8px;
     background-color: #ffffff;
     box-sizing: border-box;
     padding: 12px;
@@ -287,7 +275,6 @@
     display: block;
     width: auto;
     height: auto;
-    color: #fff;
     text-align: center;
     font-weight: normal;
     line-height: normal;
@@ -330,6 +317,15 @@
 }
 .palabra-normal-4{
     background-image: url(../images/cartas/patron4.png);
+}
+
+.palabra-normal-1 span,
+.palabra-normal-2 span,
+.palabra-normal-4 span{
+    color: #fff;
+}
+.palabra-normal-3 span{
+    color: #2b275b;
 }
 
 .palabra-move-off{
