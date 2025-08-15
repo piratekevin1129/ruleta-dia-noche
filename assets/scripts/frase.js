@@ -24,7 +24,15 @@ function initFrase(){
             //es apta, guardemosla en la lista de palabras disponibles
 
             //mirar que no esté repetida
-            palabras_disponibles.push({ind:i})
+            var palabra_disponible_repetida = false
+            for(j = 0;j<palabras_disponibles.length;i++){
+                if(palabras_disponibles[j].ind==i){
+                    palabra_disponible_repetida = true
+                }
+            }
+            if(!palabra_disponible_repetida){
+                palabras_disponibles.push({ind:i})
+            }
         }
     }
 
