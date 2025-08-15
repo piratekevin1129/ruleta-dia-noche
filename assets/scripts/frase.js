@@ -22,6 +22,8 @@ function initFrase(){
         
         if(palabra_splited.length>=6){
             //es apta, guardemosla en la lista de palabras disponibles
+
+            //mirar que no esté repetida
             palabras_disponibles.push({ind:i})
         }
     }
