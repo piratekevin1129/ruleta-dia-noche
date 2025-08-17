@@ -2,7 +2,7 @@ var cartas_data = null;
 //IMPORTANTE!!!
 //no colocar punto final a la prefrase o será el fin del mundo
 //todos los br deben llevar espacio adelante, nunca detrás
-//los unicos signos de puntuación permitidos son: .,¡!¿?
+//los unicos signos de puntuación permitidos son: .,¡!¿?:
 
 /*rosado*/
 var cartas_data_1 = [
@@ -41,7 +41,7 @@ var cartas_data_2 = [
         completed:false
     },
     {
-        prefrase:'En Cenit estamos comprometidos con el princizpio de Primero la Vida. Por eso, procuramos entornos de trabajo seguros y hábitos saludables, fomentando el bienestar de todos los colaboradores y aliados',
+        prefrase:'En Cenit estamos comprometidos con el principio de Primero la Vida. Por eso, procuramos entornos de trabajo seguros y hábitos saludables, fomentando el bienestar de todos los colaboradores y aliados',
         frase:'',
         palabras:[],
         completed:false
@@ -109,7 +109,7 @@ var cartas_data_4 = [
         completed:false
     },
     {
-        prefrase:'• La sostenibilidad no es solo un objetivo a largo plazo, es una misión diaria que transforma tu entorno y ty vida. ¡Haz la diferencia desde ahora y construyamos el futuro que merecemos! <br>• Cada elección cuenta, cada acción tiene impacto. La sostenibilidad es el camino que recorremos juntos, pero el primer paso empieza contigo. Sé el agente de cambio que tu entorno necesita',
+        prefrase:'• La sostenibilidad no es solo un objetivo a largo plazo, es una misión diaria que transforma tu entorno y tu vida. ¡Haz la diferencia desde ahora y construyamos el futuro que merecemos! <br>• Cada elección cuenta, cada acción tiene impacto. La sostenibilidad es el camino que recorremos juntos, pero el primer paso empieza contigo. Sé el agente de cambio que tu entorno necesita',
         frase:'',
         palabras:[],
         completed:false

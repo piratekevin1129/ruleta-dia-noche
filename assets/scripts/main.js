@@ -280,7 +280,7 @@ function setCarta(){
     while(check_frase){
         f = getRand(0,(cartas_data.length-1))
         check_frase = checkFrase(f,final_seccion)
-        console.log("esta ya salió: "+final_seccion+'-'+check_frase)
+        console.log("esta ya salió: "+final_seccion+'-'+f)
     }
 
     setPalabras()

@@ -16,13 +16,13 @@ function initFrase(){
     var palabras_disponibles = []
 
     //2. Recorrer array de palabras para ver cual es apta
-    //debe ser mayor a 6 letras
+    //debe ser mayor a 6 letras y menor o igual a 13
     var orden = 0;
     var palabra_anterior = -1;
     for(i = 0;i<prefrase_splited.length;i++){
         var apta = false;
 
-        if(prefrase_splited[i].length>7){
+        if(prefrase_splited[i].length>6&&prefrase_splited[i].length<=13){
             apta = true;
 
             //mirar si la palabra anterior tenia signo
@@ -33,7 +33,8 @@ function initFrase(){
                     ultimo=='.'||
                     ultimo==','||
                     ultimo=='!'||
-                    ultimo=='?'
+                    ultimo=='?'||
+                    ultimo==':'
                 ){
                     apta = false;
                     //console.log("la palabra anterior ya tiene signo: "+prefrase_splited[i-1])
@@ -74,7 +75,8 @@ function initFrase(){
                     signo=='.'||
                     signo==','||
                     signo=='!'||
-                    signo=='?'
+                    signo=='?'||
+                    signo==':'
                 ){
                     palabra_prev2 = palabra_prev.slice(0,-1)
                     pasar_signo = true

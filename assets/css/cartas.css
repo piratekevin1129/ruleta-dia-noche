@@ -176,20 +176,28 @@
 #frase-container{
     position: absolute;
     width: 90%;
-    height: auto;
-    top: 15%;
+    height: 100%;
+    top: 0%;
     left: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #frase{
     position: relative;
     width: 100%;
-    height: 100%;
+    height: auto;
     border-radius: 8px;
     background-color: #ffffff;
     box-sizing: border-box;
     padding: 12px;
 }
 #frase-txt{
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
     position: relative;
     display: block;
     width: 100%;
@@ -219,6 +227,7 @@
     color: #ed7512;
 }
 
+/*************************/
 
 #palabras{
     position: relative;
@@ -278,6 +287,11 @@
     text-align: center;
     font-weight: normal;
     line-height: normal;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 .palabra-normal span,
 .palabra-normal-locked span{
