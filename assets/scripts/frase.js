@@ -16,23 +16,41 @@ function initFrase(){
     var palabras_disponibles = []
 
     //2. Recorrer array de palabras para ver cual es apta
-    //debe ser mayor o igual 6 letras
+    //debe ser mayor a 6 letras
+    var orden = 0;
+    var palabra_anterior = -1;
     for(i = 0;i<prefrase_splited.length;i++){
-        var palabra_splited = prefrase_splited[i].split("")
-        
-        if(palabra_splited.length>=6){
-            //es apta, guardemosla en la lista de palabras disponibles
+        var apta = false;
 
-            //mirar que no esté repetida
-            var palabra_disponible_repetida = false
-            for(j = 0;j<palabras_disponibles.length;i++){
-                if(palabras_disponibles[j].ind==i){
-                    palabra_disponible_repetida = true
+        if(prefrase_splited[i].length>7){
+            apta = true;
+
+            //mirar si la palabra anterior tenia signo
+            //de ser asi, la siguiente palabra no puede ser apta
+            if(i>0){
+                var ultimo = prefrase_splited[i-1].substring(prefrase_splited[i-1].length-1)
+                if(
+                    ultimo=='.'||
+                    ultimo==','||
+                    ultimo=='!'||
+                    ultimo=='?'
+                ){
+                    apta = false;
+                    //console.log("la palabra anterior ya tiene signo: "+prefrase_splited[i-1])
+                }
+    
+                if(palabra_anterior==(i-1)){
+                    apta = false;
+                    //console.log("la anterior era apta :"+prefrase_splited[palabra_anterior])
                 }
             }
-            if(!palabra_disponible_repetida){
-                palabras_disponibles.push({ind:i})
-            }
+        }
+        
+        //es apta, guardemosla en la lista de palabras disponibles
+        if(apta){
+            palabra_anterior = i
+            palabras_disponibles.push({ind:i,orden:orden})
+            orden++
         }
     }
 
@@ -45,24 +63,48 @@ function initFrase(){
             var rand = getRand(1,palabras_disponibles.length)
             if(palabras_definitivas.indexOf(rand-1)==-1){
                 //mirar si tiene punto, coma o signo de exclamación
-                var palabra_arr = prefrase_splited[palabras_disponibles[rand-1].ind].split("")
+                var palabra_prev = prefrase_splited[palabras_disponibles[rand-1].ind]
+                var palabra_prev2 = prefrase_splited[palabras_disponibles[rand-1].ind]
+
+                var palabra_arr = palabra_prev.split("")
+                var signo = palabra_arr[palabra_arr.length-1]
+
+                var pasar_signo = false
                 if(
-                    palabra_arr[palabra_arr.length-1]=='.'||
-                    palabra_arr[palabra_arr.length-1]==','||
-                    palabra_arr[palabra_arr.length-1]=='!'||
-                    palabra_arr[palabra_arr.length-1]=='?'
+                    signo=='.'||
+                    signo==','||
+                    signo=='!'||
+                    signo=='?'
                 ){
-                    //poner punto a la siguiente palabra
-                    var texto_siguiente = prefrase_splited[palabras_disponibles[rand-1].ind+1]
-                    prefrase_splited[palabras_disponibles[rand-1].ind+1] = String(palabra_arr[palabra_arr.length-1] + " "+texto_siguiente)
-                    
-                    //quitarlo de la que nos sirve
-                    palabra_arr.length = palabra_arr.length-1
+                    palabra_prev2 = palabra_prev.slice(0,-1)
+                    pasar_signo = true
                 }
-                palabras_definitivas.push({
-                    ind:palabras_disponibles[rand-1].ind,
-                    txt:String(palabra_arr.join(""))
-                })
+
+                //mirar que no esté repetido
+                var palabra_definitiva_repetida = false;
+                for(j = 0;j<palabras_definitivas.length;j++){
+                    if(String(palabras_definitivas[j].txt).toLowerCase()==palabra_prev2.toLowerCase()){
+                        palabra_definitiva_repetida = true;
+                        //console.log("repetida la palabra: "+palabra_prev2)
+                    }
+                }
+
+                if(!palabra_definitiva_repetida){
+                    if(pasar_signo){
+                        //poner punto a la siguiente palabra
+                        var texto_siguiente = prefrase_splited[palabras_disponibles[rand-1].ind + 1]
+                        prefrase_splited[palabras_disponibles[rand-1].ind + 1] = String(signo+" "+texto_siguiente)
+                    }
+
+                    //console.log("La palabra a agregar es: "+palabra_prev2)
+
+                    palabras_definitivas.push({
+                        orden:palabras_disponibles[rand-1].orden,
+                        ind:palabras_disponibles[rand-1].ind,
+                        txt:palabra_prev2
+                    })
+                    orden++;
+                }
             }
         }
     }else{
@@ -70,24 +112,31 @@ function initFrase(){
         for(i = 0;i<palabras_disponibles.length;i++){
             palabras_definitivas.push({
                 ind:palabras_disponibles[i].ind,
-                txt:String(prefrase_splited[palabras_disponibles[i].ind])
+                txt:String(prefrase_splited[palabras_disponibles[i].ind]),
+                orden:palabras_disponibles[i].orden
             })
         }
     }
 
-    //console.log(palabras_definitivas)
-
     //convertir palabras disponibles en <div>
     var palabras_data = [];
     var frase_data = "";
-    for(i = 0;i<palabras_definitivas.length;i++){
-        prefrase_splited[palabras_definitivas[i].ind] = '<div></div>'
 
-        palabras_data.push({
-            palabra:palabras_definitivas[i].txt,
-            completed:false
-        })
+    //ponerlas en orden
+    
+    for(i = 0;i<orden;i++){
+        for(j = 0;j<palabras_definitivas.length;j++){
+            if(palabras_definitivas[j].orden==i){
+                prefrase_splited[palabras_definitivas[j].ind] = '<div></div>'
+                
+                palabras_data.push({
+                    palabra:palabras_definitivas[j].txt,
+                    completed:false
+                })
+            }
+        }
     }
+    
     for(i = 0;i<prefrase_splited.length;i++){
         frase_data+=String(prefrase_splited[i])
         if(i<(prefrase_splited.length-1)){
@@ -108,22 +157,14 @@ function initFrase(){
     if(final_seccion==1){
         cartas_data_1[f].palabras = palabras_data
         cartas_data_1[f].frase = frase_data
-        //console.log(cartas_data_1[f].frase)
-        //console.log(cartas_data_1[f].palabras)
     }else if(final_seccion==2){
         cartas_data_2[f].palabras = palabras_data
         cartas_data_2[f].frase = frase_data
-        //console.log(cartas_data_2[f].frase)
-        //console.log(cartas_data_2[f].palabras)
     }else if(final_seccion==3){
         cartas_data_3[f].palabras = palabras_data
         cartas_data_3[f].frase = frase_data
-        //console.log(cartas_data_3[f].frase)
-        //console.log(cartas_data_3[f].palabras)
     }else if(final_seccion==4){
         cartas_data_4[f].palabras = palabras_data
         cartas_data_4[f].frase = frase_data
-        //console.log(cartas_data_4[f].frase)
-        //console.log(cartas_data_4[f].palabras)
     }
 }

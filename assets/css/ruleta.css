@@ -74,7 +74,7 @@
 }
 .ruleta-blur-off{
     opacity: 0;
-    transition: opacity 4s ease-out;
+    transition: opacity 3s ease-out;
 }
 
 #ruleta-partes{

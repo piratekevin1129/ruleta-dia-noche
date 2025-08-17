@@ -87,11 +87,12 @@ function girarRuleta(){
 
         eje = false;
         a = 5;
-        final_seccion = 3//getRand(1,4)
+        final_seccion = getRand(1,4)//3
         check_carta = checkCarta(final_seccion)
         while(check_carta){
             final_seccion = getRand(1,4)
             check_carta = checkCarta(final_seccion)
+            console.log("no mas cartas de : "+final_seccion+" por favor")
         }
         if(final_seccion==1){
             final_rotate = 90
@@ -274,11 +275,12 @@ function setCarta(){
         cartas_data = cartas_data_4
     }
 
-    f = 1//getRand(0,(cartas_data.length-1))
+    f = getRand(0,(cartas_data.length-1))//1
     check_frase = checkFrase(f,final_seccion)
     while(check_frase){
         f = getRand(0,(cartas_data.length-1))
         check_frase = checkFrase(f,final_seccion)
+        console.log("esta ya salió: "+final_seccion+'-'+check_frase)
     }
 
     setPalabras()
@@ -302,9 +304,11 @@ function unsetCarta(){
 
                 getE('cortina').className = 'cortina-off'
 
-                //mirar si ya le salieron las 5
-                //if(frases_completadas==(cartas_data_1.length + cartas_data_2.length + cartas_data_3.length + cartas_data_4.length)){
-                if(frases_completadas==5){    
+                //mirar si ya le salieron todas
+                if(frases_completadas==(cartas_data_1.length + cartas_data_2.length + cartas_data_3.length + cartas_data_4.length)){
+                
+                
+                //if(frases_completadas==5){    
                     getE('ruleta-container').className = 'ruleta-container-off'
                     setMensajeFinal()
                 }else{
@@ -420,9 +424,9 @@ function upPalabra(event){
 
     var rect_destino = getE('frase-txt').getElementsByTagName('div')[global_p].getBoundingClientRect()
 
-    console.log(posx,posy)
-    console.log(rect_destino.left,rect_destino.top)
-    console.log(rect_destino.width,rect_destino.height)
+    //console.log(posx,posy)
+    //console.log(rect_destino.left,rect_destino.top)
+    //console.log(rect_destino.width,rect_destino.height)
     if(
         posx>=rect_destino.left&&
         posx<=(rect_destino.left+rect_destino.width)&&
