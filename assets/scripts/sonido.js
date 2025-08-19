@@ -20,7 +20,7 @@ var audio_background_status = false
 
 function playAudioBackground(data,autostart){
     audio_background = data
-    audio_background.volume = 0.5
+    audio_background.volume = 0.2
     audio_background.addEventListener('ended', endAudioBackground, false)
     if(autostart){
         toggleAudioBackground()
@@ -41,9 +41,11 @@ function toggleAudioBackground(){
     }else{
         audio_background_status = true
         //getE('sonido-btn').className = 'sonido-btn-on'
-        audio_background.play().then({
+        audio_background.play()
+        .then(function (){
             console.log("play background")
-        }).catch(function(error){
+        })
+        .catch(function(error){
             console.log(error)
         })
     }

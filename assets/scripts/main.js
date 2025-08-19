@@ -112,8 +112,8 @@ function girarRuleta(){
             final_rotate = 270
         }
     
-        /*var angulo = getRand(1,90)
-        final_rotate = secciones[final_seccion-1]+angulo
+        var angulo = getRand(1,90)
+        /*final_rotate = secciones[final_seccion-1]+angulo
         if(final_rotate>360){
             final_rotate = (final_rotate-360)
         }*/
@@ -121,6 +121,7 @@ function girarRuleta(){
         vueltas = 0;
         parando_ruleta = 0;
         retrocede_ruleta = true;
+        ruleta_volumen = 1;
         console.log("final_rotate: "+final_rotate+'-'+angulo)
     
         animacion_ruleta = setInterval(function(){
@@ -130,6 +131,9 @@ function girarRuleta(){
                     a--
                     if(a==0){
                         retrocede_ruleta = false;
+                        audio_ruleta.volume = ruleta_volumen;
+                        audio_ruleta.currentTime = 0;
+                        audio_ruleta.play()
                         getE('ruleta-blur').className = 'ruleta-blur-on'
                     }
                 }else{
@@ -195,12 +199,16 @@ function girarRuleta(){
 
             }else if(parando_ruleta==3){
                 r+=a
-
                 if(r>360){
                     r = (r-360)
                     eje = true;
                 }
                 //console.log("r= "+r)
+
+                if(ruleta_volumen>0){
+                    audio_ruleta.volume = ruleta_volumen;
+                    ruleta_volumen-=0.1;
+                }
     
                 if(r>=final_rotate){
                     if(eje==true){
@@ -232,6 +240,8 @@ function girarRuleta(){
             }
             getE('ruleta-fondo').style.transform = 'rotate('+r+'deg)'
         },40)
+
+        audio_click.play()
     }
 }
 
@@ -242,6 +252,7 @@ function pararRuleta(){
     //girando = false;
     //getE('girar-btn').className = '';
 
+    audio_ruleta.pause()
     setCarta()
 }
 
@@ -435,6 +446,7 @@ function downPalabra(btn,event){
     
         window.addEventListener('mousemove', movePalabra, true)
         window.addEventListener('mouseup', upPalabra, true)
+        audio_input.play()
     }
 }
 
@@ -468,7 +480,7 @@ function upPalabra(event){
         
         fillWord(cartas_data[f].palabras[global_p].palabra,getE('frase-txt').getElementsByTagName('div')[global_p])
         cartas_data[f].palabras[global_p].completed = true
-
+        audio_good.play()
     }else{
         //no correcta
         //mirar si la soltó en un espacio o al aire
@@ -487,6 +499,7 @@ function upPalabra(event){
 
         if(click_espacio){
             errores_actuales++;
+            audio_wrong.play()
         }
     }
     
@@ -528,6 +541,7 @@ function fillWord(word,obj){
                 frases_completadas++
 
                 unsetCarta()
+                audio_win.play()
             }
         }else{
             word_complete+=word_splited[animacion_word_i]

@@ -179,7 +179,7 @@
                             <div class="form-input-icon">
                                 <img src="assets/images/icon-form-user.svg" />
                             </div>
-                            <input type="text" autocomplete="off" maxlength="100" placeholder="Escribe tu nombre" id="nombre_input" />
+                            <input type="text" autocomplete="off" maxlength="100" placeholder="Escribe tu nombre" id="nombre_input" onclick="clickInput()" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -188,7 +188,7 @@
                             <div class="form-input-icon">
                                 <img src="assets/images/icon-form-document.svg" />
                             </div>
-                            <input type="text" autocomplete="off" maxlength="100" placeholder="Escribe tu cédula" id="documento_input" />
+                            <input type="text" autocomplete="off" maxlength="100" placeholder="Escribe tu cédula" id="documento_input" onclick="clickInput()" />
                         </div>
                     </div>
 
@@ -198,9 +198,9 @@
             </div>
         </div>
 
-        <div id="col2" class="col2-on">
+        <div id="col2" class="col2-off">
             <div id="ruleta">
-                <div id="ruleta-container" class="ruleta-container-on">
+                <div id="ruleta-container" class="ruleta-container-off">
                     <div id="ruleta-borde"></div>
                     <div id="ruleta-fondo">
                         <img src="assets/images/ruleta/fondo.png" />
@@ -317,7 +317,7 @@
 
         <div id="palabra-move" class="palabra-move-off"></div>
 
-        <div id="video-container" class="video-off">
+        <div id="video-container" class="video-on">
             <video id="video-inicial" controls>
                 <source src="assets/media/tutorial.mp4" type="video/mp4" />
             </video>
@@ -341,53 +341,83 @@
     <script>
 
         var animacion_video = null;
-        var audio_input = null;
+
         var audio_click = null;
+        var audio_good = null;
+        var audio_input = null;
         var audio_ruleta = null;
+        var ruleta_volumen = 1;
+        //var audio_seleccion = null;
         var audio_win = null;
         var audio_wrong = null;
-        var audio_good = null;
-        var audio_seleccion = null;
 
         window.onload = function(){
             loadTrack({src: 'assets/sounds/background.mp3', callBack: function(data) {
-                playAudioBackground(data,true)
+                playAudioBackground(data,false)
                 //getE('sonido-btn').setAttribute('onclick','toggleAudioBackground()')
             }})
 
-            /*getE('cargador-txt').innerHTML = 'Haz clic para comenzar'
-            getE('cargador').onclick = function(){
-                getE('cargador').onclick = null
-                getE('cargador').className = 'cargador-off'
-
-                getE('video-inicial').load()
-                getE('video-inicial').onloadeddata = function(){
-                    getE('video-inicial').onloadeddata = null
-                    getE('video-inicial').play()
-
-                    getE('video-inicial').onended = function(){
-                        getE('video-inicial').onended = null
-                        getE('video-container').className = 'video-off'
+            loadTrack({src: 'assets/sounds/click.mp3', callBack: function(data){
+                audio_click = data;
+                loadTrack({src: 'assets/sounds/good.mp3', callBack: function(data){
+                    audio_good = data;
+                    loadTrack({src: 'assets/sounds/input.mp3', callBack: function(data){
+                        audio_input = data;
+                        loadTrack({src: 'assets/sounds/ruleta.mp3', callBack: function(data){
+                            audio_ruleta = data;
+                            loadTrack({src: 'assets/sounds/win.mp3', callBack: function(data){
+                                audio_win = data;
+                                loadTrack({src: 'assets/sounds/wrong.mp3', callBack: function(data){
+                                    audio_wrong = data;
+                                    
+                                    getE('cargador-txt').innerHTML = 'Haz clic para comenzar'
+                                    //getE('cargador').className = 'cargador-off'
+                                    getE('cargador').onclick = function(){
+                                        getE('cargador').onclick = null
+                                        getE('cargador').className = 'cargador-off'
                         
-                        getE('sol').className = 'sol-play'
-                        getE('cielo-dia').className = 'cielo-play'
-                        getE('cielo-noche').className = 'cielo-play'
+                                        getE('video-inicial').load()
+                                        getE('video-inicial').onloadeddata = function(){
+                                            getE('video-inicial').onloadeddata = null
+                                            getE('video-inicial').play()
+                        
+                                            getE('video-inicial').onended = function(){
+                                                getE('video-inicial').onended = null
+                                                getE('video-container').className = 'video-off'
+                                                
+                                                getE('sol').className = 'sol-play'
+                                                getE('cielo-dia').className = 'cielo-play'
+                                                getE('cielo-noche').className = 'cielo-play'
+                        
+                                                animacion_video = setTimeout(function(){
+                                                    clearTimeout(animacion_video)
+                                                    animacion_video = null;
+                                                    getE('video-container').className = 'video-offf'
+                                                    getE('col1').className = 'col1-on'
 
-                        animacion_video = setTimeout(function(){
-                            clearTimeout(animacion_video)
-                            animacion_video = null;
-                            getE('video-container').className = 'video-offf'
-                            getE('col1').className = 'col1-on'
-                        },1000)
-                    }
-                }
-            }*/
+                                                    toggleAudioBackground()
+                                                },1000)
+                                            }
+                                        }
+                                    }
+                                }}) 
+                            }})
+                        }})
+                    }})
+                }}) 
+            }})
 
-            getE('cargador').className = 'cargador-off'
+        }
+
+        function clickInput(){
+            audio_input.play();
         }
 
         var animacion_col = null
         function clickEntrar(){
+            usuario_data.nombre = getE('nombre_input').value
+            usuario_data.documento = getE('documento_input').value
+
             getE('entrar-btn').removeAttribute('onclick')
             getE('col1').className = 'col1-off'
             getE('fondo-img').className = 'fondo-img-2'
@@ -398,6 +428,8 @@
                 getE('col2').className = 'col2-on'
                 getE('ruleta-container').className = 'ruleta-container-on'
             },1000)
+
+            audio_click.play()
         }
     </script>
 </body>
