@@ -337,11 +337,24 @@
     <script src="assets/scripts/data.js"></script>
     <script src="assets/scripts/main.js"></script>
     <script src="assets/scripts/frase.js"></script>
+    <script src="assets/scripts/sonido.js"></script>
     <script>
 
         var animacion_video = null;
+        var audio_input = null;
+        var audio_click = null;
+        var audio_ruleta = null;
+        var audio_win = null;
+        var audio_wrong = null;
+        var audio_good = null;
+        var audio_seleccion = null;
 
         window.onload = function(){
+            loadTrack({src: 'assets/sounds/background.mp3', callBack: function(data) {
+                playAudioBackground(data,true)
+                //getE('sonido-btn').setAttribute('onclick','toggleAudioBackground()')
+            }})
+
             /*getE('cargador-txt').innerHTML = 'Haz clic para comenzar'
             getE('cargador').onclick = function(){
                 getE('cargador').onclick = null

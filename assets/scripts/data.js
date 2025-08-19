@@ -1,3 +1,9 @@
+var usuario_data = {
+    nombre:'',
+    documento:'',
+    historial:[]
+}
+
 var cartas_data = null;
 //IMPORTANTE!!!
 //no colocar punto final a la prefrase o será el fin del mundo
@@ -81,7 +87,7 @@ var cartas_data_3 = [
         completed:false
     },
     {
-        prefrase:'• Conoce los procedimientos de evacuación y de emergencia en tu zona y participa en simulacros. <br>• El buen uso de los equipos y la infraestructura garantiza seguridad y continuidad. Respeta los procedimientos y notifica cualquier animalía en los activos de la compañía. <br>• Tu seguridad es lo más importante. Usa siempre los equipos de protección personal, sigue las normas y evita riesgos innecesarios',
+        prefrase:'• Conoce los procedimientos de evacuación y de emergencia en tu zona y participa en simulacros. <br>• El buen uso de los equipos y la infraestructura garantiza seguridad y continuidad. Respeta los procedimientos y notifica cualquier anomalía en los activos de la compañía. <br>• Tu seguridad es lo más importante. Usa siempre los equipos de protección personal, sigue las normas y evita riesgos innecesarios',
         frase:'',
         palabras:[],
         completed:false

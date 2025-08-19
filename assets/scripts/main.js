@@ -16,6 +16,13 @@ var eje = false; //detecta la dimension entre 360 y 0
 var retrocede_ruleta = true;
 var parando_ruleta = 0;
 
+var categorias = [
+    'Cuidar mi salud física y mental',
+    'Cuidar el entorno',
+    'Prepararme y responder',
+    'Apostarle a la sostenibilidad y al Medio Ambiente'
+]
+
 var secciones = [
     /*[45,134],
     [315,44],
@@ -94,6 +101,7 @@ function girarRuleta(){
             check_carta = checkCarta(final_seccion)
             console.log("no mas cartas de : "+final_seccion+" por favor")
         }
+
         if(final_seccion==1){
             final_rotate = 90
         }else if(final_seccion==2){
@@ -104,15 +112,16 @@ function girarRuleta(){
             final_rotate = 270
         }
     
-        //final_rotate = secciones[final_seccion-1]+getRand(1,90)
-        //if(final_rotate>360){
-            //final_rotate = (final_rotate-360)
-        //}
+        /*var angulo = getRand(1,90)
+        final_rotate = secciones[final_seccion-1]+angulo
+        if(final_rotate>360){
+            final_rotate = (final_rotate-360)
+        }*/
 
         vueltas = 0;
         parando_ruleta = 0;
         retrocede_ruleta = true;
-        console.log("final_rotate: "+final_rotate)
+        console.log("final_rotate: "+final_rotate+'-'+angulo)
     
         animacion_ruleta = setInterval(function(){
             if(parando_ruleta==0){
@@ -236,6 +245,12 @@ function pararRuleta(){
     setCarta()
 }
 
+var errores_actuales = 0;
+var segundos_inicio = 0;
+var segundos_final = 0;
+var segundos_actuales = 0;
+var historial_frases = [];
+
 var f = -1;
 var check_frase = false;
 function checkFrase(f,c){
@@ -283,10 +298,26 @@ function setCarta(){
         console.log("esta ya salió: "+final_seccion+'-'+f)
     }
 
+    segundos_actuales = 0;
+    segundos_final = 0;
+    segundos_inicio = new Date().getTime();
+    errores_actuales = 0;
+
     setPalabras()
 }
 
 function unsetCarta(){
+    segundos_final = new Date().getTime()
+    segundos_actuales = segundos_final-segundos_inicio
+
+    usuario_data.historial.push({
+        tipo: categorias[final_seccion-1],
+        nfrase: parseInt(f+1),
+        equivocaciones: errores_actuales,
+        tiempo: convertTime(segundos_actuales),
+        ntiempo: segundos_actuales
+    })
+
     animacion_palabra_i = 0;
     animacion_palabras = setInterval(function(){
         if(animacion_palabra_i==orden_palabras.length){
@@ -305,10 +336,8 @@ function unsetCarta(){
                 getE('cortina').className = 'cortina-off'
 
                 //mirar si ya le salieron todas
-                if(frases_completadas==(cartas_data_1.length + cartas_data_2.length + cartas_data_3.length + cartas_data_4.length)){
-                
-                
-                //if(frases_completadas==5){    
+                //if(frases_completadas==(cartas_data_1.length + cartas_data_2.length + cartas_data_3.length + cartas_data_4.length)){
+                if(frases_completadas==5){
                     getE('ruleta-container').className = 'ruleta-container-off'
                     setMensajeFinal()
                 }else{
@@ -442,6 +471,23 @@ function upPalabra(event){
 
     }else{
         //no correcta
+        //mirar si la soltó en un espacio o al aire
+        var click_espacio = false;
+        for(i = 0;i<getE('frase-txt').getElementsByTagName('div').length;i++){
+            var rect_espacio = getE('frase-txt').getElementsByTagName('div')[i].getBoundingClientRect()
+            if(
+                posx>=rect_espacio.left&&
+                posx<=(rect_espacio.left+rect_espacio.width)&&
+                posy>=(rect_espacio.top-10)&&
+                posy<=(rect_espacio.top+rect_espacio.height+10)
+            ){
+                click_espacio = true
+            }
+        }
+
+        if(click_espacio){
+            errores_actuales++;
+        }
     }
     
     getE('palabra-move').className = 'palabra-move-off palabra-normal-'+final_seccion
@@ -489,6 +535,19 @@ function fillWord(word,obj){
         }
         animacion_word_i++
     },100)
+}
+
+function convertTime(miliseconds){
+    var seconds = Math.floor(miliseconds / 1000)
+    var minutos = parseInt(seconds / 60)
+    var segundos = seconds - (minutos * 60)
+    var time_txt = "";
+    if(minutos>0){
+        time_txt = String(minutos+' min - '+segundos+' seg')
+    }else{
+        time_txt = String(segundos+' seg')
+    }
+    return time_txt;
 }
 
 var animacion_final = null;
