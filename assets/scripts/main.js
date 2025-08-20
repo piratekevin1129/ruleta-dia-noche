@@ -551,6 +551,7 @@ function fillWord(word,obj){
 }
 
 function convertTime(miliseconds){
+    var milisegundos = parseInt(miliseconds / 1000) * 1000
     var seconds = Math.floor(miliseconds / 1000)
     var minutos = parseInt(seconds / 60)
     var segundos = seconds - (minutos * 60)
