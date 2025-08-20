@@ -260,7 +260,6 @@ var errores_actuales = 0;
 var segundos_inicio = 0;
 var segundos_final = 0;
 var segundos_actuales = 0;
-var historial_frases = [];
 
 var f = -1;
 var check_frase = false;
@@ -568,6 +567,24 @@ var animacion_final = null;
 var animacion_cartas_final = null;
 var animacion_cartas_final_i = 0;
 function setMensajeFinal(){
+    //guardar datos
+    var data_str = JSON.stringify(usuario_data)
+    $.ajax({
+        method:'post',
+        url:'guardar.php',
+        data: {
+            documento:usuario_data.documento,
+            json_str:data_str
+        },
+        success:function(result){
+            console.log(result)
+        },
+        error: function(xhr){
+            console.log("error")
+            console.log(xhr.responseText)
+        }
+    })
+
     getE('mensaje-final').className = 'mensaje-final-on'
     animacion_final = setTimeout(function(){
         clearTimeout(animacion_final)
