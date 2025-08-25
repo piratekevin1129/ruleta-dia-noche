@@ -1,95 +1,169 @@
-#ruleta{
-    width: 1000px;
-}
+@media (max-width: 520px){
+    .fondo-img-1{
+        bottom: 0%;
+    }
+    
+    #sol{
+        width: 200px;
+        height: 200px;
+        
+        left: 50%;
+        left: calc(50% - 100px);
+        left: -moz-calc(50% - 100px);
+        top: 50%;
+        top: calc(50% - 100px);
+        top: -moz-calc(50% - 100px);
+        
+        background-color: #ffed9f;
+        box-shadow: 0px 0px 100px 10px rgba(255,249,225,0.5);
+    }
 
-#ruleta-container{
-    width: 825px;
-    height: 825px;
-    top: 50%;
-    top: calc(50% - (825px / 2));
-    top: -moz-calc(50% - (825px / 2));
-    left: 50%;
-    left: calc(50% - (825px / 2));
-    left: -moz-calc(50% - (825px / 2));
-}
+    /****************/
+    /*hoja 1*/
+    #plant-1 > div{transform: scale(0.5);}    
+    #plant-2 > div{transform: scale(0.6) rotate(40deg);}
+    #plant-12 > div{transform: scale(0.5) rotate(75deg);}
+    #plant-13 > div{transform: scale(0.6) rotate(110deg);}
+    #plant-4 > div{transform: scale(0.6) rotate(45deg);}
+    #plant-5 > div{transform: scale(0.6) rotate(30deg);}
+    #plant-14 > div{transform: scale(0.6) rotate(45deg);}
+    #plant-6 > div{transform: scale(0.3) rotate(30deg);}
+    #plant-7 > div{transform: scale(0.3) rotate(60deg);}
+    #plant-15 > div{transform: scale(0.5) rotate(-30deg);}
+    #plant-8 > div{transform: scale(0.6)}
+    #plant-9 > div{transform: scale(0.6)}
+    #plant-10 > div{transform: scale(0.5) rotate(-10deg);}
+    #plant-11 > div{transform: scale(0.5) rotate(20deg);}
 
-#ruleta-borde{
-    width: 100%;
-    width: calc(100% + 10px);
-    width: -moz-calc(100% + 10px);
-    height: 100%;
-    height: calc(100% + 10px);
-    height: -moz-calc(100% + 10px);
-    background-color: #1b1464;
-    left: -5px;
-    top: -5px;
-}
+    /***************************************************/
+    #col1{
+        width: 100%;
+        width: calc(100% - 30px);
+        width: -moz-calc(100% - 30px);
+        left: 15px;
+    }
+    
+    .sol-paused,
+    .cielo-paused{
+        animation: none !important;
+        animation: unset !important;
+    }
+    .sol-play,
+    .cielo-play{
+        animation: none !important;
+        animation: unset !important;
+    }
 
-.ruleta-square{
-    width: 412.5px;
-    height: 412.5px;
-}
+    #logo{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    #logo img{
+        width: 250px;
+    }
 
-.ruleta-square-cont{
-    padding-top: 30%;
-}
+    #col2{
+        width: 100%;
+        height: 100%;
+    }
 
-.ruleta-square-cont img:last-child{
-    width: 70%;
-}
+    #ruleta{
+        width: 100%;
+        height: 100%;
+    }
 
-#ruleta-flecha{
-    width: 250px;
-    height: 250px;
-}
+    #ruleta-container{
+        width: 400px;
+        height: 400px;
+        top: 50%;
+        top: calc(50% - (400px / 2));
+        top: -moz-calc(50% - (400px / 2));
+    }
 
-#ruleta-flecha-bola{
-    width: 100%;
-    width: calc(100% - 10px);
-    width: -moz-calc(100% - 10px);
-    height: 100%;
-    height: calc(100% - 10px);
-    height: -moz-calc(100% - 10px);
-    top: 5px;
-    left: 5px;
-}
+    .ruleta-container-on{
+        transform: rotate(0deg);
+        left: 50%;
+        left: calc(50% - (400px / 2));
+        left: -moz-calc(50% - (400px / 2));
+    }
 
-#ruleta-flecha-triangulo{
-    width: 0px;
-    height: 0px;
-    border-bottom: #fff solid 20px;
-    border-right: rgba(255,255,255,0) solid 10px;
-    border-left: rgba(255,255,255,0) solid 10px;
-    left: 50%;
-    left: calc(50% - 10px);
-    left: -moz-calc(50% - 10px);
-    top: -10px;
-}
+    #ruleta-borde{
+        width: 100%;
+        width: calc(100% + 4px);
+        width: -moz-calc(100% + 4px);
+        height: 100%;
+        height: calc(100% + 4px);
+        height: -moz-calc(100% + 4px);
+        left: -2px;
+        top: -2px;
+    }
 
-#ruleta-flecha-bola-logo{
-    width: 50%;
-    margin-bottom: 30px;
-}
-#girar-btn{
-    height: 70px;
-    padding: 0px 50px;
-    border-radius: 35px;
-}
-.girar-btn-borde{
-    border-radius: 35px;
-}
-.girar-btn-fondo{
-    width: 100%;
-    width: calc(100% - 8px);
-    width: -moz-calc(100% - 8px);
-    height: 100%;
-    height: calc(100% - 8px);
-    height: -moz-calc(100% - 8px);
-    border-radius: 35px;
-    top: 4px;
-    left: 4px;
-}
+    .ruleta-square{
+        width: 200px;
+        height: 200px;
+    }
 
-#girar-btn span{
-    font-size: 22px;
+    .ruleta-square-cont{
+        padding-top: 30%;
+    }
+
+    .ruleta-square-cont img:last-child{
+        width: 80%;
+    }
+
+    #ruleta-flecha{
+        width: 150px;
+        height: 150px;
+    }
+
+    #ruleta-flecha-bola{
+        width: 100%;
+        width: calc(100% - 4px);
+        width: -moz-calc(100% - 4px);
+        height: 100%;
+        height: calc(100% - 4px);
+        height: -moz-calc(100% - 4px);
+        top: 2px;
+        left: 2px;
+    }
+
+    #ruleta-flecha-triangulo{
+        border-bottom: #fff solid 10px;
+        border-right: rgba(255,255,255,0) solid 5px;
+        border-left: rgba(255,255,255,0) solid 5px;
+        left: 50%;
+        left: calc(50% - 5px);
+        left: -moz-calc(50% - 5px);
+        top: -5px;
+    }
+
+    #ruleta-flecha-bola-logo{
+        display: none;
+    }
+
+    #girar-btn{
+        height: 40px;
+        padding: 0px 20px;
+        border-radius: 20px;
+    }
+    .girar-btn-borde{
+        border-radius: 20px;
+    }
+    .girar-btn-fondo{
+        width: 100%;
+        width: calc(100% - 4px);
+        width: -moz-calc(100% - 4px);
+        height: 100%;
+        height: calc(100% - 4px);
+        height: -moz-calc(100% - 4px);
+        border-radius: 20px;
+        top: 2px;
+        left: 2px;
+    }
+    .girar-btn-fondo::after{
+        height: 2px;
+    }
+    #girar-btn span{
+        font-size: 16px;
+    }
 }
