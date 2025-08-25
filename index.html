@@ -167,7 +167,7 @@
 
         <div id="cortina" class="cortina-off"></div>
 
-        <div id="col1" class="col1-off">
+        <div id="col1" class="col1-on">
             <div id="logo">
                 <img src="assets/images/logo.png" />
             </div>
@@ -201,6 +201,33 @@
         </div>
 
         <div id="col2" class="col2-off">
+            <div id="cartas">
+                <div id="cartas-container">
+                    <div id="carta-wrap">
+                        <div id="carta" class="carta-off">
+                            <div id="carta-imagenes">
+                                <img src="assets/images/cartas/carta1.png" />
+                                <img src="assets/images/cartas/carta2.png" />
+                                <img src="assets/images/cartas/carta3.png" />
+                                <img src="assets/images/cartas/carta4.png" />
+                            </div>
+                            <div id="frase-logo">
+                                <img src="assets/images/logo.png" />
+                            </div>
+                            <div id="frase-container">
+                                <div id="frase">
+                                    <p id="frase-txt"></p>
+                                </div>
+                            </div>
+                            <div id="frase-footer">
+                                <img src="assets/images/footer.png" />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="palabras"></div>
+                </div>
+            </div>
+
             <div id="ruleta">
                 <div id="ruleta-container" class="ruleta-container-off">
                     <div id="ruleta-borde"></div>
@@ -250,33 +277,6 @@
                     </div>
                 </div>
             </div>
-    
-            <div id="cartas">
-                <div id="cartas-container">
-                    <div id="carta-wrap">
-                        <div id="carta" class="carta-off">
-                            <div id="carta-imagenes">
-                                <img src="assets/images/cartas/carta1.png" />
-                                <img src="assets/images/cartas/carta2.png" />
-                                <img src="assets/images/cartas/carta3.png" />
-                                <img src="assets/images/cartas/carta4.png" />
-                            </div>
-                            <div id="frase-logo">
-                                <img src="assets/images/logo.png" />
-                            </div>
-                            <div id="frase-container">
-                                <div id="frase">
-                                    <p id="frase-txt"></p>
-                                </div>
-                            </div>
-                            <div id="frase-footer">
-                                <img src="assets/images/footer.png" />
-                            </div>
-                        </div>
-                    </div>
-                    <div id="palabras"></div>
-                </div>
-            </div>
 
             <div id="mensaje-final" class="mensaje-final-off">
                 <div div id="mensaje-final-container">
@@ -311,7 +311,11 @@
                     </div>
                     <div id="mensaje-final-imagen">
                         <img src="assets/images/final.png" />
-                        <p>Has finalizado el juego <br> te invitamos a poner en práctica lo aprendido.</p>
+                        <p>
+                            Has completado este juego, revisaremos y según el tiempo que realizaste, ¡podrás participar en un sorteo de premios sorpresa!
+                            <br>
+                            Gracias por jugar y ser parte de esta experiencia.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -319,7 +323,7 @@
 
         <div id="palabra-move" class="palabra-move-off"></div>
 
-        <div id="video-container" class="video-on">
+        <div id="video-container" class="video-offf">
             <video id="video-inicial" controls>
                 <source src="assets/media/tutorial.mp4" type="video/mp4" />
             </video>
@@ -374,11 +378,12 @@
                                     audio_wrong = data;
                                     
                                     getE('cargador-txt').innerHTML = 'Haz clic para comenzar'
-                                    //getE('cargador').className = 'cargador-off'
-                                    getE('cargador').onclick = function(){
+                                    getE('cargador').className = 'cargador-off'
+
+                                    /*getE('cargador').onclick = function(){
                                         getE('cargador').onclick = null
                                         getE('cargador').className = 'cargador-off'
-                        
+                                        
                                         getE('video-inicial').load()
                                         getE('video-inicial').onloadeddata = function(){
                                             getE('video-inicial').onloadeddata = null
@@ -386,7 +391,7 @@
                         
                                             getE('video-inicial').onended = function(){
                                                 getE('video-inicial').onended = null
-                                                getE('video-container').className = 'video-off'
+                                                getE('video-container').className = 'video-off'*/
                                                 
                                                 getE('sol').className = 'sol-play'
                                                 getE('cielo-dia').className = 'cielo-play'
@@ -400,9 +405,9 @@
 
                                                     toggleAudioBackground()
                                                 },1000)
-                                            }
+                                            /*}
                                         }
-                                    }
+                                    }*/
                                 }}) 
                             }})
                         }})

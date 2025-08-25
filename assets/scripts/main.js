@@ -287,6 +287,7 @@ function checkFrase(f,c){
 }
 
 function setCarta(){
+    getE('ruleta-container').className = 'ruleta-container-out'
     getE('cortina').className = 'cortina-on'
     getE('carta').className = 'carta-on carta'+final_seccion
 
@@ -346,11 +347,12 @@ function unsetCarta(){
                 getE('cortina').className = 'cortina-off'
 
                 //mirar si ya le salieron todas
-                //if(frases_completadas==(cartas_data_1.length + cartas_data_2.length + cartas_data_3.length + cartas_data_4.length)){
-                if(frases_completadas==5){
+                if(frases_completadas==(cartas_data_1.length + cartas_data_2.length + cartas_data_3.length + cartas_data_4.length)){
+                //if(frases_completadas==5){
                     getE('ruleta-container').className = 'ruleta-container-off'
                     setMensajeFinal()
                 }else{
+                    getE('ruleta-container').className = 'ruleta-container-in'
                     girando = false;
                     getE('girar-btn').className = '';
                 }
@@ -567,6 +569,7 @@ function convertTime(miliseconds){
 var animacion_final = null;
 var animacion_cartas_final = null;
 var animacion_cartas_final_i = 0;
+
 function setMensajeFinal(){
     //guardar datos
     var data_str = JSON.stringify(usuario_data)

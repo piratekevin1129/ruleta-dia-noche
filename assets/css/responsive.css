@@ -1,4 +1,5 @@
 @media (max-width: 520px){
+    /****fondo****/
     .fondo-img-1{
         bottom: 0%;
     }
@@ -65,8 +66,10 @@
     #col2{
         width: 100%;
         height: 100%;
+        display: block;
     }
 
+    /****ruleta****/
     #ruleta{
         width: 100%;
         height: 100%;
@@ -80,7 +83,13 @@
         top: -moz-calc(50% - (400px / 2));
     }
 
-    .ruleta-container-on{
+    .ruleta-container-out{
+        transform: rotate(180deg);
+        left: 100%;
+        transition: left 1s ease-in, transform 1s ease-in;
+    }
+    .ruleta-container-on,
+    .ruleta-container-in{
         transform: rotate(0deg);
         left: 50%;
         left: calc(50% - (400px / 2));
@@ -127,43 +136,83 @@
         left: 2px;
     }
 
-    #ruleta-flecha-triangulo{
-        border-bottom: #fff solid 10px;
-        border-right: rgba(255,255,255,0) solid 5px;
-        border-left: rgba(255,255,255,0) solid 5px;
-        left: 50%;
-        left: calc(50% - 5px);
-        left: -moz-calc(50% - 5px);
-        top: -5px;
-    }
-
     #ruleta-flecha-bola-logo{
         display: none;
     }
 
     #girar-btn{
-        height: 40px;
-        padding: 0px 20px;
-        border-radius: 20px;
+        height: 50px;
+        padding: 0px 35px;
+        border-radius: 25px;
+        cursor: default;
     }
     .girar-btn-borde{
-        border-radius: 20px;
+        border-radius: 25px;
     }
     .girar-btn-fondo{
         width: 100%;
-        width: calc(100% - 4px);
-        width: -moz-calc(100% - 4px);
+        width: calc(100% - 6px);
+        width: -moz-calc(100% - 6px);
         height: 100%;
-        height: calc(100% - 4px);
-        height: -moz-calc(100% - 4px);
-        border-radius: 20px;
-        top: 2px;
-        left: 2px;
+        height: calc(100% - 6px);
+        height: -moz-calc(100% - 6px);
+        border-radius: 25px;
+        top: 3px;
+        left: 3px;
     }
     .girar-btn-fondo::after{
         height: 2px;
     }
     #girar-btn span{
-        font-size: 16px;
+        font-size: 18px;
     }
+
+    /****cartas****/
+    #cartas{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        padding: 0px 0px;
+        top: 0px;
+        left: 0px;
+    }
+
+    #carta-wrap{
+        width: 360px;
+        height: 450px;
+    }
+
+    #frase-logo{
+        width: 26%;
+        top: 0px;
+        left: 8%;
+    }
+    #frase-footer{
+        bottom: initial;
+        left: initial;
+        top: 0px;
+        right: 8%;
+        border-radius: 0px 0px 15px 15px;
+        box-shadow: 0px 12px 14px -5px rgba(0,0,0,0.3);
+    }
+
+    #frase-container{
+        width: 90%;
+        height: 82%;
+        top: 18%;
+        left: 5%;
+    }
+
+    .palabra-normal,
+    .palabra-normal-locked{
+        width: 120px;
+        height: 40px;
+        margin: 5px 5px;
+    }
+
+    /****mensaje final****/
+    #mensaje-final-container{
+        width: 100%;
+    }
+
 }

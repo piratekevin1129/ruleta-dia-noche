@@ -1,5 +1,6 @@
 #ruleta{
-    position: relative;
+    left: 0px;
+    top: 0px;
     width: 800px;
     height: 100%;
 }
