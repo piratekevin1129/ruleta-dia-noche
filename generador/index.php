@@ -1,8 +1,23 @@
 <?php 
 header('Content-Type: text/html; charset=utf-8');
 
-$tabla = '<table border="1">';
-$tabla.='<thead><tr><th>Nombre</th><th>Documento</th><th>Frase 1</th><th>Frase 2</th><th>Frase 3</th><th>Frase 4</th><th>Frase 5</th><th>Tiempo total</th><th>Equivocaciones totales</th></tr></thead>';
+$tabla = '<style type="text/css">';
+$tabla.='table{width:100%; margin-left: auto; margin-right: auto; font-family:Arial;}';
+$tabla.='td{padding:5px; box-sizing:border-box;}';
+$tabla.='th{padding:10px; font-weight:bold; box-sizing:border-box;}';
+$tabla.='</style>';
+$tabla.='<table border="1" cellpadding="0" cellspacing="0">';
+$tabla.='<thead><tr>';
+$tabla.='<th>Nombre</th>';
+$tabla.='<th>Documento</th>';
+$tabla.='<th>Frase 1</th>';
+$tabla.='<th>Frase 2</th>';
+$tabla.='<th>Frase 3</th>';
+$tabla.='<th>Frase 4</th>';
+$tabla.='<th>Frase 5</th>';
+$tabla.='<th>Tiempo total</th>';
+$tabla.='<th>Equivocaciones totales</th>';
+$tabla.='</tr></thead>';
 $tabla.='<tbody>';
 
 $archivos = scandir('../bd');

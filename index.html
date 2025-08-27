@@ -167,7 +167,7 @@
 
         <div id="cortina" class="cortina-off"></div>
 
-        <div id="col1" class="col1-on">
+        <div id="col1" class="col1-off">
             <div id="logo">
                 <img src="assets/images/logo.png" />
             </div>
@@ -181,7 +181,7 @@
                             <div class="form-input-icon">
                                 <img src="assets/images/icon-form-user.svg" />
                             </div>
-                            <input type="text" autocomplete="off" maxlength="100" placeholder="Escribe tu nombre" id="nombre_input" onclick="clickInput()" />
+                            <input type="text" autocomplete="off" maxlength="100" placeholder="Escribe tu nombre" id="nombre_input" onclick="clickInput()" oninput="updateInput()" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -190,12 +190,12 @@
                             <div class="form-input-icon">
                                 <img src="assets/images/icon-form-document.svg" />
                             </div>
-                            <input type="text" autocomplete="off" maxlength="100" placeholder="Escribe tu cédula" id="documento_input" onclick="clickInput()" />
+                            <input type="text" autocomplete="off" maxlength="100" placeholder="Escribe tu cédula" id="documento_input" onclick="clickInput()" oninput="updateInput()" />
                         </div>
                     </div>
 
                     <br>
-                    <button class="form-button" type="button" id="entrar-btn" onclick="clickEntrar()">Entrar</button>
+                    <button class="form-button form-button-locked" status="locked" type="button" id="entrar-btn" onclick="clickEntrar()">Entrar</button>
                 </div>
             </div>
         </div>
@@ -323,7 +323,7 @@
 
         <div id="palabra-move" class="palabra-move-off"></div>
 
-        <div id="video-container" class="video-offf">
+        <div id="video-container" class="video-on">
             <video id="video-inicial" controls>
                 <source src="assets/media/tutorial.mp4" type="video/mp4" />
             </video>
@@ -377,10 +377,10 @@
                                 loadTrack({src: 'assets/sounds/wrong.mp3', callBack: function(data){
                                     audio_wrong = data;
                                     
+                                    //getE('cargador').className = 'cargador-off'
+                                    
                                     getE('cargador-txt').innerHTML = 'Haz clic para comenzar'
-                                    getE('cargador').className = 'cargador-off'
-
-                                    /*getE('cargador').onclick = function(){
+                                    getE('cargador').onclick = function(){
                                         getE('cargador').onclick = null
                                         getE('cargador').className = 'cargador-off'
                                         
@@ -391,7 +391,7 @@
                         
                                             getE('video-inicial').onended = function(){
                                                 getE('video-inicial').onended = null
-                                                getE('video-container').className = 'video-off'*/
+                                                getE('video-container').className = 'video-off'
                                                 
                                                 getE('sol').className = 'sol-play'
                                                 getE('cielo-dia').className = 'cielo-play'
@@ -405,9 +405,9 @@
 
                                                     toggleAudioBackground()
                                                 },1000)
-                                            /*}
+                                            }
                                         }
-                                    }*/
+                                    }
                                 }}) 
                             }})
                         }})
@@ -421,23 +421,41 @@
             audio_input.play();
         }
 
+        function updateInput(){
+            var nombre_input_txt = getE('nombre_input').value
+            var documento_input_txt = getE('documento_input').value
+            if(
+                nombre_input_txt.trim()!=""&&
+                documento_input_txt.trim()!=""
+            ){
+                getE('entrar-btn').className = 'form-button'
+                getE('entrar-btn').setAttribute('status','unlocked')
+            }else{
+                getE('entrar-btn').className = 'form-button form-button-locked'
+                getE('entrar-btn').setAttribute('status','locked')
+            }
+        }
+
         var animacion_col = null
         function clickEntrar(){
-            usuario_data.nombre = getE('nombre_input').value
-            usuario_data.documento = getE('documento_input').value
-
-            getE('entrar-btn').removeAttribute('onclick')
-            getE('col1').className = 'col1-off'
-            getE('fondo-img').className = 'fondo-img-2'
-            animacion_col = setTimeout(function(){
-                clearTimeout(animacion_col)
-                animacion_col = null
-
-                getE('col2').className = 'col2-on'
-                getE('ruleta-container').className = 'ruleta-container-on'
-            },1000)
-
-            audio_click.play()
+            var estado = getE('entrar-btn').getAttribute('status')
+            if(estado!='locked'){
+                usuario_data.nombre = getE('nombre_input').value
+                usuario_data.documento = getE('documento_input').value
+    
+                getE('entrar-btn').removeAttribute('onclick')
+                getE('col1').className = 'col1-off'
+                getE('fondo-img').className = 'fondo-img-2'
+                animacion_col = setTimeout(function(){
+                    clearTimeout(animacion_col)
+                    animacion_col = null
+    
+                    getE('col2').className = 'col2-on'
+                    getE('ruleta-container').className = 'ruleta-container-on'
+                },1000)
+    
+                audio_click.play()
+            }
         }
 
         </script>

@@ -76,11 +76,11 @@
     }
 
     #ruleta-container{
-        width: 400px;
-        height: 400px;
+        width: 360px;
+        height: 360px;
         top: 50%;
-        top: calc(50% - (400px / 2));
-        top: -moz-calc(50% - (400px / 2));
+        top: calc(50% - (360px / 2));
+        top: -moz-calc(50% - (360px / 2));
     }
 
     .ruleta-container-out{
@@ -92,8 +92,8 @@
     .ruleta-container-in{
         transform: rotate(0deg);
         left: 50%;
-        left: calc(50% - (400px / 2));
-        left: -moz-calc(50% - (400px / 2));
+        left: calc(50% - (360px / 2));
+        left: -moz-calc(50% - (360px / 2));
     }
 
     #ruleta-borde{
@@ -108,12 +108,12 @@
     }
 
     .ruleta-square{
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
     }
 
     .ruleta-square-cont{
-        padding-top: 30%;
+        padding-top: 28%;
     }
 
     .ruleta-square-cont img:last-child{
