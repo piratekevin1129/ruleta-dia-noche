@@ -231,6 +231,52 @@
     color: #ed7512;
 }
 
+.carta1 .frase-txt-div-active{animation: animacion-espacio-1 1s infinite forwards linear;}
+.carta2 .frase-txt-div-active{animation: animacion-espacio-2 1s infinite forwards linear;}
+.carta3 .frase-txt-div-active{animation: animacion-espacio-3 1s infinite forwards linear;}
+.carta4 .frase-txt-div-active{animation: animacion-espacio-4 1s infinite forwards linear;}
+
+@keyframes animacion-espacio-1{
+    0%,50%,100%{
+        background-color: rgba(229,40,132,0);
+        box-shadow: 0px 0px 0px 0px rgba(229,40,132,0);
+    }
+    25%,75%{
+        background-color: rgba(229,40,132,0.6);
+        box-shadow: 0px 0px 3px 2px rgba(229,40,132,0.5);
+    }
+}
+@keyframes animacion-espacio-2{
+    0%,50%,100%{
+        background-color: rgba(0,119,188,0);
+        box-shadow: 0px 0px 0px 0px rgba(0,119,188,0);
+    }
+    25%,75%{
+        background-color: rgba(0,119,188,0.6);
+        box-shadow: 0px 0px 3px 2px rgba(0,119,188,0.5);
+    }
+}
+@keyframes animacion-espacio-3{
+    0%,50%,100%{
+        background-color: rgba(255,214,39,0);
+        box-shadow: 0px 0px 0px 0px rgba(255,214,39,0);
+    }
+    25%,75%{
+        background-color: rgba(255,214,39,0.6);
+        box-shadow: 0px 0px 3px 2px rgba(255,214,39,0.5);
+    }
+}
+@keyframes animacion-espacio-4{
+    0%,50%,100%{
+        background-color: rgba(0,159,103,0);
+        box-shadow: 0px 0px 0px 0px rgba(0,159,103,0);
+    }
+    25%,75%{
+        background-color: rgba(0,159,103,0.6);
+        box-shadow: 0px 0px 3px 2px rgba(0,159,103,0.5);
+    }
+}
+
 /*************************/
 
 #palabras{
@@ -240,6 +286,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 .palabra-normal,
@@ -274,7 +321,6 @@
     height: 25px;
     border: #fff solid 1px;
     cursor: grabbing;
-    transform: translate(-50%,-50%);
 }
 .palabra-normal-locked{
     filter: grayscale(100%);

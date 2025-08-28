@@ -16,8 +16,8 @@
 #mensaje-final-container{
     position: relative;
     width: auto;
-    width: calc((200px + 0px) * 4);
-    width: -moz-calc((200px + 0px) * 4);
+    width: calc(200px * 4);
+    width: -moz-calc(200px * 4);
     height: auto;
     margin: 0px;
     padding: 0px;
@@ -75,7 +75,7 @@
     width: -moz-calc(100% / 4);
     height: 100%;
     margin: 0px;
-    perspective: 250px;
+    perspective: 400px;
     transform-origin: bottom center;
 }
 .mensaje-final-carta{
@@ -99,6 +99,26 @@
         opacity: 1;
     }
 }
+@keyframes animacion-final-carta-1 {
+    0%{
+        top: 100%;
+        opacity: 0;
+    }
+    100%{
+        top: 0%;
+        opacity: 1;
+    }
+}
+@keyframes animacion-final-carta-2 {
+    0%{
+        top: -100%;
+        opacity: 0;
+    }
+    100%{
+        top: 0%;
+        opacity: 1;
+    }
+}
 @keyframes animacion-final-carta-v2 {
     0%{
         transform: rotateY(360deg);
@@ -108,7 +128,7 @@
     }
 }
 
-.mensaje-final-carta img:nth-child(1){
+.mensaje-final-carta-fondo{
     position: absolute;
     display: block;
     width: 100%;
@@ -116,16 +136,33 @@
     top: 0px;
     left: 0px;
 }
-.mensaje-final-carta img:nth-child(2){
+.mensaje-final-carta-titulo{
     position: absolute;
     display: block;
     width: 80%;
     height: auto;
     transform: translateY(-50%);
-    top: 40%;
+    top: 50%;
     left: 10%;
 }
-                    
+.mensaje-final-carta-logo{
+    position: absolute;
+    width: 50%;
+    height: auto;
+    top: 0px;
+    left: 25%;
+    background-color: #ffffff;
+    box-shadow: 0px 5px 5px -2px rgba(0,0,0,0.5);
+    border-radius: 0px 0px 8px 8px;
+    box-sizing: border-box;
+    padding: 10px 20px;
+}
+.mensaje-final-carta-logo img{
+    display: block;
+    width: auto;
+    height: 40px;
+}
+
 #mensaje-final-imagen{
     position: relative;
     width: 100%;
@@ -144,7 +181,7 @@
     box-sizing: border-box;
     padding: 0px 50px;
     margin: 0px;
-    margin-bottom: 20px;
+    margin-top: 20px;
 
     font-family: 'Montserrat-Medium';
     font-size: 24px;
@@ -160,7 +197,7 @@
     visibility: hidden;
 }
 .mensaje-final-onn{
-    background-color: rgba(0,0,0,0.65);
+    background-color: rgba(0,0,0,0.75);
     visibility: visible;
     transition: background-color 0.5s;
 }

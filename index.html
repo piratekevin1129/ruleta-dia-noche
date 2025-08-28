@@ -286,26 +286,38 @@
                     <div id="mensaje-final-cartas">
                         <div class="mensaje-final-carta-wrap">
                             <div class="mensaje-final-carta" id="mensaje-final-carta-1">
-                                <img src="assets/images/cartas/carta1.png" />
-                                <img src="assets/images/ruleta/texto1.png" />
+                                <img src="assets/images/cartas/carta1.png" class="mensaje-final-carta-fondo" />
+                                <img src="assets/images/ruleta/texto1.png" class="mensaje-final-carta-titulo" />
+                                <div class="mensaje-final-carta-logo">
+                                    <img src="assets/images/logo.png" />
+                                </div>
                             </div>
                         </div>
                         <div class="mensaje-final-carta-wrap">
                             <div class="mensaje-final-carta" id="mensaje-final-carta-2">
-                                <img src="assets/images/cartas/carta2.png" />
-                                <img src="assets/images/ruleta/texto2.png" />
+                                <img src="assets/images/cartas/carta2.png" class="mensaje-final-carta-fondo" />
+                                <img src="assets/images/ruleta/texto2.png" class="mensaje-final-carta-titulo" />
+                                <div class="mensaje-final-carta-logo">
+                                    <img src="assets/images/logo.png" />
+                                </div>
                             </div>
                         </div>
                         <div class="mensaje-final-carta-wrap">
                             <div class="mensaje-final-carta" id="mensaje-final-carta-3">
-                                <img src="assets/images/cartas/carta3.png" />
-                                <img src="assets/images/ruleta/texto3.png" />
+                                <img src="assets/images/cartas/carta3.png" class="mensaje-final-carta-fondo" />
+                                <img src="assets/images/ruleta/texto3.png" class="mensaje-final-carta-titulo" />
+                                <div class="mensaje-final-carta-logo">
+                                    <img src="assets/images/logo.png" />
+                                </div>
                             </div>
                         </div>
                         <div class="mensaje-final-carta-wrap">
                             <div class="mensaje-final-carta" id="mensaje-final-carta-4">
-                                <img src="assets/images/cartas/carta4.png" />
-                                <img src="assets/images/ruleta/texto4.png" />
+                                <img src="assets/images/cartas/carta4.png" class="mensaje-final-carta-fondo" />
+                                <img src="assets/images/ruleta/texto4.png" class="mensaje-final-carta-titulo" />
+                                <div class="mensaje-final-carta-logo">
+                                    <img src="assets/images/logo.png" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -341,12 +353,14 @@
     </div>
 
     <script src="assets/scripts/jquery-3.5.0.min.js"></script>
+    <script src="assets/scripts/mobile.js"></script>
     <script src="assets/scripts/data.js"></script>
     <script src="assets/scripts/main.js"></script>
     <script src="assets/scripts/frase.js"></script>
     <script src="assets/scripts/sonido.js"></script>
     <script>
 
+        var ismobile = mobileCheck();
         var animacion_video = null;
 
         var audio_click = null;

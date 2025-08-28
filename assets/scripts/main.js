@@ -388,8 +388,13 @@ function setPalabras(){
     }
         
     for(i = 0;i<orden_palabras.length;i++){
+        //los divs quedan 0,1,2,3 pero se colocan en desorden
         var ii = orden_palabras[i]
         getE('frase-txt').getElementsByTagName('div')[ii].removeAttribute('style')
+        if(ismobile){
+            getE('frase-txt').getElementsByTagName('div')[ii].setAttribute('onclick','clickFrase(this,'+ii+')')
+        }
+        getE('frase-txt').getElementsByTagName('div')[ii].setAttribute('data-filled','0')
         getE('frase-txt').getElementsByTagName('div')[ii].innerHTML = cartas_data[f].palabras[ii].palabra
         var ancho = getE('frase-txt').getElementsByTagName('div')[ii].offsetWidth
         getE('frase-txt').getElementsByTagName('div')[ii].style.width = ancho+'px'
@@ -397,7 +402,12 @@ function setPalabras(){
 
         var palabra_btn = document.createElement('button')
         palabra_btn.id = 'palabra-btn-'+ii
-        palabra_btn.setAttribute('onmousedown','downPalabra(this,event)')
+        if(ismobile){
+            palabra_btn.setAttribute('onclick','clickPalabra(this,event)')
+        }else{
+            palabra_btn.setAttribute('onmousedown','downPalabra(this,event)')
+        }
+
         palabra_btn.setAttribute('type','button')
         palabra_btn.setAttribute('data-p',ii)
         palabra_btn.className = 'palabra-normal-off palabra-normal palabra-normal-'+final_seccion
@@ -405,8 +415,6 @@ function setPalabras(){
 
         getE('palabras').appendChild(palabra_btn)
     }
-
-    getE('carta').className = 'carta-on carta'+final_seccion
 
     animacion_carta = setTimeout(function(){
         clearTimeout(animacion_carta)
@@ -448,6 +456,8 @@ function downPalabra(btn,event){
         window.addEventListener('mousemove', movePalabra, true)
         window.addEventListener('mouseup', upPalabra, true)
         audio_input.play()
+
+        activateSpacesPalabra()
     }
 }
 
@@ -459,6 +469,9 @@ function movePalabra(event){
 }
 
 function upPalabra(event){
+    //quitar iluminación espacios
+    deactivateSpacesPalabra()
+
     window.removeEventListener('mousemove', movePalabra, true)
     window.removeEventListener('mouseup', upPalabra, true)
     posx = event.pageX
@@ -476,12 +489,7 @@ function upPalabra(event){
         posy<=(rect_destino.top+rect_destino.height+10)
     ){
         //correcta
-        getE('palabra-btn-'+global_p).removeAttribute('onmousedown')
-        getE('palabra-btn-'+global_p).className = 'palabra-normal-on palabra-normal-locked palabra-normal-'+final_seccion
-        
-        fillWord(cartas_data[f].palabras[global_p].palabra,getE('frase-txt').getElementsByTagName('div')[global_p])
-        cartas_data[f].palabras[global_p].completed = true
-        audio_good.play()
+        setpalabraCorrecta()
     }else{
         //no correcta
         //mirar si la soltó en un espacio o al aire
@@ -511,6 +519,98 @@ function upPalabra(event){
     global_p = -1;
 }
 
+function activateSpacesPalabra(){
+    //iluminar espacios
+    var espacios = getE('frase-txt').getElementsByTagName('div')
+    for(i = 0;i<espacios.length;i++){
+        //mirar que no este lleno ya
+        if(espacios[i].getAttribute('data-filled')=='0'){
+            espacios[i].className = 'frase-txt-div-active'
+        }
+    }
+}
+
+function deactivateSpacesPalabra(){
+    //quitar iluminación espacios
+    var espacios = getE('frase-txt').getElementsByTagName('div')
+    for(i = 0;i<espacios.length;i++){
+        //mirar que no este lleno ya
+        if(espacios[i].getAttribute('data-filled')=='0'){
+            espacios[i].removeAttribute('class')
+        }
+    }
+}
+
+function setpalabraCorrecta(){
+    if(ismobile){
+        getE('palabra-btn-'+global_p).removeAttribute('onclick')
+    }else{
+        getE('palabra-btn-'+global_p).removeAttribute('onmousedown')
+    }
+    getE('palabra-btn-'+global_p).className = 'palabra-normal-on palabra-normal-locked palabra-normal-'+final_seccion
+    
+    getE('frase-txt').getElementsByTagName('div')[global_p].setAttribute('data-filled','1')
+    fillWord(cartas_data[f].palabras[global_p].palabra,getE('frase-txt').getElementsByTagName('div')[global_p])
+    cartas_data[f].palabras[global_p].completed = true
+    audio_good.play()
+}
+
+var activate_click_space = false;
+function clickPalabra(btn){
+    global_p = Number(btn.getAttribute('data-p'))
+    
+    btn.style.visibility = 'hidden'
+    getE('palabra-move').innerHTML = btn.innerHTML
+    getE('palabra-move').className = 'palabra-move-on palabra-normal-'+final_seccion
+    getE('palabra-move').style.left = btn.getBoundingClientRect().left+'px'
+    getE('palabra-move').style.top = btn.getBoundingClientRect().top+'px'
+    getE('palabra-move').style.width = btn.offsetWidth+'px'
+    getE('palabra-move').style.height = btn.offsetHeight+'px'
+    //getE('palabra-move').setAttribute('data-p',global_p)
+
+    audio_input.play()
+
+    activate_click_space = true
+    activateSpacesPalabra()
+
+    //atenuar demás palabras
+    //menos las que ya estan correctas
+    var palabras_activas = getE('palabras').getElementsByTagName('button')
+    for(i = 0;i<palabras_activas.length;i++){
+        var clase_palabra_activa = palabras_activas[i].getAttribute('class')
+        if(clase_palabra_activa.indexOf('locked')==-1){
+            palabras_activas[i].style.opacity = '0.5'
+        }
+    }
+}
+
+function clickFrase(btn,ii){
+    if(activate_click_space){
+        //quitar iluminación espacios
+        deactivateSpacesPalabra()
+
+        //poner otra vez en alfa 1 las palabras
+        //menos las que ya estan correctas
+        var palabras_activas = getE('palabras').getElementsByTagName('button')
+        for(i = 0;i<palabras_activas.length;i++){
+            var clase_palabra_activa = palabras_activas[i].getAttribute('class')
+            if(clase_palabra_activa.indexOf('locked')==-1){
+                palabras_activas[i].removeAttribute('style')
+            }
+        }
+
+        if(global_p==ii){
+            setpalabraCorrecta()
+        }else{
+            errores_actuales++;
+            audio_wrong.play()
+            activate_click_space = false;
+        }
+
+        getE('palabra-move').className = 'palabra-move-off palabra-normal-'+final_seccion
+    }
+}
+
 var animacion_word = null;
 var animacion_word_i = 0;
 
@@ -527,6 +627,7 @@ function fillWord(word,obj){
             animacion_word = null
 
             filling_word = false;
+            activate_click_space = false;
             //mirar si ya la completó
 
             var palabras_completadas = 0
