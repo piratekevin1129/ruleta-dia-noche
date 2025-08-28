@@ -348,6 +348,14 @@
         width: 100%;
         height: 100%;
     }
+    .ruleta-off{
+        visibility: hidden;
+        transition: visibility 1s;
+    }
+    .ruleta-on{
+        visibility: visible;
+        transition: visibility 0s;
+    }
 
     #ruleta-container{
         width: 360px;

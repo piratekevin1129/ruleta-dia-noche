@@ -288,6 +288,7 @@ function checkFrase(f,c){
 
 function setCarta(){
     getE('ruleta-container').className = 'ruleta-container-out'
+    getE('ruleta').className = 'ruleta-off'
     getE('cortina').className = 'cortina-on'
     getE('carta').className = 'carta-on carta'+final_seccion
 
@@ -353,6 +354,7 @@ function unsetCarta(){
                     setMensajeFinal()
                 }else{
                     getE('ruleta-container').className = 'ruleta-container-in'
+                    getE('ruleta').className = 'ruleta-on'
                     girando = false;
                     getE('girar-btn').className = '';
                 }
