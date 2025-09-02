@@ -311,10 +311,31 @@ function setCarta(){
 
     segundos_actuales = 0;
     segundos_final = 0;
-    segundos_inicio = new Date().getTime();
     errores_actuales = 0;
 
+    if(instrucciones_first){
+        getE('instrucciones-scene-card-frase-p').innerHTML = instrucciones_txt
+        getE('instrucciones').className = 'instrucciones-'+final_seccion+' instrucciones-on instrucciones-web-on'
+    }else{
+        segundos_inicio = new Date().getTime();
+    }   
+
     setPalabras()
+}
+
+var instrucciones_first = true;
+var animacion_instrucciones = null;
+function cerrarInstrucciones(){
+    segundos_inicio = new Date().getTime();
+
+    instrucciones_first = false;
+    getE('instrucciones').className = 'instrucciones-'+final_seccion+' instrucciones-off instrucciones-web-on'
+    animacion_instrucciones = setTimeout(function(){
+        clearTimeout(animacion_instrucciones)
+        animacion_instrucciones = null
+
+        getE('instrucciones').className = 'instrucciones-offf'
+    },500)
 }
 
 function unsetCarta(){

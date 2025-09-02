@@ -10,6 +10,7 @@ var cartas_data = null;
 //todos los br deben llevar espacio adelante, nunca detrás
 //los unicos signos de puntuación permitidos son: .,¡!¿?:
 
+var instrucciones_txt = 'Hola, <div class="instrucciones-scene-card-frase-espacio-1"><span>Bienvenido</span></div> al juego de la ruleta <div class="instrucciones-scene-card-frase-espacio-2"><span>Interactiva</span></div>. <br> Pon a prueba tu <div class="instrucciones-scene-card-frase-espacio-3"><span>Creatividad</span></div>, tus conocimientos y juega con propósito'
 /*rosado*/
 var cartas_data_1 = [
     {

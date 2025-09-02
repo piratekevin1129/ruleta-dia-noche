@@ -1,0 +1,400 @@
+#instrucciones{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0,0,0,0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.instrucciones-off{
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s, opacity 0.5s;
+}
+.instrucciones-on{
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s, opacity 0.5s;
+}
+.instrucciones-offf{
+    display: none !important;
+}
+
+#instrucciones-card{
+    position: absolute;
+    width: 960px;
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 10px 5px -3px rgba(0,0,0,0.8);
+    padding: 20px;
+}
+
+#instrucciones-scene{
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+#instrucciones-scene-fondo{
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin: 0px;
+    background-color: #86bfea;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#instrucciones-scene-fondo img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    object-fit: cover;
+}
+
+#instrucciones-scene-card{
+    border-radius: 20px;
+    position: absolute;
+    width: 292px;
+    height: 412.5px;
+    top: 17.5px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0px 10px 10px -3px rgba(0,0,0,0.6);
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+
+#instrucciones-scene-card-logo{
+    position: absolute;
+    width: 30%;
+    height: auto;
+    left: 35%;
+    top: 0px;
+    background-color: #fff;
+    border-radius: 0px 0px 15px 15px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+#instrucciones-scene-card-logo img{
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0px;
+}
+#instrucciones-scene-card-frase{
+    position: absolute;
+    width: 90%;
+    height: 100%;
+    top: 0%;
+    left: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#instrucciones-scene-card-frase-txt{
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    padding: 12px;
+}
+#instrucciones-scene-card-frase-p{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0px;
+    padding: 0px;
+    
+    font-family: 'Montserrat-Regular';
+    font-size: 14px;
+    color: #2a255b;
+    font-weight: normal;
+    line-height: 20px;
+    text-align: left;
+}
+#instrucciones-scene-card-frase-p div{
+    display: inline-block;
+    width: 100px;
+    height: 20px;
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px 1px;
+    border-bottom: #2a255b dashed 1px;
+
+    font-family: 'Montserrat-SemiBold';
+    color: #ed7512;
+    font-size: 14px;
+    text-align: center;
+    font-weight: normal;
+    line-height: normal;
+}
+
+.instrucciones-scene-palabra-button-1,
+.instrucciones-scene-palabra-button-2,
+.instrucciones-scene-palabra-button-3{
+    position: absolute;
+    outline: none;
+    outline-width: 0;
+    box-sizing: border-box;
+    border: #fff solid 2px;
+    border-radius: 2px;
+    background-color: rgba(0,0,0,0);
+    width: 100px;
+    height: 35px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    font-family: 'Montserrat-Bold';
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    font-weight: normal;
+    line-height: normal;
+}
+                
+#instrucciones-cursor{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-image: url(../images/cursor.png);
+    top: 0px;
+    left: 0px;
+    transform: translate(-50%,-50%);
+}
+
+.instrucciones-txt{
+    position: relative;
+    width: 100%;
+    display: block;
+    margin: 0px;
+    padding: 0px;
+    margin-top: 20px;
+
+    font-family: 'Montserrat-SemiBold';
+    font-size: 14px;
+    color: #000;
+    font-weight: normal;
+    line-height: normal;
+    text-align: center;
+}
+.instrucciones-btn{
+    margin-top: 15px;
+}
+
+.instrucciones-1 .instrucciones-scene-palabra-button-1,
+.instrucciones-1 .instrucciones-scene-palabra-button-2,
+.instrucciones-1 .instrucciones-scene-palabra-button-3{
+    background-image: url(../images/cartas/patron1.png);
+}
+.instrucciones-1 #instrucciones-scene-card{
+    background-image: url(../images/cartas/carta1.png);
+}
+.instrucciones-2 .instrucciones-scene-palabra-button-1,
+.instrucciones-2 .instrucciones-scene-palabra-button-2,
+.instrucciones-2 .instrucciones-scene-palabra-button-3{
+    background-image: url(../images/cartas/patron2.png);
+}
+.instrucciones-2 #instrucciones-scene-card{
+    background-image: url(../images/cartas/carta2.png);
+}
+.instrucciones-3 .instrucciones-scene-palabra-button-1,
+.instrucciones-3 .instrucciones-scene-palabra-button-2,
+.instrucciones-3 .instrucciones-scene-palabra-button-3{
+    background-image: url(../images/cartas/patron3.png);
+    color: #2b275b !important;
+}
+.instrucciones-3 #instrucciones-scene-card{
+    background-image: url(../images/cartas/carta3.png);
+}
+.instrucciones-4 .instrucciones-scene-palabra-button-1,
+.instrucciones-4 .instrucciones-scene-palabra-button-2,
+.instrucciones-4 .instrucciones-scene-palabra-button-3{
+    background-image: url(../images/cartas/patron4.png);
+}
+.instrucciones-4 #instrucciones-scene-card{
+    background-image: url(../images/cartas/carta4.png);
+}
+
+/******/
+
+.instrucciones-web-on #instrucciones-cursor{
+    animation: animacion-cursor-instrucciones-web 15s infinite forwards ease-in-out;
+}
+@keyframes animacion-cursor-instrucciones-web{
+    0%{
+        top: 50%;
+        left: 50%;
+    }
+    15%{
+        top: 100%;
+        top: calc(100% - 35px);
+        top: -moz-calc(100% - 35px);
+        left: 50%;
+        left: calc(50% - (50px + 8.75px + 50px));
+        left: -moz-calc(50% - (50px + 8.75px + 50px));
+    }
+    30%{
+        top: 40%;
+        left: 47%;
+    }
+    45%{
+        top: 100%;
+        top: calc(100% - 35px);
+        top: -moz-calc(100% - 35px);
+        left: 50%;
+    }
+    60%{
+        top: 44%;
+        left: 47%;
+    }
+    75%{
+        top: 100%;
+        top: calc(100% - 35px);
+        top: -moz-calc(100% - 35px);
+        left: 50%;
+        left: calc(50% + (50px + 8.75px + 50px));
+        left: -moz-calc(50% + (50px + 8.75px + 50px));
+    }
+    90%{
+        top: 48%;
+        left: 55%;
+    }
+    100%{
+        top: 50%;
+        left: 50%;
+    }
+}
+
+/******/
+
+.instrucciones-web-on .instrucciones-scene-palabra-button-1{
+    animation: animacion-palabra1-instrucciones-web 15s infinite forwards ease-in-out;   
+}
+@keyframes animacion-palabra1-instrucciones-web{
+    0%,15%{
+        left: 50%;
+        left: calc(50% - (100px + 50px + 8.75px));
+        left: -moz-calc(50% - (100px + 50px + 8.75px));
+        top: 100%;
+        top: calc(100% - (35px + 17.5px));
+        top: -moz-calc(100% - (35px + 17.5px));
+    }
+    30%{
+        left: 41.3%;
+        top: 33%;
+        opacity: 1;
+    }
+    30.1%,100%{
+        left: 41.3%;
+        top: 33%;
+        opacity: 0;
+    }
+}
+.instrucciones-web-on .instrucciones-scene-palabra-button-2{
+    animation: animacion-palabra2-instrucciones-web 15s infinite forwards ease-in-out;   
+}
+@keyframes animacion-palabra2-instrucciones-web{
+    0%,45%{
+        left: 50%;
+        left: calc(50% - 50px);
+        left: -moz-calc(50% - 50px);
+        top: 100%;
+        top: calc(100% - (35px + 17.5px));
+        top: -moz-calc(100% - (35px + 17.5px));
+    }
+    60%{
+        top: 38.4%;
+        left: 43.4%;
+        opacity: 1;
+    }
+    60.1%,100%{
+        top: 38.4%;
+        left: 43.4%;
+        opacity: 0;
+    }
+}
+.instrucciones-web-on .instrucciones-scene-palabra-button-3{
+    animation: animacion-palabra3-instrucciones-web 15s infinite forwards ease-in-out;   
+}
+@keyframes animacion-palabra3-instrucciones-web{
+    0%,75%{
+        left: 50%;
+        left: calc(50% + (50px + 8.75px));
+        left: -moz-calc(50% + (50px + 8.75px));
+        top: 100%;
+        top: calc(100% - (35px + 17.5px));
+        top: -moz-calc(100% - (35px + 17.5px));
+    }
+    90%{
+        top: 43.2%;
+        left: 49.1%;
+        opacity: 1;
+    }
+    90.1%,100%{
+        top: 43.2%;
+        left: 49.1%;
+        opacity: 0;
+    }
+}
+
+/******/
+
+.instrucciones-web-on .instrucciones-scene-card-frase-espacio-1 span{
+    animation: animacion-espacio1-instrucciones-web 15s infinite forwards ease-in-out;   
+}
+@keyframes animacion-espacio1-instrucciones-web{
+    0%,15%{
+        opacity: 0;
+    }
+    30%{
+        opacity: 0;
+    }
+    30.1%,100%{
+        opacity: 1;
+    }
+}
+.instrucciones-web-on .instrucciones-scene-card-frase-espacio-2 span{
+    animation: animacion-espacio2-instrucciones-web 15s infinite forwards ease-in-out;   
+}
+@keyframes animacion-espacio2-instrucciones-web{
+    0%,45%{
+        opacity: 0;
+    }
+    60%{
+        opacity: 0;
+    }
+    60.1%,100%{
+        opacity: 1;
+    }
+}
+.instrucciones-web-on .instrucciones-scene-card-frase-espacio-3 span{
+    animation: animacion-espacio3-instrucciones-web 15s infinite forwards ease-in-out;   
+}
+@keyframes animacion-espacio3-instrucciones-web{
+    0%,75%{
+        opacity: 0;
+    }
+    90%{
+        opacity: 0;
+    }
+    90.1%,100%{
+        opacity: 1;
+    }
+}

@@ -16,6 +16,7 @@
     <link href="assets/css/formulario.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/ruleta.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/cartas.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/instrucciones.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/final.css" rel="stylesheet" type="text/css" />
 
     <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
@@ -200,7 +201,7 @@
             </div>
         </div>
 
-        <div id="col2" class="col2-off">
+        <div id="col2" class="col2-on">
             <div id="cartas">
                 <div id="cartas-container">
                     <div id="carta-wrap">
@@ -229,7 +230,7 @@
             </div>
 
             <div id="ruleta">
-                <div id="ruleta-container" class="ruleta-container-off">
+                <div id="ruleta-container" class="ruleta-container-on">
                     <div id="ruleta-borde"></div>
                     <div id="ruleta-fondo">
                         <img src="assets/images/ruleta/fondo.png" />
@@ -275,6 +276,32 @@
                         </div>
                         <div id="ruleta-flecha-triangulo"></div>
                     </div>
+                </div>
+            </div>
+
+            <div id="instrucciones" class="instrucciones-off">
+                <div id="instrucciones-card">
+                    <div id="instrucciones-scene">
+                        <div id="instrucciones-scene-fondo">
+                            <img src="assets/images/fondo.png" />
+                        </div>
+                        <div id="instrucciones-scene-card">
+                            <div id="instrucciones-scene-card-logo">
+                                <img src="assets/images/logo.png" />
+                            </div>
+                            <div id="instrucciones-scene-card-frase">
+                                <div id="instrucciones-scene-card-frase-txt">
+                                    <p id="instrucciones-scene-card-frase-p"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="instrucciones-scene-palabra-button-1">Bienvenido</button>
+                        <button class="instrucciones-scene-palabra-button-2">Interactiva</button>
+                        <button class="instrucciones-scene-palabra-button-3">Creatividad</button>
+                        <div id="instrucciones-cursor"></div>
+                    </div>
+                    <p class="instrucciones-txt">Haga clic sostenido y arrastre las palabras hacia su lugar correspondiente para completar la frase</p>
+                    <button class="instrucciones-btn" onclick="cerrarInstrucciones()">¡Entendido!</button>
                 </div>
             </div>
 
@@ -335,8 +362,8 @@
 
         <div id="palabra-move" class="palabra-move-off"></div>
 
-        <div id="video-container" class="video-on">
-            <video id="video-inicial" controls>
+        <div id="video-container" class="video-offf">
+            <video id="video-inicial" controls playsinline>
                 <source src="assets/media/tutorial.mp4" type="video/mp4" />
             </video>
         </div>
@@ -391,9 +418,9 @@
                                 loadTrack({src: 'assets/sounds/wrong.mp3', callBack: function(data){
                                     audio_wrong = data;
                                     
-                                    //getE('cargador').className = 'cargador-off'
+                                    getE('cargador').className = 'cargador-off'
                                     
-                                    getE('cargador-txt').innerHTML = 'Haz clic para comenzar'
+                                    /*getE('cargador-txt').innerHTML = 'Haz clic para comenzar'
                                     getE('cargador').onclick = function(){
                                         getE('cargador').onclick = null
                                         getE('cargador').className = 'cargador-off'
@@ -421,7 +448,7 @@
                                                 },1000)
                                             }
                                         }
-                                    }
+                                    }*/
                                 }}) 
                             }})
                         }})
