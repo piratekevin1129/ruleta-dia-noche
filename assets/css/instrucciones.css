@@ -179,7 +179,7 @@
     transform: translate(-50%,-50%);
 }
 
-.instrucciones-txt{
+#instrucciones-txt{
     position: relative;
     width: 100%;
     display: block;
@@ -395,6 +395,207 @@
         opacity: 0;
     }
     90.1%,100%{
+        opacity: 1;
+    }
+}
+
+/********************RESPONSIVE*****************/
+
+/******/
+.instrucciones-cel-on #instrucciones-cursor{
+    animation: animacion-cursor-instrucciones-cel 15s infinite forwards ease-in-out;
+}
+@keyframes animacion-cursor-instrucciones-cel{
+    0%{
+        top: 50%;
+        left: 50%;
+    }
+    10%,15%{
+        top: 100%;
+        top: calc(100% - 35px);
+        top: -moz-calc(100% - 35px);
+        left: 50%;
+        left: calc(50% - (50px + 8.75px + 50px));
+        left: -moz-calc(50% - (50px + 8.75px + 50px));
+    }
+    25%,30%{
+        top: 40%;
+        left: 47%;
+    }
+    40%,45%{
+        top: 100%;
+        top: calc(100% - 35px);
+        top: -moz-calc(100% - 35px);
+        left: 50%;
+    }
+    55%,60%{
+        top: 44%;
+        left: 47%;
+    }
+    70%,75%{
+        top: 100%;
+        top: calc(100% - 35px);
+        top: -moz-calc(100% - 35px);
+        left: 50%;
+        left: calc(50% + (50px + 8.75px + 50px));
+        left: -moz-calc(50% + (50px + 8.75px + 50px));
+    }
+    85%,90%{
+        top: 48%;
+        left: 55%;
+    }
+    100%{
+        top: 50%;
+        left: 50%;
+    }
+}
+/******/
+.instrucciones-cel-on .instrucciones-scene-palabra-button-1{
+    left: 50%;
+    left: calc(50% - (100px + 50px + 8.75px));
+    left: -moz-calc(50% - (100px + 50px + 8.75px));
+    top: 100%;
+    top: calc(100% - (35px + 17.5px));
+    top: -moz-calc(100% - (35px + 17.5px));
+    animation: animacion-palabra1-instrucciones-cel 15s infinite forwards ease-in-out;   
+}
+@keyframes animacion-palabra1-instrucciones-cel{
+    0%,10%{
+        transform: scale(1);
+    }
+    11%,25%{
+        transform: scale(1.2);
+    }
+    26%,100%{
+        transform: scale(1);
+        visibility: hidden;
+    }
+}
+.instrucciones-cel-on .instrucciones-scene-palabra-button-2{
+    left: 50%;
+    left: calc(50% - 50px);
+    left: -moz-calc(50% - 50px);
+    top: 100%;
+    top: calc(100% - (35px + 17.5px));
+    top: -moz-calc(100% - (35px + 17.5px));
+    animation: animacion-palabra2-instrucciones-cel 15s infinite forwards ease-in-out;   
+}
+@keyframes animacion-palabra2-instrucciones-cel{
+    0%,40%{
+        transform: scale(1);
+    }
+    41%,55%{
+        transform: scale(1.2);
+    }    
+    56%,100%{
+        transform: scale(1);
+        visibility: hidden;
+    }
+}
+.instrucciones-cel-on .instrucciones-scene-palabra-button-3{
+    left: 50%;
+    left: calc(50% + (50px + 8.75px));
+    left: -moz-calc(50% + (50px + 8.75px));
+    top: 100%;
+    top: calc(100% - (35px + 17.5px));
+    top: -moz-calc(100% - (35px + 17.5px));
+    animation: animacion-palabra3-instrucciones-cel 15s infinite forwards ease-in-out;   
+}
+@keyframes animacion-palabra3-instrucciones-cel{
+    0%,70%{
+        transform: scale(1);
+    }
+    71%,85%{
+        transform: scale(1.2);
+    }
+    86%,100%{
+        transform: scale(1);
+        visibility: hidden;
+    }
+}
+
+/******/
+.instrucciones-cel-on .instrucciones-scene-card-frase-espacio-1{
+    animation: animacion-espacio1-instrucciones-cel 15s infinite forwards ease-in-out;   
+}
+.instrucciones-cel-on .instrucciones-scene-card-frase-espacio-1 span{
+    animation: animacion-espacio1-span-instrucciones-cel 15s infinite forwards ease-in-out;   
+}
+@keyframes animacion-espacio1-instrucciones-cel{
+    0%{
+        background-color: rgba(114,194,21,0);
+    }
+    10%,14%,18%,22%,25%,100%{
+        background-color: rgba(114,194,21,0);
+    }
+    12%,16%,20%,24%{
+        background-color: rgba(114,194,21,0.5);
+    }
+}
+@keyframes animacion-espacio1-span-instrucciones-cel{
+    0%,15%{
+        opacity: 0;
+    }
+    25%{
+        opacity: 0;
+    }
+    25.1%,100%{
+        opacity: 1;
+    }
+}
+.instrucciones-cel-on .instrucciones-scene-card-frase-espacio-2{
+    animation: animacion-espacio2-instrucciones-cel 15s infinite forwards ease-in-out;   
+}
+.instrucciones-cel-on .instrucciones-scene-card-frase-espacio-2 span{
+    animation: animacion-espacio2-span-instrucciones-cel 15s infinite forwards ease-in-out;   
+}
+@keyframes animacion-espacio2-instrucciones-cel{
+    0%{
+        background-color: rgba(114,194,21,0);
+    }
+    40%,44%,48%,52%,55%,100%{
+        background-color: rgba(114,194,21,0);
+    }
+    42%,46%,50%{
+        background-color: rgba(114,194,21,0.5);
+    }
+}
+@keyframes animacion-espacio2-span-instrucciones-cel{
+    0%,45%{
+        opacity: 0;
+    }
+    55%{
+        opacity: 0;
+    }
+    55.1%,100%{
+        opacity: 1;
+    }
+}
+.instrucciones-cel-on .instrucciones-scene-card-frase-espacio-3{
+    animation: animacion-espacio3-instrucciones-cel 15s infinite forwards ease-in-out;   
+}
+.instrucciones-cel-on .instrucciones-scene-card-frase-espacio-3 span{
+    animation: animacion-espacio3-span-instrucciones-cel 15s infinite forwards ease-in-out;   
+}
+@keyframes animacion-espacio3-instrucciones-cel{
+    0%{
+        background-color: rgba(114,194,21,0);
+    }
+    70%,74%,78%,82%,85%,100%{
+        background-color: rgba(114,194,21,0);
+    }
+    72%,76%,80%{
+        background-color: rgba(114,194,21,0.5);
+    }
+}
+@keyframes animacion-espacio3-span-instrucciones-cel{
+    0%,75%{
+        opacity: 0;
+    }
+    85%{
+        opacity: 0;
+    }
+    85.1%,100%{
         opacity: 1;
     }
 }

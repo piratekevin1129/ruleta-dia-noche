@@ -94,7 +94,8 @@ function girarRuleta(){
 
         eje = false;
         a = 5;
-        final_seccion = getRand(1,4)//3
+        final_seccion = getRand(1,4)
+        //final_seccion = 3
         check_carta = checkCarta(final_seccion)
         while(check_carta){
             final_seccion = getRand(1,4)
@@ -288,6 +289,7 @@ function checkFrase(f,c){
 
 function setCarta(){
     getE('ruleta-container').className = 'ruleta-container-out'
+    getE('ruleta').className = 'ruleta-off'
     getE('cortina').className = 'cortina-on'
     getE('carta').className = 'carta-on carta'+final_seccion
 
@@ -301,7 +303,8 @@ function setCarta(){
         cartas_data = cartas_data_4
     }
 
-    f = getRand(0,(cartas_data.length-1))//1
+    f = getRand(0,(cartas_data.length-1))
+    //f = 2
     check_frase = checkFrase(f,final_seccion)
     while(check_frase){
         f = getRand(0,(cartas_data.length-1))
@@ -314,8 +317,14 @@ function setCarta(){
     errores_actuales = 0;
 
     if(instrucciones_first){
-        getE('instrucciones-scene-card-frase-p').innerHTML = instrucciones_txt
-        getE('instrucciones').className = 'instrucciones-'+final_seccion+' instrucciones-on instrucciones-web-on'
+        getE('instrucciones-scene-card-frase-p').innerHTML = instrucciones_frase_txt
+        if(ismobile){
+            getE('instrucciones-txt').innerHTML = instrucciones_label_cel
+            getE('instrucciones').className = 'instrucciones-'+final_seccion+' instrucciones-on instrucciones-cel-on'
+        }else{
+            getE('instrucciones-txt').innerHTML = instrucciones_label_web
+            getE('instrucciones').className = 'instrucciones-'+final_seccion+' instrucciones-on instrucciones-web-on'
+        }
     }else{
         segundos_inicio = new Date().getTime();
     }   
@@ -329,7 +338,11 @@ function cerrarInstrucciones(){
     segundos_inicio = new Date().getTime();
 
     instrucciones_first = false;
-    getE('instrucciones').className = 'instrucciones-'+final_seccion+' instrucciones-off instrucciones-web-on'
+    if(ismobile){
+        getE('instrucciones').className = 'instrucciones-'+final_seccion+' instrucciones-off instrucciones-cel-on'
+    }else{
+        getE('instrucciones').className = 'instrucciones-'+final_seccion+' instrucciones-off instrucciones-web-on'
+    }
     animacion_instrucciones = setTimeout(function(){
         clearTimeout(animacion_instrucciones)
         animacion_instrucciones = null
@@ -367,13 +380,16 @@ function unsetCarta(){
 
                 getE('cortina').className = 'cortina-off'
 
+                getE('contador-txt').innerHTML = frases_completadas+'/'+total_cartas
+
                 //mirar si ya le salieron todas
-                if(frases_completadas==(cartas_data_1.length + cartas_data_2.length + cartas_data_3.length + cartas_data_4.length)){
+                if(frases_completadas==total_cartas){
                 //if(frases_completadas==5){
                     getE('ruleta-container').className = 'ruleta-container-off'
                     setMensajeFinal()
                 }else{
                     getE('ruleta-container').className = 'ruleta-container-in'
+                    getE('ruleta').className = 'ruleta-on'
                     girando = false;
                     getE('girar-btn').className = '';
                 }
@@ -506,8 +522,8 @@ function upPalabra(event){
     if(
         posx>=rect_destino.left&&
         posx<=(rect_destino.left+rect_destino.width)&&
-        posy>=(rect_destino.top-10)&&
-        posy<=(rect_destino.top+rect_destino.height+10)
+        posy>=(rect_destino.top+3)&&
+        posy<=(rect_destino.top+rect_destino.height+3)
     ){
         //correcta
         setpalabraCorrecta()
@@ -578,29 +594,31 @@ function setpalabraCorrecta(){
 
 var activate_click_space = false;
 function clickPalabra(btn){
-    global_p = Number(btn.getAttribute('data-p'))
+    if(!activate_click_space&&!filling_word){
+        global_p = Number(btn.getAttribute('data-p'))
+        
+        btn.style.visibility = 'hidden'
+        getE('palabra-move').innerHTML = btn.innerHTML
+        getE('palabra-move').className = 'palabra-move-on palabra-normal-'+final_seccion
+        getE('palabra-move').style.left = btn.getBoundingClientRect().left+'px'
+        getE('palabra-move').style.top = btn.getBoundingClientRect().top+'px'
+        getE('palabra-move').style.width = btn.offsetWidth+'px'
+        getE('palabra-move').style.height = btn.offsetHeight+'px'
+        //getE('palabra-move').setAttribute('data-p',global_p)
     
-    btn.style.visibility = 'hidden'
-    getE('palabra-move').innerHTML = btn.innerHTML
-    getE('palabra-move').className = 'palabra-move-on palabra-normal-'+final_seccion
-    getE('palabra-move').style.left = btn.getBoundingClientRect().left+'px'
-    getE('palabra-move').style.top = btn.getBoundingClientRect().top+'px'
-    getE('palabra-move').style.width = btn.offsetWidth+'px'
-    getE('palabra-move').style.height = btn.offsetHeight+'px'
-    //getE('palabra-move').setAttribute('data-p',global_p)
-
-    audio_input.play()
-
-    activate_click_space = true
-    activateSpacesPalabra()
-
-    //atenuar demás palabras
-    //menos las que ya estan correctas
-    var palabras_activas = getE('palabras').getElementsByTagName('button')
-    for(i = 0;i<palabras_activas.length;i++){
-        var clase_palabra_activa = palabras_activas[i].getAttribute('class')
-        if(clase_palabra_activa.indexOf('locked')==-1){
-            palabras_activas[i].style.opacity = '0.5'
+        audio_input.play()
+    
+        activate_click_space = true
+        activateSpacesPalabra()
+    
+        //atenuar demás palabras
+        //menos las que ya estan correctas
+        var palabras_activas = getE('palabras').getElementsByTagName('button')
+        for(i = 0;i<palabras_activas.length;i++){
+            var clase_palabra_activa = palabras_activas[i].getAttribute('class')
+            if(clase_palabra_activa.indexOf('locked')==-1){
+                palabras_activas[i].style.opacity = '0.5'
+            }
         }
     }
 }

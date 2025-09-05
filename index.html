@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" translate="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -201,7 +201,7 @@
             </div>
         </div>
 
-        <div id="col2" class="col2-on">
+        <div id="col2" class="col2-off">
             <div id="cartas">
                 <div id="cartas-container">
                     <div id="carta-wrap">
@@ -230,7 +230,7 @@
             </div>
 
             <div id="ruleta">
-                <div id="ruleta-container" class="ruleta-container-on">
+                <div id="ruleta-container" class="ruleta-container-off">
                     <div id="ruleta-borde"></div>
                     <div id="ruleta-fondo">
                         <img src="assets/images/ruleta/fondo.png" />
@@ -279,6 +279,8 @@
                 </div>
             </div>
 
+            <div id="contador-txt"></div>
+
             <div id="instrucciones" class="instrucciones-off">
                 <div id="instrucciones-card">
                     <div id="instrucciones-scene">
@@ -300,7 +302,7 @@
                         <button class="instrucciones-scene-palabra-button-3">Creatividad</button>
                         <div id="instrucciones-cursor"></div>
                     </div>
-                    <p class="instrucciones-txt">Haga clic sostenido y arrastre las palabras hacia su lugar correspondiente para completar la frase</p>
+                    <p id="instrucciones-txt">Haga clic sostenido y arrastre las palabras hacia su lugar correspondiente para completar la frase</p>
                     <button class="instrucciones-btn" onclick="cerrarInstrucciones()">¡Entendido!</button>
                 </div>
             </div>
@@ -362,7 +364,7 @@
 
         <div id="palabra-move" class="palabra-move-off"></div>
 
-        <div id="video-container" class="video-offf">
+        <div id="video-container" class="video-on">
             <video id="video-inicial" controls playsinline>
                 <source src="assets/media/tutorial.mp4" type="video/mp4" />
             </video>
@@ -388,6 +390,7 @@
     <script>
 
         var ismobile = mobileCheck();
+        //ismobile = true;
         var animacion_video = null;
 
         var audio_click = null;
@@ -418,9 +421,9 @@
                                 loadTrack({src: 'assets/sounds/wrong.mp3', callBack: function(data){
                                     audio_wrong = data;
                                     
-                                    getE('cargador').className = 'cargador-off'
+                                    //getE('cargador').className = 'cargador-off'
                                     
-                                    /*getE('cargador-txt').innerHTML = 'Haz clic para comenzar'
+                                    getE('cargador-txt').innerHTML = 'Haz clic para comenzar'
                                     getE('cargador').onclick = function(){
                                         getE('cargador').onclick = null
                                         getE('cargador').className = 'cargador-off'
@@ -448,7 +451,7 @@
                                                 },1000)
                                             }
                                         }
-                                    }*/
+                                    }
                                 }}) 
                             }})
                         }})

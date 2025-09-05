@@ -10,7 +10,9 @@ var cartas_data = null;
 //todos los br deben llevar espacio adelante, nunca detrás
 //los unicos signos de puntuación permitidos son: .,¡!¿?:
 
-var instrucciones_txt = 'Hola, <div class="instrucciones-scene-card-frase-espacio-1"><span>Bienvenido</span></div> al juego de la ruleta <div class="instrucciones-scene-card-frase-espacio-2"><span>Interactiva</span></div>. <br> Pon a prueba tu <div class="instrucciones-scene-card-frase-espacio-3"><span>Creatividad</span></div>, tus conocimientos y juega con propósito'
+var instrucciones_frase_txt = 'Hola, <div class="instrucciones-scene-card-frase-espacio-1"><span>Bienvenido</span></div> al juego de la ruleta <div class="instrucciones-scene-card-frase-espacio-2"><span>Interactiva</span></div>. <br> Pon a prueba tu <div class="instrucciones-scene-card-frase-espacio-3"><span>Creatividad</span></div>, tus conocimientos y juega con propósito'
+var instrucciones_label_web = '<p class="instrucciones-txt">Haga clic sostenido y arrastre las palabras hacia su lugar correspondiente para completar la frase</p>'
+var instrucciones_label_cel = '<p class="instrucciones-txt">Toca cada palabra y luego toca el espacio correspondiente para completar la frase</p>'
 /*rosado*/
 var cartas_data_1 = [
     {
@@ -122,3 +124,6 @@ var cartas_data_4 = [
         completed:false
     }
 ]
+
+var total_cartas = (cartas_data_1.length + cartas_data_2.length + cartas_data_3.length + cartas_data_4.length)
+getE('contador-txt').innerHTML = '0/'+total_cartas
