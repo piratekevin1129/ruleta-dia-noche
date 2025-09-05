@@ -364,8 +364,10 @@
 
         <div id="palabra-move" class="palabra-move-off"></div>
 
+        <button id="sonido-btn" class="sonido-btn-off"></button>
+
         <div id="video-container" class="video-on">
-            <video id="video-inicial" controls playsinline>
+            <video id="video-inicial" controls playsinline controlsList="nodownload" oncontextmenu="return false;">
                 <source src="assets/media/tutorial.mp4" type="video/mp4" />
             </video>
         </div>
@@ -447,6 +449,7 @@
                                                     getE('video-container').className = 'video-offf'
                                                     getE('col1').className = 'col1-on'
 
+                                                    getE('sonido-btn').setAttribute('onclick','toggleAudioBackground()')
                                                     toggleAudioBackground()
                                                 },1000)
                                             }

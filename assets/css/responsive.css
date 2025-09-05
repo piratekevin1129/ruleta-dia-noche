@@ -641,4 +641,12 @@
         bottom: 10px;
         top: initial;
     }
+    #sonido-btn{
+        width: 35px;
+        height: 35px;
+        right: 5px;
+    }
+    #sonido-btn:hover{
+        height: 35px !important;
+    }
 }

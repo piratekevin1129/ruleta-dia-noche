@@ -36,11 +36,11 @@ function endAudioBackground(){
 function toggleAudioBackground(){
     if(audio_background_status){
         audio_background_status = false
-        //getE('sonido-btn').className = 'sonido-btn-off'
+        getE('sonido-btn').className = 'sonido-btn-off'
         audio_background.pause()
     }else{
         audio_background_status = true
-        //getE('sonido-btn').className = 'sonido-btn-on'
+        getE('sonido-btn').className = 'sonido-btn-on'
         audio_background.play()
         .then(function (){
             console.log("play background")
