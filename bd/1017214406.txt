@@ -1,118 +1,118 @@
 {
-    "nombre": "Kevin",
+    "nombre": "kevin",
     "documento": "1017214406",
     "historial": [
         {
             "tipo": 4,
-            "nfrase": 1,
-            "equivocaciones": 1,
-            "tiempo": "51 seg",
-            "ntiempo": 51752
+            "nfrase": 4,
+            "equivocaciones": 0,
+            "tiempo": "42.96 seg",
+            "ntiempo": 42961
         },
         {
             "tipo": 2,
             "nfrase": 1,
-            "equivocaciones": 2,
-            "tiempo": "48 seg",
-            "ntiempo": 48154
+            "equivocaciones": 4,
+            "tiempo": "1 min - 6.4 seg",
+            "ntiempo": 66403
+        },
+        {
+            "tipo": 2,
+            "nfrase": 2,
+            "equivocaciones": 4,
+            "tiempo": "1 min - 9.33 seg",
+            "ntiempo": 69332
+        },
+        {
+            "tipo": 2,
+            "nfrase": 4,
+            "equivocaciones": 1,
+            "tiempo": "1 min - 32.55 seg",
+            "ntiempo": 92556
+        },
+        {
+            "tipo": 1,
+            "nfrase": 4,
+            "equivocaciones": 1,
+            "tiempo": "47.69 seg",
+            "ntiempo": 47691
+        },
+        {
+            "tipo": 2,
+            "nfrase": 3,
+            "equivocaciones": 0,
+            "tiempo": "43.98 seg",
+            "ntiempo": 43986
+        },
+        {
+            "tipo": 1,
+            "nfrase": 2,
+            "equivocaciones": 3,
+            "tiempo": "54.33 seg",
+            "ntiempo": 54334
         },
         {
             "tipo": 3,
-            "nfrase": 4,
+            "nfrase": 1,
+            "equivocaciones": 1,
+            "tiempo": "56.46 seg",
+            "ntiempo": 56463
+        },
+        {
+            "tipo": 3,
+            "nfrase": 3,
             "equivocaciones": 0,
-            "tiempo": "50 seg",
-            "ntiempo": 50500
+            "tiempo": "45.51 seg",
+            "ntiempo": 45512
         },
         {
             "tipo": 1,
             "nfrase": 1,
             "equivocaciones": 0,
-            "tiempo": "49 seg",
-            "ntiempo": 49755
+            "tiempo": "46.29 seg",
+            "ntiempo": 46294
+        },
+        {
+            "tipo": 1,
+            "nfrase": 3,
+            "equivocaciones": 0,
+            "tiempo": "47.56 seg",
+            "ntiempo": 47565
+        },
+        {
+            "tipo": 4,
+            "nfrase": 1,
+            "equivocaciones": 1,
+            "tiempo": "45.04 seg",
+            "ntiempo": 45049
+        },
+        {
+            "tipo": 4,
+            "nfrase": 2,
+            "equivocaciones": 1,
+            "tiempo": "50.1 seg",
+            "ntiempo": 50109
+        },
+        {
+            "tipo": 3,
+            "nfrase": 4,
+            "equivocaciones": 1,
+            "tiempo": "44.8 seg",
+            "ntiempo": 44806
         },
         {
             "tipo": 4,
             "nfrase": 3,
             "equivocaciones": 0,
-            "tiempo": "22 seg",
-            "ntiempo": 22588
-        },
-        {
-            "tipo": 1,
-            "nfrase": 4,
-            "equivocaciones": 1,
-            "tiempo": "50 seg",
-            "ntiempo": 50848
-        },
-        {
-            "tipo": 4,
-            "nfrase": 4,
-            "equivocaciones": 0,
-            "tiempo": "44 seg",
-            "ntiempo": 44847
+            "tiempo": "21.59 seg",
+            "ntiempo": 21592
         },
         {
             "tipo": 3,
             "nfrase": 2,
             "equivocaciones": 0,
-            "tiempo": "42 seg",
-            "ntiempo": 42810
-        },
-        {
-            "tipo": 1,
-            "nfrase": 3,
-            "equivocaciones": 1,
-            "tiempo": "36 seg",
-            "ntiempo": 36036
-        },
-        {
-            "tipo": 4,
-            "nfrase": 2,
-            "equivocaciones": 2,
-            "tiempo": "40 seg",
-            "ntiempo": 40519
-        },
-        {
-            "tipo": 2,
-            "nfrase": 4,
-            "equivocaciones": 1,
-            "tiempo": "34 seg",
-            "ntiempo": 34643
-        },
-        {
-            "tipo": 1,
-            "nfrase": 2,
-            "equivocaciones": 2,
-            "tiempo": "46 seg",
-            "ntiempo": 46713
-        },
-        {
-            "tipo": 2,
-            "nfrase": 2,
-            "equivocaciones": 2,
-            "tiempo": "49 seg",
-            "ntiempo": 49119
-        },
-        {
-            "tipo": 2,
-            "nfrase": 3,
-            "equivocaciones": 1,
-            "tiempo": "29 seg",
-            "ntiempo": 29128
-        },
-        {
-            "tipo": 3,
-            "nfrase": 1,
-            "equivocaciones": 0,
-            "tiempo": "37 seg",
-            "ntiempo": 37156
-        },
-        {
-            "tipo": 3,
-            "nfrase": 3,
-            "equivocaciones": 1,
-            "tiempo": "36 seg",
-            "ntiempo": 36807
+            "tiempo": "47.5 seg",
+            "ntiempo": 47502
         }
     ]
 }

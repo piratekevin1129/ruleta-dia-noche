@@ -689,19 +689,19 @@ function convertTime(miliseconds){
     var milisegundos1 = Math.floor(miliseconds / 1000)
     var milisegundos2 = miliseconds - (milisegundos1 * 1000)
     var milisegundos3 = (milisegundos2 / 1000)
-    var milisegundos4 = Math.floor()
+    var milisegundos4 = Math.floor(milisegundos3 * 100) / 100
 
-    var seconds = Math.floor(miliseconds / 1000) + milisegundos3
+    var seconds = Math.floor(miliseconds / 1000)
     var minutos = parseInt(seconds / 60)
     var segundos = seconds - (minutos * 60)
+    var segundos_real = Number(segundos+milisegundos4)
     var time_txt = "";
     if(minutos>0){
-        time_txt = String(minutos+' min - '+segundos+' seg')
+        time_txt = String(minutos+' min - '+segundos_real+' seg')
     }else{
-        time_txt = String(segundos+' seg')
+        time_txt = String(segundos_real+' seg')
     }
-    alert(miliseconds)
-    alert(milisegundos)
+
     return time_txt;
 }
 
@@ -720,6 +720,9 @@ function setMensajeFinal(){
             json_str:data_str
         },
         success:function(result){
+            if(result.trim()!='success'){
+                alert("Ocurrió un error guardando los datos, por favor tome una captura de pantalla del siguiente error y pongase en contacto con el proveedor: "+JSON.stringify(usuario_data))
+            }
             console.log(result)
         },
         error: function(xhr){

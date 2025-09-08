@@ -18,7 +18,7 @@ $tabla.='<thead><tr>';
 $tabla.='<th style="width:150px;">Nombre</th>';
 $tabla.='<th style="width:120px;">Documento</th>';
 for($j = 0;$j<16;$j++){
-    $tabla.='<th style="width:200px;">Frase '.($j+1).'</th>';
+    $tabla.='<th style="width:200px;">Casilla '.($j+1).'</th>';
 }
 $tabla.='<th style="width:150px;">Tiempo total</th>';
 $tabla.='<th style="width:150px;">Equivocaciones totales</th>';

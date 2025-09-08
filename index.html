@@ -20,7 +20,7 @@
     <link href="assets/css/final.css" rel="stylesheet" type="text/css" />
 
     <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
-    <title>Ruelta</title>
+    <title>Ruleta</title>
 
     <script>
         function getE(idname){
@@ -439,9 +439,9 @@
                                                 getE('video-inicial').onended = null
                                                 getE('video-container').className = 'video-off'
                                                 
-                                                getE('sol').className = 'sol-play'
-                                                getE('cielo-dia').className = 'cielo-play'
-                                                getE('cielo-noche').className = 'cielo-play'
+                                                //getE('sol').className = 'sol-play'
+                                                //getE('cielo-dia').className = 'cielo-play'
+                                                //getE('cielo-noche').className = 'cielo-play'
                         
                                                 animacion_video = setTimeout(function(){
                                                     clearTimeout(animacion_video)
@@ -471,9 +471,13 @@
         function updateInput(){
             var nombre_input_txt = getE('nombre_input').value
             var documento_input_txt = getE('documento_input').value
+
+            var documento_input_txt_clean = documento_input_txt.replace(/\D/g, "");
+            getE('documento_input').value = documento_input_txt_clean
+
             if(
                 nombre_input_txt.trim()!=""&&
-                documento_input_txt.trim()!=""
+                documento_input_txt_clean.trim()!=""
             ){
                 getE('entrar-btn').className = 'form-button'
                 getE('entrar-btn').setAttribute('status','unlocked')
@@ -487,8 +491,8 @@
         function clickEntrar(){
             var estado = getE('entrar-btn').getAttribute('status')
             if(estado!='locked'){
-                usuario_data.nombre = getE('nombre_input').value
-                usuario_data.documento = getE('documento_input').value
+                usuario_data.nombre = String(getE('nombre_input').value).trim()
+                usuario_data.documento = String(getE('documento_input').value).trim()
     
                 getE('entrar-btn').removeAttribute('onclick')
                 getE('col1').className = 'col1-off'
