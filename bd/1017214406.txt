@@ -1,1 +1,118 @@
-{"nombre":"kevin","documento":"1017214406","historial":[{"tipo":"Apostarle a la sostenibilidad y al Medio Ambiente","nfrase":2,"equivocaciones":2,"tiempo":"1 min - 4 seg","ntiempo":64737},{"tipo":"Apostarle a la sostenibilidad y al Medio Ambiente","nfrase":2,"equivocaciones":2,"tiempo":"1 min - 4 seg","ntiempo":64737},{"tipo":"Apostarle a la sostenibilidad y al Medio Ambiente","nfrase":2,"equivocaciones":2,"tiempo":"1 min - 4 seg","ntiempo":64737},{"tipo":"Apostarle a la sostenibilidad y al Medio Ambiente","nfrase":2,"equivocaciones":2,"tiempo":"1 min - 4 seg","ntiempo":64737},{"tipo":"Apostarle a la sostenibilidad y al Medio Ambiente","nfrase":2,"equivocaciones":2,"tiempo":"1 min - 4 seg","ntiempo":64737}]}
+{
+    "nombre": "Kevin",
+    "documento": "1017214406",
+    "historial": [
+        {
+            "tipo": 4,
+            "nfrase": 1,
+            "equivocaciones": 1,
+            "tiempo": "51 seg",
+            "ntiempo": 51752
+        },
+        {
+            "tipo": 2,
+            "nfrase": 1,
+            "equivocaciones": 2,
+            "tiempo": "48 seg",
+            "ntiempo": 48154
+        },
+        {
+            "tipo": 3,
+            "nfrase": 4,
+            "equivocaciones": 0,
+            "tiempo": "50 seg",
+            "ntiempo": 50500
+        },
+        {
+            "tipo": 1,
+            "nfrase": 1,
+            "equivocaciones": 0,
+            "tiempo": "49 seg",
+            "ntiempo": 49755
+        },
+        {
+            "tipo": 4,
+            "nfrase": 3,
+            "equivocaciones": 0,
+            "tiempo": "22 seg",
+            "ntiempo": 22588
+        },
+        {
+            "tipo": 1,
+            "nfrase": 4,
+            "equivocaciones": 1,
+            "tiempo": "50 seg",
+            "ntiempo": 50848
+        },
+        {
+            "tipo": 4,
+            "nfrase": 4,
+            "equivocaciones": 0,
+            "tiempo": "44 seg",
+            "ntiempo": 44847
+        },
+        {
+            "tipo": 3,
+            "nfrase": 2,
+            "equivocaciones": 0,
+            "tiempo": "42 seg",
+            "ntiempo": 42810
+        },
+        {
+            "tipo": 1,
+            "nfrase": 3,
+            "equivocaciones": 1,
+            "tiempo": "36 seg",
+            "ntiempo": 36036
+        },
+        {
+            "tipo": 4,
+            "nfrase": 2,
+            "equivocaciones": 2,
+            "tiempo": "40 seg",
+            "ntiempo": 40519
+        },
+        {
+            "tipo": 2,
+            "nfrase": 4,
+            "equivocaciones": 1,
+            "tiempo": "34 seg",
+            "ntiempo": 34643
+        },
+        {
+            "tipo": 1,
+            "nfrase": 2,
+            "equivocaciones": 2,
+            "tiempo": "46 seg",
+            "ntiempo": 46713
+        },
+        {
+            "tipo": 2,
+            "nfrase": 2,
+            "equivocaciones": 2,
+            "tiempo": "49 seg",
+            "ntiempo": 49119
+        },
+        {
+            "tipo": 2,
+            "nfrase": 3,
+            "equivocaciones": 1,
+            "tiempo": "29 seg",
+            "ntiempo": 29128
+        },
+        {
+            "tipo": 3,
+            "nfrase": 1,
+            "equivocaciones": 0,
+            "tiempo": "37 seg",
+            "ntiempo": 37156
+        },
+        {
+            "tipo": 3,
+            "nfrase": 3,
+            "equivocaciones": 1,
+            "tiempo": "36 seg",
+            "ntiempo": 36807
+        }
+    ]
+}

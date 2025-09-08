@@ -1,22 +1,27 @@
 <?php 
 header('Content-Type: text/html; charset=utf-8');
 
+$categorias = array(
+    'Cuidar mi salud física y mental',
+    'Cuidar el entorno',
+    'Prepararme y responder',
+    'Apostarle a la sostenibilidad y al Medio Ambiente'
+);
+
 $tabla = '<style type="text/css">';
-$tabla.='table{width:100%; margin-left: auto; margin-right: auto; font-family:Arial;}';
+$tabla.='table{width:100%; margin-left: auto; margin-right: auto; font-family:Arial; table-layout:fixed;}';
 $tabla.='td{padding:5px; box-sizing:border-box;}';
-$tabla.='th{padding:10px; font-weight:bold; box-sizing:border-box;}';
+$tabla.='th{padding:10px; font-weight:bold; box-sizing:border-box; text-align: left;}';
 $tabla.='</style>';
 $tabla.='<table border="1" cellpadding="0" cellspacing="0">';
 $tabla.='<thead><tr>';
-$tabla.='<th>Nombre</th>';
-$tabla.='<th>Documento</th>';
-$tabla.='<th>Frase 1</th>';
-$tabla.='<th>Frase 2</th>';
-$tabla.='<th>Frase 3</th>';
-$tabla.='<th>Frase 4</th>';
-$tabla.='<th>Frase 5</th>';
-$tabla.='<th>Tiempo total</th>';
-$tabla.='<th>Equivocaciones totales</th>';
+$tabla.='<th style="width:150px;">Nombre</th>';
+$tabla.='<th style="width:120px;">Documento</th>';
+for($j = 0;$j<16;$j++){
+    $tabla.='<th style="width:200px;">Frase '.($j+1).'</th>';
+}
+$tabla.='<th style="width:150px;">Tiempo total</th>';
+$tabla.='<th style="width:150px;">Equivocaciones totales</th>';
 $tabla.='</tr></thead>';
 $tabla.='<tbody>';
 
@@ -32,66 +37,26 @@ for($i = 2;$i<count($archivos);$i++){
     $tabla.='<td>'.$json['nombre'].'</td>';
     $tabla.='<td>'.$json['documento'].'</td>';
 
-    $txt1 = 'Tipo: '.$json['historial'][0]['tipo'];
-    $txt1.='<br>';
-    $txt1.='Frase: #'.$json['historial'][0]['nfrase'];
-    $txt1.='<br>';
-    $txt1.='Equivocaciones: '.$json['historial'][0]['equivocaciones'];
-    $txt1.='<br>';
-    $txt1.='Tiempo: '.$json['historial'][0]['tiempo'];
-    $tiempo_total+= $json['historial'][0]['ntiempo'];
-    $equivocaciones_totales+= $json['historial'][0]['equivocaciones'];
+    $historial = $json['historial'];
 
-    $txt2 = 'Tipo: '.$json['historial'][1]['tipo'];
-    $txt2.='<br>';
-    $txt2.='Frase: #'.$json['historial'][1]['nfrase'];
-    $txt2.='<br>';
-    $txt2.='Equivocaciones: '.$json['historial'][1]['equivocaciones'];
-    $txt2.='<br>';
-    $txt2.='Tiempo: '.$json['historial'][1]['tiempo'];
-    $tiempo_total+= $json['historial'][1]['ntiempo'];
-    $equivocaciones_totales+= $json['historial'][1]['equivocaciones'];
+    for($j = 0;$j<count($historial);$j++){
+        $txt1 = 'Tipo: '.$categorias[$historial[$j]['tipo']-1];
+        $txt1.='<br>';
+        $txt1.='Frase: #'.$historial[$j]['nfrase'];
+        $txt1.='<br>';
+        $txt1.='Equivocaciones: '.$historial[$j]['equivocaciones'];
+        $txt1.='<br>';
+        $txt1.='Tiempo: '.$historial[$j]['tiempo'];
+        $tabla.='<td>'.$txt1.'</td>';
 
-    $txt3 = 'Tipo: '.$json['historial'][2]['tipo'];
-    $txt3.='<br>';
-    $txt3.='Frase: #'.$json['historial'][2]['nfrase'];
-    $txt3.='<br>';
-    $txt3.='Equivocaciones: '.$json['historial'][2]['equivocaciones'];
-    $txt3.='<br>';
-    $txt3.='Tiempo: '.$json['historial'][2]['tiempo'];
-    $tiempo_total+= $json['historial'][2]['ntiempo'];
-    $equivocaciones_totales+= $json['historial'][2]['equivocaciones'];
+        $tiempo_total+= $historial[$j]['ntiempo'];
+        $equivocaciones_totales+= $historial[$j]['equivocaciones'];
+    }
     
-    $txt4 = 'Tipo: '.$json['historial'][3]['tipo'];
-    $txt4.='<br>';
-    $txt4.='Frase: #'.$json['historial'][3]['nfrase'];
-    $txt4.='<br>';
-    $txt4.='Equivocaciones: '.$json['historial'][3]['equivocaciones'];
-    $txt4.='<br>';
-    $txt4.='Tiempo: '.$json['historial'][3]['tiempo'];
-    $tiempo_total+= $json['historial'][3]['ntiempo'];
-    $equivocaciones_totales+= $json['historial'][3]['equivocaciones'];
-    
-    $txt5 = 'Tipo: '.$json['historial'][4]['tipo'];
-    $txt5.='<br>';
-    $txt5.='Frase: #'.$json['historial'][4]['nfrase'];
-    $txt5.='<br>';
-    $txt5.='Equivocaciones: '.$json['historial'][4]['equivocaciones'];
-    $txt5.='<br>';
-    $txt5.='Tiempo: '.$json['historial'][4]['tiempo'];
-    $tiempo_total+= $json['historial'][4]['ntiempo'];
-    $equivocaciones_totales+= $json['historial'][4]['equivocaciones'];
-    
-    $tabla.='<td>'.$txt1.'</td>';
-    $tabla.='<td>'.$txt2.'</td>';
-    $tabla.='<td>'.$txt3.'</td>';
-    $tabla.='<td>'.$txt4.'</td>';
-    $tabla.='<td>'.$txt5.'</td>';
     $tabla.='<td>'.convertTime($tiempo_total).'</td>';
     $tabla.='<td>'.$equivocaciones_totales.'</td>';
 
     $tabla.='</tr>';
-
 }
 $tabla.='</tbody></table>';
 echo $tabla;

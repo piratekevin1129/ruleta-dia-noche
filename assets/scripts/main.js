@@ -16,13 +16,6 @@ var eje = false; //detecta la dimension entre 360 y 0
 var retrocede_ruleta = true;
 var parando_ruleta = 0;
 
-var categorias = [
-    'Cuidar mi salud física y mental',
-    'Cuidar el entorno',
-    'Prepararme y responder',
-    'Apostarle a la sostenibilidad y al Medio Ambiente'
-]
-
 var secciones = [
     /*[45,134],
     [315,44],
@@ -356,7 +349,7 @@ function unsetCarta(){
     segundos_actuales = segundos_final-segundos_inicio
 
     usuario_data.historial.push({
-        tipo: categorias[final_seccion-1],
+        tipo: final_seccion,
         nfrase: parseInt(f+1),
         equivocaciones: errores_actuales,
         tiempo: convertTime(segundos_actuales),
@@ -693,8 +686,12 @@ function fillWord(word,obj){
 }
 
 function convertTime(miliseconds){
-    var milisegundos = parseInt(miliseconds / 1000) * 1000
-    var seconds = Math.floor(miliseconds / 1000)
+    var milisegundos1 = Math.floor(miliseconds / 1000)
+    var milisegundos2 = miliseconds - (milisegundos1 * 1000)
+    var milisegundos3 = (milisegundos2 / 1000)
+    var milisegundos4 = Math.floor()
+
+    var seconds = Math.floor(miliseconds / 1000) + milisegundos3
     var minutos = parseInt(seconds / 60)
     var segundos = seconds - (minutos * 60)
     var time_txt = "";
@@ -703,6 +700,8 @@ function convertTime(miliseconds){
     }else{
         time_txt = String(segundos+' seg')
     }
+    alert(miliseconds)
+    alert(milisegundos)
     return time_txt;
 }
 
