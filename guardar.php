@@ -1,7 +1,8 @@
 <?php 
 
 $str = $_POST['json_str'];
-$filename = 'bd/'.$_POST['documento'].'.txt';
+$fecha = (string)date('Y-n-j_G-i-s');
+$filename = 'bd/'.$_POST['documento'].'-'.$fecha.'.txt';
 if(file_put_contents($filename,$str) !== false){
     exit("success");
 }else{
