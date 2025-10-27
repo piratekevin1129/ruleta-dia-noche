@@ -21,6 +21,7 @@ for($j = 0;$j<16;$j++){
     $tabla.='<th style="width:200px;">Casilla '.($j+1).'</th>';
 }
 $tabla.='<th style="width:150px;">Tiempo total</th>';
+$tabla.='<th style="width:150px;">Formato tiempo</th>';
 $tabla.='<th style="width:150px;">Equivocaciones totales</th>';
 $tabla.='</tr></thead>';
 $tabla.='<tbody>';
@@ -40,12 +41,12 @@ for($i = 2;$i<count($archivos);$i++){
     $historial = $json['historial'];
 
     for($j = 0;$j<count($historial);$j++){
-        $txt1 = 'Tipo: '.$categorias[$historial[$j]['tipo']-1];
-        $txt1.='<br>';
+        $txt1 = 'Carta: '.$categorias[$historial[$j]['tipo']-1];
+        $txt1.=';';
         $txt1.='Frase: #'.$historial[$j]['nfrase'];
-        $txt1.='<br>';
+        $txt1.=';';
         $txt1.='Equivocaciones: '.$historial[$j]['equivocaciones'];
-        $txt1.='<br>';
+        $txt1.=';';
         $txt1.='Tiempo: '.$historial[$j]['tiempo'];
         $tabla.='<td>'.$txt1.'</td>';
 
@@ -54,6 +55,7 @@ for($i = 2;$i<count($archivos);$i++){
     }
     
     $tabla.='<td>'.convertTime($tiempo_total).'</td>';
+    $tabla.='<td>'.$tiempo_total.'</td>';
     $tabla.='<td>'.$equivocaciones_totales.'</td>';
 
     $tabla.='</tr>';
